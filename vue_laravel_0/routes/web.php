@@ -22,4 +22,4 @@ Route::get('/', function () {
 //         return view('dashboard');
 // });
 
-Route ::get('{view}', ApplicationController::class);
+Route ::get('{view}', ApplicationController::class)->where('view', '(.*)');
