@@ -8,11 +8,11 @@ define('VIEWS_PATH', $root . 'views'. DIRECTORY_SEPARATOR);
 
 require APP_PATH . "App.php";
 $files= getTransactionFiles(FILE_PATH);
-// require FILE_PATH . "file.csv";
 $transactions = [];
 foreach($files as $file)
 {
-    $transactions = array_merge($transactions, getTransactions($file));
+    $transactions = array_merge($transactions, getTransactions($file, 'extractTransaction'));
 }
+$totalSum = transactionTotal($transactions);
 
 require VIEWS_PATH . "transaction.php";
