@@ -51,5 +51,21 @@
              <?php endif; ?>
         </tbody>
     </table>
+<footer>
+        <table>
+        <tr>
+            <th>Income</th>
+            <td><?= $totalSum['income'] ?? 0 ?></td>
+        </tr>
+        <tr>
+            <th>Expenditure</th>
+            <td><?= $totalSum['expenditure'] ?? 0 ?></td>
+        </tr>
+        <tr>
+            <th>Balance</th>
+            <td><?= $totalSum['netTotal'] ?? 0 ?></td>
+        </tr>
+    </table>
+</footer>
 </body>
 </html>
