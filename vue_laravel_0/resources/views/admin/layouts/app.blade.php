@@ -11,7 +11,7 @@
 @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="hold-transition sidebar-mini">
-<div class="wrapper">
+<div class="wrapper" id="app">
 
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">
 
