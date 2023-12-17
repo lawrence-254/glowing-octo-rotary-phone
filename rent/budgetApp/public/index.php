@@ -7,5 +7,12 @@ define('FILE_PATH', $root . 'transaction' . DIRECTORY_SEPARATOR);
 define('VIEWS_PATH', $root . 'views'. DIRECTORY_SEPARATOR);
 
 require APP_PATH . "App.php";
-$file= getTransactionFiles();
-var_dump($file);
+$files= getTransactionFiles(FILE_PATH);
+// require FILE_PATH . "file.csv";
+$transactions = [];
+foreach($files as $file)
+{
+    $transactions = array_merge($transactions, getTransactions($file));
+}
+
+require VIEWS_PATH . "transaction.php";
