@@ -42,7 +42,17 @@
                         <td><?php echo $tr['TransactionID'] ?></td>
                         <td><?php echo $tr['Date'] ?></td>
                         <td><?php echo $tr['Description'] ?></td>
-                        <td><?php echo $tr['Amount'] ?></td>
+                        <td>
+                            <?php if ($tr['Amount'] < 0): ?>
+                                <span style="color: red">
+                                    <?php echo $tr['Amount'] ?>
+                                </span>
+                            <?php elseif ($tr['Amount'] > 0): ?>
+                                <span style="color: green">
+                                    <?php echo $tr['Amount'] ?>
+                                </span>
+                            <?php endif; ?>
+                        </td>
                         <td><?php echo $tr['Type'] ?></td>
                         <td><?php echo $tr['Category'] ?></td>
                         <td><?php echo $tr['Account'] ?></td>
@@ -55,15 +65,45 @@
         <table>
         <tr>
             <th>Income</th>
-            <td><?= $totalSum['income'] ?? 0 ?></td>
+            <td>
+                 <?php if($totalSum['income'] <0): ?>
+                    <span style="color: red">
+                        <?= $totalSum['income']  ?? 0 ?>
+                    </span>
+                <?php elseif ($totalSum['income']>0): ?>
+                    <span style="color: green">
+                        <?= $totalSum['income'] ?? 0 ?>
+                    </span>
+                <?php endif; ?>
+            </td>
         </tr>
         <tr>
             <th>Expenditure</th>
-            <td><?= $totalSum['expenditure'] ?? 0 ?></td>
+            <td>
+                <?php if($totalSum['expenditure']<0): ?>
+                    <span style="color: red">
+                        <?= $totalSum['expenditure'] ?? 0 ?>
+                    </span>
+                <?php elseif ($totalSum['expenditure']>0): ?>
+                    <span style="color: green">
+                        <?= $totalSum['expenditure'] ?? 0 ?>
+                    </span>
+                <?php endif; ?>
+            </td>
         </tr>
         <tr>
             <th>Balance</th>
-            <td><?= $totalSum['netTotal'] ?? 0 ?></td>
+            <td>
+                <?php if($totalSum['netTotal']<0): ?>
+                    <span style="color: red">
+                        <?= $totalSum['netTotal'] ?? 0 ?>
+                    </span>
+                <?php elseif ($totalSum['netTotal']>0): ?>
+                    <span style="color: green">
+                        <?= $totalSum['netTotal'] ?? 0 ?>
+                    </span>
+                <?php endif; ?>
+            </td>
         </tr>
     </table>
 </footer>
