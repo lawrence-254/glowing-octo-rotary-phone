@@ -13,8 +13,10 @@ require_once '../Transaction.php';
 // var_dump($transaction2->getAmount());
 // var_dump($transaction->description);
 
-$mt = (new Transaction(330, 'wine'))
-    ->vat(10)
-    ->discount(5)
-    ->getAmount();
-var_dump($mt);
+// $mt = (new Transaction(330, 'wine'))
+//     ->vat(10)
+//     ->discount(5)
+//     ->getAmount();
+// var_dump($mt);
+
+echo Transaction::STATUS_DECLINED;
