@@ -1,1 +1,1 @@
-a folder to practice and learn new languages
+an experimental area that is composed of several technologies
