@@ -40,7 +40,7 @@ session_start();
                                     echo '<li><a class="dropdown-item" href="user/user_registration.php">Register</a></li>';
                                 } else {
                                     echo '<li><a class="dropdown-item" href="user/profile.php">Profile</a></li>';
-                                    echo '<li><a class="dropdown-item" href="user/user_logout.php">Logout</a></li>';
+                                    echo '<li><a class="dropdown-item" href="user/logout.php">Logout</a></li>';
                                 }
                                 ?>
 

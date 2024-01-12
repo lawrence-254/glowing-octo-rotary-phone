@@ -3,7 +3,9 @@
 include('../functions/shared_func.php');
 include('../includes/connect.php');
 include('../includes/header.php');
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 ?>
 <title>customer login</title>
 </head>

@@ -363,36 +363,43 @@ function get_user_order_details()
 {
     global $con;
     $username = $_SESSION['user_username'];
-    $get_details = "SELECT * FROM `customer_table` WHERE username = '$username'";
-    $result_query = mysqli_query($con, $get_details);
 
-    if ($result_query) {
-        $row_count = mysqli_num_rows($result_query);
+    // 1. Use prepared statement to prevent SQL injection
+    $get_details = "SELECT * FROM `customer_table` WHERE user_name = ?";
+    $stmt_get_details = mysqli_prepare($con, $get_details);
+    mysqli_stmt_bind_param($stmt_get_details, "s", $username);
+    mysqli_stmt_execute($stmt_get_details);
+    $result_query = mysqli_stmt_get_result($stmt_get_details);
 
-        if ($row_count > 0) {
-            $row_query = mysqli_fetch_array($result_query);
-            $user_id = $row_query['user_id'];
+    while ($row_query = mysqli_fetch_array($result_query)) {
+        $user_id = $row_query['user_id'];
 
-            if (!isset($_GET['edit_account']) && !isset($_GET['my_orders']) && !isset($_GET['delete_account'])) {
-                $get_orders = "SELECT * FROM `customer_table` WHERE user_id = $user_id AND order_status = 'pending'";
-                $result_order_query = mysqli_query($con, $get_orders);
+        if (!isset($_GET['edit_account']) && !isset($_GET['my_orders']) && !isset($_GET['delete_account'])) {
+            // 2. Use prepared statement for order query
+            $get_orders = "SELECT * FROM `order` WHERE user_id = ? AND order_status = 'pending'";
+            $stmt_get_orders = mysqli_prepare($con, $get_orders);
+            mysqli_stmt_bind_param($stmt_get_orders, "i", $user_id);
+            mysqli_stmt_execute($stmt_get_orders);
+            $result_order_query = mysqli_stmt_get_result($stmt_get_orders);
 
-                if ($result_order_query) {
-                    $row_count = mysqli_num_rows($result_order_query);
+            if ($result_order_query) {
+                $row_count = mysqli_num_rows($result_order_query);
 
-                    if ($row_count > 0) {
-                        echo "<h2 class='text-center text-info mt-5 mb-2'>You have <span class='text-danger'>$row_count</span> pending orders</h2>";
-                        echo "<a href='profile.php?my_orders' class='text-center'>View order details</a>";
-                    } else {
-                        echo "<h2 class='text-center text-info mt-5 m-2'>You have no pending orders</h2>";
-                        echo "<a href='index.php' class='text-center'>Explore</a>";
-                    }
+                if ($row_count > 0) {
+                    echo "<h2 class='text-center text-info mt-5 mb-2'>You have <span class='text-danger'>$row_count</span> pending orders</h2>";
+                    echo "<a href='profile.php?my_orders' class='text-center'>View order details</a>";
                 } else {
-                    echo "Error fetching order details: " . mysqli_error($con);
+                    echo "<h2 class='text-center text-info mt-5 m-2'>You have no pending orders</h2>";
+                    echo "<a href='../index.php' class='text-center'>Explore</a>";
                 }
+            } else {
+                // 3. Handle error gracefully
+                echo "Error fetching order details: " . mysqli_error($con);
             }
         }
-    } else {
-        echo "Error fetching user details: " . mysqli_error($con);
     }
+
+    // Clean up resources
+    mysqli_stmt_close($stmt_get_details);
+    mysqli_stmt_close($stmt_get_orders);
 }

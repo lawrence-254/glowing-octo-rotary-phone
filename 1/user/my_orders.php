@@ -49,7 +49,7 @@ if (isset($_SESSION['user_username'])) {
     </thead>
     <tbody>
         <?php
-        $get_order_details = "SELECT * FROM `order` WHERE user_name = '$username'";
+        $get_order_details = "SELECT * FROM `order` WHERE user_id = '$user_id'";
         $result_order = mysqli_query($con, $get_order_details);
 
         if ($result_order) {

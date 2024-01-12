@@ -43,7 +43,7 @@ session_start();
                                     echo '<li><a class="dropdown-item" href="user/user_login.php">Login</a></li>';
                                     echo '<li><a class="dropdown-item" href="user/user_registration.php">Register</a></li>';
                                 } else {
-                                    echo '<li><a class="dropdown-item" href="user/user_logout.php">Logout</a></li>';
+                                    echo '<li><a class="dropdown-item" href="logout.php">Logout</a></li>';
                                 }
                                 ?>
 
@@ -96,7 +96,6 @@ session_start();
         </div>
         <div class="col-md-10 text-center">
             <?php
-
             if (isset($_GET['edit_account'])) {
                 include('edit_account.php');
             }

@@ -35,7 +35,7 @@ session_start();
                                 <?php
                                 error_reporting(E_ALL);
                                 ini_set('display_errors', 1);
-                                if (!isset($_SESSION['user_username'])) {
+                                if (!isset($_SESSION['user_name'])) {
                                     echo '<li><a class="dropdown-item" href="user/user_login.php">Login</a></li>';
                                     echo '<li><a class="dropdown-item" href="user/user_registration.php">Register</a></li>';
                                 } else {
@@ -47,9 +47,6 @@ session_start();
                                 </li>
                                 <li><a class="dropdown-item" href="#">Admin Login</a></li>
                             </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link disabled">Disabled</a>
                         </li>
                     </ul>
                     <form class="d-flex" role="search">
