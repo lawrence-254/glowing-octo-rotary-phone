@@ -6,11 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <link rel="stylesheet" href="{% static 'css/tailwind.css' %}">
+    {% if context%}
+    <title>{{context.title}} - TechWitters</title>
+    {%else%}
     <title>TechWitter</title>
+    {%endif%}
 </head>
 <body>
     {% block content%}
     <h1>base</h1>
+    <ul>
+        {% if current_user.is_authenticated %}
+        <h1>authenticated navbar</h1>
+        {%else%}
+        <h1>not authenticated navbar</h1>
+        {% endif%}
+    </ul>
     {% endblock%}
 </body>
 </html>

@@ -1,14 +1,15 @@
 {% include '../../base.html'%}
 {%block content%}
 <div>
-    <form action="POST">
-        <div class="form">
+    <form method="POST">
+        {% csrf_token %}
+        <div class="">
             <label>Email or Username</label>
-            <input type="text" placeholder="Enter username or email"/>
+            <input type="text" name="emailname" placeholder="Enter username or email"/>
         </div>
         <div>
             <label>Password</label>
-            <input type="password" placeholder="Enter password"/>
+            <input type="password" name="password" placeholder="Enter password"/>
         </div>
         <button type="submit">LOGIN</button>
     </form>
