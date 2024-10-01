@@ -1,1 +1,0 @@
-an experimental area that is composed of several technologies
