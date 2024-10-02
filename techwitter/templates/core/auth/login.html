@@ -1,6 +1,11 @@
 {% include '../../base.html'%}
 {%block content%}
 <div>
+    <div>
+        {% if message in messages %}
+        <h4>{{message}}</h4>
+        {% endif %}
+    </div>
     <form method="POST">
         {% csrf_token %}
         <div class="">
@@ -11,8 +16,14 @@
             <label>Password</label>
             <input type="password" name="password" placeholder="Enter password"/>
         </div>
+        <div>
+            <input type="checkbox"/>
+            <label>Reemember Me</label>
+            <span><a href="reset">FORGOT YOUR PASSWORD</a></span>
+        </div>
         <button type="submit">LOGIN</button>
     </form>
+
     <h5>Don't have an account? <span><a href="register">REGISTER</a></span></h5>
 </div>
 {%endblock%}
