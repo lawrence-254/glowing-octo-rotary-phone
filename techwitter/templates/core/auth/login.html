@@ -2,9 +2,9 @@
 {%block content%}
 <div>
     <div>
-        {% if message in messages %}
+        {%for message in messages%}
         <h4>{{message}}</h4>
-        {% endif %}
+        {%endfor%}
     </div>
     <form method="POST">
         {% csrf_token %}

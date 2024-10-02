@@ -44,18 +44,31 @@ def login(request):
         email_or_username = request.POST['emailname']
         password = request.POST['password']
 
-        # user_in_database_email = User.objects.get()
-        # print(user_in_database_email)
-
-        if email_or_username == '':
+        if not email_or_username:
             messages.info(request, 'Please provide an email, or username')
             return redirect('login')
-        elif password == '':
+        elif not password:
             messages.info(request, 'Please provide a password')
             return redirect('login')
         else:
-            pass
-        
+            try:
+                user = User.objects.get(email=email_or_username)
+            except User.DoesNotExist:
+                try:
+                    user =User.objects.get(username=email_or_username)
+                except User.DoesNotExist:
+                    user = None
+                    messages.error(request, 'User not found, ensure your details are correct')
+                    return redirect('login')
+            if user:
+                user = auth.authenticate(request, username=user.username, password=password)
+                print(user)
+                if user is not None:
+                    auth.login(request, user)
+                    return redirect('home')
+                else:
+                    messages.error(request, 'Wrong password')
+                    return redirect('login')
     else:
         return render(request, 'core/auth/login.html', context)
 
