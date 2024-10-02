@@ -2,12 +2,11 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
 from .models import Profile
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 
-def home(request):
-    context= {'title':'Home'}
-    return render(request, 'core/home.html', context)
 
+#Authentication
 def register(request):
     context={'title':'REGISTER'}
     print(context)
@@ -72,6 +71,21 @@ def login(request):
     else:
         return render(request, 'core/auth/login.html', context)
 
+@login_required(login_url='login')
 def logout(request):
     auth.logout(request)
     return redirect('login')
+
+@login_required(login_url='login')
+def reset_password(request):
+    pass
+
+#end of authentication
+
+def index(request):
+    return render(request, 'core/index.html')
+
+@login_required(login_url='login')
+def home(request):
+    context= {'title':'Home'}
+    return render(request, 'core/home.html', context)
