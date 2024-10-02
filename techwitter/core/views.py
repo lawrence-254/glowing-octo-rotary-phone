@@ -90,8 +90,33 @@ def reset_password(request):
 #profile action
 @login_required(login_url='login')
 def settings(request):
-    context= {'title': 'PROFILE SETTINGS'}
+    
+    user_profile=Profile.objects.get(user=request.user)
+    context= {
+        'title': 'PROFILE SETTINGS',
+        'user_profile': user_profile 
+        }
+    if request.method == 'POST':
+        if request.FILES.get('avi') == None:
+            image = user_profile.avi
+            bio = request.POST['bio']
+            location =request.POST['location']
 
+            user_profile.avi = image
+            user_profile.bio = bio
+            user_profile.location = location
+            user_profile.save()
+
+        if request.FILES.get('avi') != None:
+            image = request.FILES.get('avi')
+            bio = request.POST['bio']
+            location =request.POST['location']
+
+            user_profile.avi = image
+            user_profile.bio = bio
+            user_profile.location = location
+            user_profile.save()
+        return redirect('settings')
     return render(request, 'core/profile/settings.html', context)
 
 @login_required(login_url='login')
@@ -134,7 +159,5 @@ def index(request):
 def home(request):
     context= {'title':'Home'}
     return render(request, 'core/home.html', context)
-
-
 # end of views
 

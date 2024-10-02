@@ -4,41 +4,24 @@
     <div>
         <h4>General</h4>
         <div>
-            <form method="post">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token%}
                 <div>
-                    <label>First Name</label>
-                    <input type="text" name="first" placeholder="First Name">
-                </div>
-                <div>
-                    <label>Last Name</label>
-                    <input type="text" name="last" placeholder="Last Name">
-                </div>
-                <div>
-                    <label>Email</label>
-                    <input type="email" name="email" placeholder="Enter email">
-                </div>
-                <div>
-                    <label>About Me</label>
-                    <input type="textarea" name="bio" placeholder="">
+                    <label for="about">About Me</label>
+                    <textarea name="bio" id="about" row="4">{{user_profile.bio}}</textarea>
                 </div>
                 <div>
                     <label>Location</label>
-                    <input type="text" name="location" placeholder="">
+                    <input type="text" name="location" value="{{user_profile.location}}">
                 </div>
                 <div>
-                    <label>Working At</label>
-                    <input type="text" name="job" placeholder="">
+                    <label>Profile Image</label>
+                    <img src="{{user_profile.avi}}" width="127" height="127"/>
+                    <input type="file" name="avi">
                 </div>
                 <div>
-                    <label>Relationship</label>
-                    <select>
-                        <option>None</option>
-                        <option>2s</option>
-                    </select>
-                </div>
-                <div>
-                    <button type="reset">cancel</button>
-                    <button type="submit">Submit</button>
+                    <button type="reset"><a href="home">Cancel</a></button>
+                    <button type="submit">Save</button>
                 </div>
             </form>
         </div>
