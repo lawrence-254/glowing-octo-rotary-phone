@@ -18,8 +18,11 @@
     <ul>
         {% if current_user.is_authenticated %}
         <h1>authenticated navbar</h1>
+        <a href="logout">LOGOUT</a>
         {%else%}
         <h1>not authenticated navbar</h1>
+        <a href="logout">LOGOUT</a>
+
         {% endif%}
     </ul>
     {% endblock%}

@@ -73,4 +73,5 @@ def login(request):
         return render(request, 'core/auth/login.html', context)
 
 def logout(request):
-    pass
+    auth.logout(request)
+    return redirect('login')
