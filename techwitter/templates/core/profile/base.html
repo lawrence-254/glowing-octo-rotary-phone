@@ -1,0 +1,27 @@
+{% include '../../base.html'%}
+{% block content %}
+
+<div>
+    <div>
+        <p>Hello <b>{{user.username}}</b>, welcome to your settings</p>
+        <a href="home"><button>Home</button></a>
+    </div>
+    <div>
+        <div>
+            <ul>
+                <li><a href="#">Genaral</a></li>
+                <li><a href="#">Profile</a></li>
+                <li><a href="#">Privacy</a></li>
+                <li><a href="#">Notification</a></li>
+                <li><a href="#">Social links</a></li>
+                <li><a href="#">Billing</a></li>
+                <li><a href="#">Security</a></li>
+            </ul>
+        </div>
+        <main>
+            {%block settings_content%}
+            {% endblock %}
+        </main>
+    </div>
+</div>
+{% endblock%}
