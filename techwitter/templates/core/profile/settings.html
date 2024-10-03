@@ -16,8 +16,12 @@
                 </div>
                 <div>
                     <label>Profile Image</label>
+                    {% if user_profile.avi.url != ''%}
                     <img src="{{user_profile.avi.url}}" width="127" height="127"/>
                     <input type="file" name="avi">
+                    {% else %}
+                    <input type="file" name="avi">
+                    {% endif %}
                 </div>
                 <div>
                     <button type="reset"><a href="home">Cancel</a></button>
