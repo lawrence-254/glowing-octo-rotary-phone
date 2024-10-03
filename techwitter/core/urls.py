@@ -15,4 +15,6 @@ urlpatterns = [
     path('profile', views.profile, name='profile'),
     path('security', views.security, name='security'),
     path('secial_links', views.social_links, name='social_links'),
+    # post actions
+    path('create', views.create, name='create'),
 ]
