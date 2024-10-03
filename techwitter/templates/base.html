@@ -15,27 +15,34 @@
 <body>
     {% block content%}
     <h1>base</h1>
-    <ul>
-        {% if current_user.is_authenticated %}
-        <h1>authenticated navbar</h1>
-        <a href="logout"><button>LOGOUT</button></a>
-        <a href="settings"><button>SETTINGS</button></a>
-        <a href="create"><button>CREATE A POST</button></a>
-        {%else%}
-        <h1>not authenticated navbar</h1>
-        <a href="logout">LOGOUT</a>
-        <a href="settings"><button>SETTINGS</button></a>
-        <a href="create"><button>CREATE A POST</button></a>
+    <nav>
+        <ul>
+            {% if current_user.is_authenticated %}
+                <li><h1>Authenticated Navbar</h1></li>
+                <li><a href="logout"><button>LOGOUT</button></a></li>
+                <li><a href="settings"><button>SETTINGS</button></a></li>
+                <li><a href="create"><button>CREATE A POST</button></a></li>
+                <div>
+                    {% if user_profile and user_profile.avi.url %}
+                        <img src="{{ user_profile.avi.url }}" alt="Profile Avatar"/>
+                    {% endif %}
+                    <h4>Hello {{ user_profile }}, welcome to your page</h4>
+                </div>
+            {% else %}
+                <li><h1>Not Authenticated Navbar</h1></li>
+                <li><a href="login">LOGIN</a></li>
+                <li><a href="register">REGISTER</a></li>
+            {% endif %}
+        </ul>
+    
         <div>
-            {% if user_profile.avi.url != '' %}
-            <img src="{{user_profile.avi.url}}"/>
-            <h4>Hello {{user_profile}}, welcome to your page</h4>
-            {%else%}
-            <h4>Hello {{user_profile}}, welcome to your page</h4>
-            {%endif%}
+            {% if user_profile and user_profile.avi.url %}
+                <img src="{{ user_profile.avi.url }}" alt="Profile Avatar"/>
+            {% endif %}
+            <h4>Hello {{ user_profile.username }}, welcome to your page</h4>
         </div>
-        {% endif%}
-    </ul>
+    </nav>
+    
     {% endblock%}
 </body>
 </html>
