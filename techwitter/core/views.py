@@ -136,7 +136,12 @@ def privacy(request):
 
 @login_required(login_url='login')
 def profile(request):
-    context={'title': 'PROFILE'}
+    user_object = User.objects.get(username=request.user.username)
+    profile_object = Profile.objects.get(user=user_object)
+    context={
+        'title': 'PROFILE',
+        'user_profile': profile_object,
+             }
     return render(request, 'core/profile/profile.html', context)
 
 
@@ -157,7 +162,12 @@ def index(request):
 
 @login_required(login_url='login')
 def home(request):
-    context= {'title':'Home'}
+    user_object = User.objects.get(username=request.user.username)
+    profile_object = Profile.objects.get(user=user_object)
+    context= {
+        'title':'Home',
+        'user_profile': profile_object,
+              }
     return render(request, 'core/home.html', context)
 # end of views
 
