@@ -165,6 +165,6 @@ def home(request):
 @login_required(login_url='login')
 def create(request):
     context={'title': 'NEW POST'}
-    return render(request, 'core/post/create', context)
+    return render(request, 'core/post/create.html', context)
 
 # end of post actions
