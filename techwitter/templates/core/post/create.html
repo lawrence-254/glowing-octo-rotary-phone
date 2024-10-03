@@ -1,0 +1,30 @@
+
+{% block content%}
+<div>
+    <div>
+        <h4>General</h4>
+        <div>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token%}
+                <div>
+                    <label for="about">About Me</label>
+                    <textarea name="bio" id="about" row="4">{{user_profile.bio}}</textarea>
+                </div>
+                <div>
+                    <label>Location</label>
+                    <input type="text" name="location" value="{{user_profile.location}}">
+                </div>
+                <div>
+                    <label>Profile Image</label>
+                    <img src="{{user_profile.avi}}" width="127" height="127"/>
+                    <input type="file" name="avi">
+                </div>
+                <div>
+                    <button type="reset"><a href="home">Cancel</a></button>
+                    <button type="submit">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
