@@ -189,8 +189,7 @@ def create(request):
         new_post.save()
         return redirect('home')
     else:
-        return redirect('home')
-    context={'title': 'NEW POST'}
-    return render(request, 'core/post/create.html', context)
+        context={'title': 'NEW POST'}
+        return render(request, 'core/post/create.html', context)
 
 # end of post actions
