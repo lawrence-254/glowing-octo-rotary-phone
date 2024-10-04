@@ -1,4 +1,28 @@
 {% include '../base.html'%}
 {%block content%}
-<h1>home</h1>
+<h1>post</h1>
+{% if post_object == ''%}
+    <h1>No post available, <a href="create">click here to create a new post</a></h1>
+{% else %}
+    {% for post in post_object %}
+    <div>
+        <div>
+        {% if post.image != ''%}
+            <img src="{{post.image}}" class="image_from_post"/>
+        {%endif%}
+        </div>
+        <div>
+            <h3>{{post.title}}</h3>
+            <p>{{post.body}}</p>
+        </div>
+        <div>
+        {% if post.author != current_user %}
+        <small>by {{post.author}}</small>
+        {% endif %}
+        <small>on {{post.created_at}}</small>
+        <small>likes: {{post.likes}}</small>
+        </div>
+    </div>
+    {% endfor %}
+{% endif %}
 {%endblock%}

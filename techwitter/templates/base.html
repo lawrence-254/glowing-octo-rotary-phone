@@ -29,6 +29,9 @@
                     <h4>Hello {{ user_profile }}, welcome to your page</h4>
                 </div>
             {% else %}
+            <li><a href="logout"><button>LOGOUT</button></a></li>
+                <li><a href="settings"><button>SETTINGS</button></a></li>
+                <li><a href="create"><button>CREATE A POST</button></a></li>
                 <li><h1>Not Authenticated Navbar</h1></li>
                 <li><a href="login">LOGIN</a></li>
                 <li><a href="register">REGISTER</a></li>
@@ -39,7 +42,7 @@
             {% if user_profile and user_profile.avi.url %}
                 <img src="{{ user_profile.avi.url }}" alt="Profile Avatar"/>
             {% endif %}
-            <h4>Hello {{ user_profile.username }}, welcome to your page</h4>
+            <h4>Hello {{ user_profile }}, welcome to your page</h4>
         </div>
     </nav>
     

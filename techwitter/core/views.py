@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
-from .models import Profile
+from .models import Profile, Post
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 
@@ -164,9 +164,11 @@ def index(request):
 def home(request):
     user_object = User.objects.get(username=request.user.username)
     profile_object = Profile.objects.get(user=user_object)
+    post_object = Post.objects.all()
     context= {
         'title':'Home',
         'user_profile': profile_object,
+        'post-object': post_object
               }
     return render(request, 'core/home.html', context)
 # end of views
@@ -174,6 +176,20 @@ def home(request):
 # post actions
 @login_required(login_url='login')
 def create(request):
+    if request.method == 'post':
+        author = request.user.username
+        image= request.FILES.get('post_image')
+        title= request.POST.get('title')
+        body= request.POST.get('body')
+        if image != '':
+            new_post = Post.objects.create(author=author, image=image, title=title, body=body)
+        else: 
+            new_post = Post.objects.create(author=author, title=title, body=body)
+
+        new_post.save()
+        return redirect('home')
+    else:
+        return redirect('home')
     context={'title': 'NEW POST'}
     return render(request, 'core/post/create.html', context)
 
