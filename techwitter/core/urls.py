@@ -10,6 +10,6 @@ urlpatterns = [
     path('reset', views.reset_password, name='reset'),
     path('settings', views.settings, name='settings'),
     path('profile', views.profile, name='profile'),
-    # # post actions
+    # post actions
     path('create', views.create, name='create'),
 ]

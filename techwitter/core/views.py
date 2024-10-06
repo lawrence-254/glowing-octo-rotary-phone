@@ -76,7 +76,7 @@ def login(request):
     else:
         return render(request, 'core/auth/login.html', context)
 
-@login_required(login_url='login')
+@login_required(login_url='index')
 def logout(request):
     auth.logout(request)
     return redirect('login')
@@ -88,7 +88,7 @@ def reset_password(request):
 #end of authentication
 
 #profile action
-@login_required(login_url='login')
+@login_required(login_url='index')
 def settings(request):
     
     user_profile=Profile.objects.get(user=request.user)
@@ -120,7 +120,7 @@ def settings(request):
     return render(request, 'core/profile/settings.html', context)
 
 
-@login_required(login_url='login')
+@login_required(login_url='index')
 def profile(request):
     user_object = User.objects.get(username=request.user.username)
     profile_object = Profile.objects.get(user=user_object)
@@ -131,12 +131,11 @@ def profile(request):
     return render(request, 'core/profile/profile.html', context)
 
 # end of profile action
-
 # views
 def index(request):
     return render(request, 'core/index.html')
 
-@login_required(login_url='login')
+@login_required(login_url='index')
 def home(request):
     user_object = User.objects.get(username=request.user.username)
     profile_object = Profile.objects.get(user=user_object)
@@ -150,22 +149,21 @@ def home(request):
 # end of views
 
 # post actions
-@login_required(login_url='login')
+@login_required(login_url='index')
 def create(request):
-    if request.method == 'post':
+    if request.method == 'POST':
         author = request.user.username
         image= request.FILES.get('post_image')
         title= request.POST.get('title')
         body= request.POST.get('body')
-        if image != '':
+        if image:
             new_post = Post.objects.create(author=author, image=image, title=title, body=body)
         else: 
             new_post = Post.objects.create(author=author, title=title, body=body)
 
         new_post.save()
         return redirect('home')
-    else:
-        context={'title': 'NEW POST'}
-        return render(request, 'core/post/create.html', context)
+    context={'title': 'NEW POST'}
+    return render(request, 'core/post/create.html', context)
 
 # end of post actions

@@ -3,7 +3,7 @@
 <h1>Post</h1>
 
 {% if not post_object %}
-    <h1>No post available, <a href="{% url 'create' %}">click here to create a new post</a></h1>
+    <h1>No post available, <a href="create">click here to create a new post</a></h1>
 {% else %}
     {% for post in post_object %}
     <div>
