@@ -166,4 +166,5 @@ def create(request):
     context={'title': 'NEW POST'}
     return render(request, 'core/post/create.html', context)
 
+
 # end of post actions
