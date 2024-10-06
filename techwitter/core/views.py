@@ -119,20 +119,6 @@ def settings(request):
         return redirect('settings')
     return render(request, 'core/profile/settings.html', context)
 
-@login_required(login_url='login')
-def billing(request):
-    context={'title': 'BILLING'}
-    return render(request, 'core/profile/billing.html', context)
-
-@login_required(login_url='login')
-def notification(request):
-    context={'title': 'NOTIFICATION'}
-    return render(request, 'core/profile/notification.html', context)
-
-@login_required(login_url='login')
-def privacy(request):
-    context={'title': 'PRIVACY'}
-    return render(request, 'core/profile/privacy.html', context)
 
 @login_required(login_url='login')
 def profile(request):
@@ -144,16 +130,6 @@ def profile(request):
              }
     return render(request, 'core/profile/profile.html', context)
 
-
-@login_required(login_url='login')
-def security(request):
-    context={'title': 'SECURITY'}
-    return render(request, 'core/profile/security.html', context)
-
-@login_required(login_url='login')
-def social_links(request):
-    context={'title': 'SOCIAL LINKS'}
-    return render(request, 'core/profile/social_links.html', context)
 # end of profile action
 
 # views
