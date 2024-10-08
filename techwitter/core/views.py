@@ -145,6 +145,10 @@ def home(request):
         'user_profile': profile_object,
         'post-object': post_object
               }
+    print(post_object)
+    print(profile_object)
+    for p in post_object:
+        print(p)
     return render(request, 'core/home.html', context)
 # end of views
 
@@ -160,8 +164,8 @@ def create(request):
             new_post = Post.objects.create(author=author, image=image, title=title, body=body)
         else: 
             new_post = Post.objects.create(author=author, title=title, body=body)
-
         new_post.save()
+        print(new_post, 'from create')
         return redirect('home')
     context={'title': 'NEW POST'}
     return render(request, 'core/post/create.html', context)

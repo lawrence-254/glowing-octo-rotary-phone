@@ -22,7 +22,7 @@ class Post(models.Model):
     image =models.ImageField(upload_to='post_images')
     title = models.TextField(max_length=250)
     body=models.TextField()
-    created_at=models.DateField(auto_created=datetime.now())
+    created_at=models.DateField(auto_now=datetime.now())
     likes= models.IntegerField(default=0)
     def __str__(self):
         return f"{self.title}, by {self.author}"
