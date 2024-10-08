@@ -26,3 +26,14 @@ class Post(models.Model):
     likes= models.IntegerField(default=0)
     def __str__(self):
         return f"{self.title}, by {self.author}"
+    
+class Comment(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4)
+    author = models.CharField(max_length=100)
+    post =models.CharField(max_length=100)
+    image = models.ImageField(upload_to='comment_images')
+    body = models.CharField(max_length=255)
+    created_at=models.DateField(auto_now=datetime.now())
+    likes=models.IntegerField(default=0)
+    def __str__(self):
+        return self.body
