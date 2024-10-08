@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
-from .models import Profile, Post
+from .models import Profile, Post,Comment
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 
@@ -171,4 +171,24 @@ def create(request):
     return render(request, 'core/post/create.html', context)
 
 
+@login_required(login_url='index')
+def comment(request):
+    if request.method == 'POST':
+        post = request.post.id
+        author = request.user.username
+        image = request.FILES.get('comment_image')
+        body = request.POST.get('comment_body')
+        if image:
+            new_comment = Comment.objects.create(post=post, author=author, image=image, body=body)
+        else:
+            new_comment = Comment.objects.create(post=post, author=author,body=body)
+
+    return render(request)
+
+def view_post(request):
+    post_object = Post.objects.all()
+    post_id=''
+    post_comment_object = Comment.objectd.filter(post=post_id)
+    return render(request)
+        
 # end of post actions
