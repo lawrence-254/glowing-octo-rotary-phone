@@ -119,14 +119,17 @@ def settings(request):
         return redirect('settings')
     return render(request, 'core/profile/settings.html', context)
 
-
 @login_required(login_url='index')
 def profile(request):
     user_object = User.objects.get(username=request.user.username)
     profile_object = Profile.objects.get(user=user_object)
+    post = Post.objects.get(author=user_object)
+    comment = Comment.objects.get(author=user_object)
     context={
         'title': 'PROFILE',
         'user_profile': profile_object,
+        'post': post,
+        'comment': comment,
              }
     return render(request, 'core/profile/profile.html', context)
 
