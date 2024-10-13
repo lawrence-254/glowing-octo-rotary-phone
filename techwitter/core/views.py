@@ -176,7 +176,9 @@ def create(request):
     context={'title': 'NEW POST'}
     return render(request, 'core/post/create.html', context)
 
-
+@login_required(login_url="index")
+def like_post(requesr):
+    pass
     
 @login_required(login_url='index')
 def view_post(request):
@@ -214,5 +216,8 @@ def comment(request):
         'comment': post_comment
     }
     return render(request, 'core/post/view.html', context)
-        
+
+@login_required(login_url="index"):
+def like_comment(request):
+    pass        
 # end of post actions
