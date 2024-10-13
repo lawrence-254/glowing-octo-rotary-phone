@@ -6,7 +6,12 @@
             <h1>post</h1>
             {% if post %}
             <div>
-                <small>created on {{post.created_at}}, by {{post.author}}</small>
+                <small>
+                    created on {{post.created_at}},
+                    {% if post.author != current_user %}
+                    <small>by {{ post.author }}</small>
+                    {% endif %}
+                </small>
                 <div>
                     <img src="{{post.image.url}}"/>
                 </div>

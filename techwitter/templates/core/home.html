@@ -5,7 +5,7 @@
 {% if not post_object %}
     <h1>No post available, <a href="create">click here to create a new post</a></h1>
 {% else %}
-    {% for post in post_object %}
+    {% for post in post_object reversed %}
     <div>
         <div>
         {% if post.image %}
@@ -14,7 +14,6 @@
         </div>
         <div>
             <h3>{{ post.title }}</h3>
-            <p>{{ post.body }}</p>
         </div>
         <div>
         {% if post.author != current_user %}
