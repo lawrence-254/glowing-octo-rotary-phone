@@ -217,7 +217,7 @@ def comment(request):
     }
     return render(request, 'core/post/view.html', context)
 
-@login_required(login_url="index"):
+@login_required(login_url="index")
 def like_comment(request):
     pass        
 # end of post actions
