@@ -143,12 +143,12 @@ def home(request):
     context= {
         'title':'Home',
         'user_profile': profile_object,
-        'post-object': post_object
+        'post_object': post_object
               }
-    print(post_object)
-    print(profile_object)
-    for p in post_object:
-        print(p)
+    # print(post_object)
+    # print(profile_object)
+    # for p in post_object:
+    #     print(p)
     return render(request, 'core/home.html', context)
 # end of views
 
@@ -164,9 +164,12 @@ def create(request):
             new_post = Post.objects.create(author=author, image=image, title=title, body=body)
         else: 
             new_post = Post.objects.create(author=author, title=title, body=body)
-        new_post.save()
         print(new_post, 'from create')
-        return redirect('home')
+        new_post.save()
+        if new_post:
+            return redirect('home')
+        else:
+            print('post not created')
     context={'title': 'NEW POST'}
     return render(request, 'core/post/create.html', context)
 
@@ -177,14 +180,17 @@ def comment(request):
         post = request.post.id
         author = request.user.username
         image = request.FILES.get('comment_image')
-        body = request.POST.get('comment_body')
+        title= request.POST.get['title']
+        body = request.POST.get['comment_body']
         if image:
-            new_comment = Comment.objects.create(post=post, author=author, image=image, body=body)
+            new_comment = Comment.objects.create(post=post, author=author, image=image,title=title, body=body)
         else:
-            new_comment = Comment.objects.create(post=post, author=author,body=body)
+            new_comment = Comment.objects.create(post=post, author=author, title=title, body=body)
 
-    return render(request)
-
+    else:
+        return redirect('home')
+    
+@login_required(login_url='index')
 def view_post(request):
     post_object = Post.objects.all()
     post_id=''

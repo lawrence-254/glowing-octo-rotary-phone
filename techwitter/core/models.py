@@ -32,6 +32,7 @@ class Comment(models.Model):
     author = models.CharField(max_length=100)
     post =models.CharField(max_length=100)
     image = models.ImageField(upload_to='comment_images')
+    title = models.CharField(max_length=100)
     body = models.CharField(max_length=255)
     created_at=models.DateField(auto_now=datetime.now())
     likes=models.IntegerField(default=0)
