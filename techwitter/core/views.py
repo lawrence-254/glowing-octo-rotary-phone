@@ -177,10 +177,16 @@ def create(request):
     
 @login_required(login_url='index')
 def view_post(request):
-    post_object = Post.objects.all()
-    post_id=''
+    
+    post_id=request.post.id
+    post_object = Post.objects.filter(id=post_id)
     post_comment_object = Comment.objects.filter(post=post_id)
-    return render(request, 'core/post/view.html')
+    context = {
+        'post': post_object,
+        'post_comment': post_comment_object
+    }
+
+    return render(request, 'core/post/view.html', context)
 
 
 @login_required(login_url='index')
