@@ -7,21 +7,23 @@
 {% else %}
     {% for post in post_object reversed %}
     <div>
-        <div>
-        {% if post.image %}
-            <img src="{{ post.image.url }}" alt="Post image" class="image_from_post"/>
-        {% endif %}
-        </div>
-        <div>
-            <h3>{{ post.title }}</h3>
-        </div>
-        <div>
-        {% if post.author != current_user %}
-            <small>by {{ post.author }}</small>
-        {% endif %}
-        <small>on {{ post.created_at }}</small>
-        <small>likes: {{ post.likes }}</small>
-        </div>
+        <a href="/view?post_id={{post.id}}">
+            <div>
+            {% if post.image %}
+                <img src="{{ post.image.url }}" alt="Post image" class="image_from_post"/>
+            {% endif %}
+            </div>
+            <div>
+                <h3>{{ post.title }}</h3>
+            </div>
+            <div>
+            {% if post.author != current_user %}
+                <small>by {{ post.author }}</small>
+            {% endif %}
+            <small>on {{ post.created_at }}</small>
+            <small>likes: {{ post.likes }}</small>
+            </div>
+        </a>
     </div>
     {% endfor %}
 {% endif %}

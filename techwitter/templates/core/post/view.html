@@ -22,14 +22,15 @@
                 </div>
                 <div>
                     <small>Likes: {{post.likes}}</small>
+                    <div>
+                        <a href="/like-post?post_id={{post.id}}">like</a>
+                    </div>
                 </div>
             </div>
             {% endif %}
         </div>
         <div>
-            <div>
-                <a href="#">like</a>
-            </div>
+            
             <div>
                 <h3>Comment</h3>
                 <form method="post">
@@ -51,7 +52,7 @@
                 </form>
             </div>
         </div>
-        <div>
+        <!-- <div>
             <h2>comements</h2>
             {%for comment in post_comment reversed%}
             <div>
@@ -67,13 +68,13 @@
                 <div>
                     <small>By {{comment.author}}</small>
                     <div>
-                        <a href="#">like</a>
+                        <a href="/like-comment?comment_id={{comment.id}}">like</a>
                     </div>
                     <small>Likes: {{comment.likes}}</small>
                 </div>
             </div>
             {%endfor%}
-        </div>
+        </div> -->
 
     </div>
 </div>

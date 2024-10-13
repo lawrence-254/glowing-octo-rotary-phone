@@ -4,6 +4,7 @@ from django.contrib import messages
 from .models import Profile, Post,Comment
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
+import sys
 
 
 #Authentication
@@ -177,19 +178,20 @@ def create(request):
     return render(request, 'core/post/create.html', context)
 
 @login_required(login_url="index")
-def like_post(requesr):
+def like_post(request):
     pass
     
 @login_required(login_url='index')
-def view_post(request):
-    
-    post_id=request.post.id
+def view_post(request):    
+    post_id=request.GET['post_id']
     post_object = Post.objects.filter(id=post_id)
-    post_comment_object = Comment.objects.filter(post=post_id)
+    # post_comment_object = Comment.objects.filter(post=post_id)
+    post_comment_object=''
     context = {
         'post': post_object,
         'post_comment': post_comment_object
     }
+    print(request.GET)
 
     return render(request, 'core/post/view.html', context)
 
