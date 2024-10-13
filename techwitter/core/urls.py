@@ -12,8 +12,9 @@ urlpatterns = [
     path('profile', views.profile, name='profile'),
     # post actions
     path('create', views.create, name='create'),
-    path('like-post', views.like_post, name='create'),
+    path('like-post', views.like_post, name='like-post'),
     path('view', views.view_post, name='view'),
+    # comment
     path('comment', views.comment, name='comment'),
-    # path('like-comment', views.like_comment, name='view'),
+    path('like-comment', views.like_comment, name='like-comment'),
 ]

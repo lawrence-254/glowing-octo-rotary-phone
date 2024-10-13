@@ -27,28 +27,11 @@
             {% endif %}
         </div>
         <div>
-            <h2>comements</h2>
-            {%for comment in post_comment reversed%}
             <div>
-                {%if comment.title %}
-                <h4>{{comment.title}}</h4>
-                {%endif%}
-                    {%if comment.image %}
-                    <div>
-                        <img src="{{comment.image.url}}"/>
-                    </div>
-                    {%endif%}
-                <p>{{comment.body}}</p>
-                <div>
-                    <small>By {{comment.author}}</small>
-                    <small>Likes: {{comment.likes}}</small>
-                </div>
+                <a href="#">like</a>
             </div>
-            {%endfor%}
-        </div>
-        <div>
-            <h3>Comment</h3>
             <div>
+                <h3>Comment</h3>
                 <form method="post">
                     <div>
                         <label>title(optional)</label>
@@ -68,5 +51,29 @@
                 </form>
             </div>
         </div>
+        <div>
+            <h2>comements</h2>
+            {%for comment in post_comment reversed%}
+            <div>
+                {%if comment.title %}
+                <h4>{{comment.title}}</h4>
+                {%endif%}
+                    {%if comment.image %}
+                    <div>
+                        <img src="{{comment.image.url}}"/>
+                    </div>
+                    {%endif%}
+                <p>{{comment.body}}</p>
+                <div>
+                    <small>By {{comment.author}}</small>
+                    <div>
+                        <a href="#">like</a>
+                    </div>
+                    <small>Likes: {{comment.likes}}</small>
+                </div>
+            </div>
+            {%endfor%}
+        </div>
+
     </div>
 </div>
