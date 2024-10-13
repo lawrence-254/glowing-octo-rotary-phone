@@ -4,6 +4,22 @@
     <div>
         <div>
             <h1>post</h1>
+            {% if post %}
+            <div>
+                <small>created on {{post.created_at}}, by {{post.author}}</small>
+                <div>
+                    <img src="{{post.image.url}}"/>
+                </div>
+                <div>
+                    <h1>{{post.title}}</h1>
+                    <p>{{post.body}}</p>
+            
+                </div>
+                <div>
+                    <small>Likes: {{post.likes}}</small>
+                </div>
+            </div>
+            {% endif %}
         </div>
         <div>
             <h2>comements</h2>
