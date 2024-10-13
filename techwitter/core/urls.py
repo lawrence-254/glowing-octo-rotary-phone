@@ -12,4 +12,5 @@ urlpatterns = [
     path('profile', views.profile, name='profile'),
     # post actions
     path('create', views.create, name='create'),
+    path('view', views.view_post, name='view'),
 ]

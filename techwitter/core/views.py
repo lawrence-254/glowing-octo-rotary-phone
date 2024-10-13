@@ -174,6 +174,15 @@ def create(request):
     return render(request, 'core/post/create.html', context)
 
 
+    
+@login_required(login_url='index')
+def view_post(request):
+    post_object = Post.objects.all()
+    post_id=''
+    post_comment_object = Comment.objects.filter(post=post_id)
+    return render(request, 'core/post/view.html')
+
+
 @login_required(login_url='index')
 def comment(request):
     if request.method == 'POST':
@@ -187,14 +196,14 @@ def comment(request):
         else:
             new_comment = Comment.objects.create(post=post, author=author, title=title, body=body)
 
+        post_comment = new_comment.save()
+        # return post_comment
     else:
-        return redirect('home')
+        return redirect('core/post/view.html')
     
-@login_required(login_url='index')
-def view_post(request):
-    post_object = Post.objects.all()
-    post_id=''
-    post_comment_object = Comment.objectd.filter(post=post_id)
-    return render(request)
+    context = {
+        'comment': post_comment
+    }
+    return render(request, 'core/post/view.html', context)
         
 # end of post actions
