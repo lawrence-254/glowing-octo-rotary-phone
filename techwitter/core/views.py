@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
-from .models import Profile, Post,Comment
+from .models import Profile, Post, LikePost, Comment, LikeComment
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse
-import sys
+from django.http import HttpResponse, HttpResponseBadRequest
+from django.shortcuts import get_object_or_404
 
 
 #Authentication
@@ -179,20 +179,46 @@ def create(request):
 
 @login_required(login_url="index")
 def like_post(request):
-    pass
+    author = request.user.username
+    post_id = request.GET['post_id']
+    if not post_id:
+        return HttpResponseBadRequest("Missing post_id")
+
+    post = get_object_or_404(Post, id=post_id)
+    
+    like_filter = LikePost.objects.filter(post_id=post_id, author=author).first()
+
+    if like_filter is None:
+        LikePost.objects.create(post_id=post_id, author=author)
+        post.likes += 1 
+    else:
+        like_filter.delete()
+        post.likes -= 1
+    
+    post.save()
+    
+    return redirect('view_post', post_id=post_id)
+    
     
 @login_required(login_url='index')
 def view_post(request):    
-    post_id=request.GET['post_id']
-    post_object = Post.objects.filter(id=post_id)
-    post_comment_object = Comment.objects.filter(post=post_id)
-    post_comment_object=''
+    post_id=request.GET.get('post_id')
+    print(f"Post ID: {post_id}")
+    if not post_id:
+        return HttpResponse("no post id", status=400)
+    try:
+        post_object = get_object_or_404(Post, id=post_id)
+        print(f"Post found: {post_object}")
+    except Exception as e:
+        print(f"Error: {e}")
+        post_object = None
+    post_comment_object = Comment.objects.filter(post=post_object) if post_object else []
     context = {
         'post': post_object,
         'post_comment': post_comment_object
     }
-    print(request.GET)
-
+    # print(request.GET)
+    print(context['post'])
     return render(request, 'core/post/view.html', context)
 
 

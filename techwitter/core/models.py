@@ -25,7 +25,7 @@ class Post(models.Model):
     created_at=models.DateField(auto_now=datetime.now())
     likes= models.IntegerField(default=0)
     def __str__(self):
-        return f"{self.title}, by {self.author}"
+        return f"{self.title}, by {self.author}, {self.body}"
 
 class LikePost(models.Model):
     post_id = models.CharField(max_length=500)
