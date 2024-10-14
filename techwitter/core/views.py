@@ -183,21 +183,19 @@ def like_post(request):
     post_id = request.GET['post_id']
     if not post_id:
         return HttpResponseBadRequest("Missing post_id")
-
+    context={
+        'post_id':post_id
+    }
     post = get_object_or_404(Post, id=post_id)
-    
     like_filter = LikePost.objects.filter(post_id=post_id, author=author).first()
-
     if like_filter is None:
         LikePost.objects.create(post_id=post_id, author=author)
         post.likes += 1 
     else:
         like_filter.delete()
         post.likes -= 1
-    
     post.save()
-    
-    return redirect('view_post', post_id=post_id)
+    return redirect('view_post', context)
     
     
 @login_required(login_url='index')
