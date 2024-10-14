@@ -52,3 +52,10 @@ class LikeComment(models.Model):
 
     def __str__(self):
         return self.author
+
+class FollowerCount(models.Model):
+    follower = models.CharField(max_length=100)
+    followed_user = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.followed_user
