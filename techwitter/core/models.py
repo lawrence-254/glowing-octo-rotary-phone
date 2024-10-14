@@ -26,6 +26,13 @@ class Post(models.Model):
     likes= models.IntegerField(default=0)
     def __str__(self):
         return f"{self.title}, by {self.author}"
+
+class LikePost(models.Model):
+    post_id = models.CharField(max_length=500)
+    author = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.author
     
 class Comment(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4)
@@ -38,3 +45,10 @@ class Comment(models.Model):
     likes=models.IntegerField(default=0)
     def __str__(self):
         return self.body
+    
+class LikeComment(models.Model):
+    comment_id = models.CharField(max_length=500)
+    author = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.author

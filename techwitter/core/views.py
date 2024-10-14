@@ -185,7 +185,7 @@ def like_post(request):
 def view_post(request):    
     post_id=request.GET['post_id']
     post_object = Post.objects.filter(id=post_id)
-    # post_comment_object = Comment.objects.filter(post=post_id)
+    post_comment_object = Comment.objects.filter(post=post_id)
     post_comment_object=''
     context = {
         'post': post_object,
