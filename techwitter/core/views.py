@@ -121,16 +121,21 @@ def settings(request):
     return render(request, 'core/profile/settings.html', context)
 
 @login_required(login_url='index')
-def profile(request):
-    user_object = User.objects.get(username=request.user.username)
+def profile(request, pk):
+    user_object = User.objects.get(username=pk)
     profile_object = Profile.objects.get(user=user_object)
-    post = Post.objects.get(author=user_object)
-    comment = Comment.objects.get(author=user_object)
+    post = Post.objects.filter(author=pk)
+    comment = Comment.objects.filter(author=pk)
+    liked_post = LikePost.objects.filter(author=pk)
+    liked_comment = LikeComment.objects.filter(author=pk)
     context={
         'title': 'PROFILE',
+        'user_object': user_object,
         'user_profile': profile_object,
-        'post': post,
-        'comment': comment,
+        'user_post': post,
+        'user_comment': comment,
+        'liked_post': liked_post,
+        'liked_comment': liked_comment,
              }
     return render(request, 'core/profile/profile.html', context)
 
