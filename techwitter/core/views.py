@@ -222,7 +222,6 @@ def like_post(request):
     post.save()
 
     return redirect('/view?post_id='+post_id)
-    # return redirect('home')
     
     
 @login_required(login_url='index')
