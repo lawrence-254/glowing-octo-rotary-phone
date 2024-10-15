@@ -10,7 +10,7 @@
                 <small>
                     Created on {{ post.created_at|date:"F j, Y" }},
                     {% if post.author != request.user %}
-                    <small>by <a href="#">{{ post.author }}</a></small>
+                    <small>by <a href="profile/{{post.author}}">{{ post.author }}</a></small>
                     {% endif %}
                 </small>
                 <div>

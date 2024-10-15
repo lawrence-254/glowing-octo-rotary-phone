@@ -144,7 +144,6 @@ def follow(request):
     if request.method=='POST':
         follower=request.POST['follower']
         followed_user=request.POST['followed_user']
-
         if FollowerCount.objects.filter(follower=follower, followed_user=followed_user).first():
             delete_follower=FollowerCount.objects.get(follwer=follower, followed_user=followed_user)
             delete_follower.delete()

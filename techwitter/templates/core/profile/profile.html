@@ -3,11 +3,13 @@
 <h5>profile page</h5>
 <h3>{{user_profile.user.username}}</h3>
 <div>
-    <form>
+    <h4>folwer is {{user.username}}</h4>
+    <h3>followed is {{user_object.username}}</h3>
+    <form action="/follow" method="POST">
         {% csrf_token %}
         <input value="{{user.username}}" type="hidden" name="follower"/>
         <input value="{{user_object.username}}" type="hidden" name="followed_user"/>
-        <a href="#"><button type="button">follow</button></a>
+        <a><button type="submit">{{button_title}} ok</button></a>
     </form>
 </div>
 <h5>{{user_profile.bio}}</h5>
