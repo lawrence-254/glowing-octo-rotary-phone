@@ -136,6 +136,11 @@ def profile(request, pk):
     else:
         button_title = 'follow'
     #
+
+    user_follower = FollowerCount.objects.filter(followed_user=user)
+    number_of_followers =len(user_follower)
+    user_following=FollowerCount.objects.filter(following=user)
+    number_of_following=len(user_following)
     context={
         'title': 'PROFILE',
         'user_object': user_object,
