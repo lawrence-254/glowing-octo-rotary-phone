@@ -136,11 +136,12 @@ def profile(request, pk):
     else:
         button_title = 'follow'
     #
-
+    # 
     user_follower = FollowerCount.objects.filter(followed_user=user)
-    number_of_followers =len(user_follower)
+    number_of_follower =len(user_follower)
     user_following=FollowerCount.objects.filter(following=user)
     number_of_following=len(user_following)
+    # 
     context={
         'title': 'PROFILE',
         'user_object': user_object,
@@ -150,6 +151,12 @@ def profile(request, pk):
         'liked_post': liked_post,
         'liked_comment': liked_comment,
         'button_title': button_title,
+        # 
+        'user_follower':user_follower,
+        'number_of_follower':number_of_follower,
+        'user_following':user_following,
+        'number_of_following':number_of_following,
+        # 
              }
     return render(request, 'core/profile/profile.html', context)
 
