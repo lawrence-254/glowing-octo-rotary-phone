@@ -1,5 +1,34 @@
-<!-- {% include './base.html'%} -->
-{% block content%}
+{%load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/tailwind.css' %}">
+    {% if title %}
+    <title>{{title}} - TechWitter</title>
+    {%else%}
+    <title>TechWitter</title>
+    {%endif%}
+</head>
+<body>
+    {% block content%}
+    <nav class="base-navbar">
+        <a href="home"><h1 class="base-title">TechWitter</h1></a>
+
+        <ul class="nav-list">
+            <li><a href="create"><button>CREATE A POST</button></a></li>
+            <li><a href="settings"><button>SETTINGS</button></a></li>
+            <li><a href="logout"><button>LOGOUT</button></a></li>
+            <div class="profile-info">
+                {% if user_profile and user_profile.avi.url %}
+                    <img src="{{ user_profile.avi.url }}" alt="Profile Avatar" class="nav-avi"/>
+                {% endif %}
+                <h4>Hello {{ user_profile }}, welcome to your page</h4>
+            </div>   
+        </ul>  
+    </nav>
 <h5>profile page</h5>
 <h3>{{user_profile.user.username}}</h3>
 <div>
@@ -15,4 +44,6 @@
     </form>
 </div>
 <h5>{{user_profile.bio}}</h5>
-{% endblock %}
+{% endblock%}
+</body>
+</html>

@@ -194,7 +194,7 @@ def home(request):
     user_followed = FollowerCount.objects.filter(follower=request.user.username)
 
     for users in user_followed:
-        list_of_followed.append(users.user)
+        list_of_followed.append(users.followed_user)
 
     for username in list_of_followed:
         feed_list = Post.objects.filter(author=username)

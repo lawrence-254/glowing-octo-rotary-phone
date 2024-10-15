@@ -14,36 +14,12 @@
 </head>
 <body>
     {% block content%}
-    <h1>base</h1>
-    <nav>
-        <ul>
-            {% if current_user.is_authenticated %}
-                <li><h1>Authenticated Navbar</h1></li>
-                <li><a href="logout"><button>LOGOUT</button></a></li>
-                <li><a href="settings"><button>SETTINGS</button></a></li>
-                <li><a href="create"><button>CREATE A POST</button></a></li>
-                <div>
-                    {% if user_profile and user_profile.avi.url %}
-                        <img src="{{ user_profile.avi.url }}" alt="Profile Avatar"/>
-                    {% endif %}
-                    <h4>Hello {{ user_profile }}, welcome to your page</h4>
-                </div>
-            {% else %}
-            <li><a href="logout"><button>LOGOUT</button></a></li>
-                <li><a href="settings"><button>SETTINGS</button></a></li>
-                <li><a href="create"><button>CREATE A POST</button></a></li>
-                <li><h1>Not Authenticated Navbar</h1></li>
+    <nav class="base-navbar">
+        <a href="home"><h1 class="base-title">TechWitter</h1></a>
+        <ul class="nav-list">    
                 <li><a href="login">LOGIN</a></li>
                 <li><a href="register">REGISTER</a></li>
-            {% endif %}
         </ul>
-    
-        <div>
-            {% if user_profile and user_profile.avi.url %}
-                <img src="{{ user_profile.avi.url }}" alt="Profile Avatar"/>
-            {% endif %}
-            <h4>Hello {{ user_profile }}, welcome to your page</h4>
-        </div>
     </nav>
     
     {% endblock%}
