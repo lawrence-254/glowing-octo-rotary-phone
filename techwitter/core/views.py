@@ -128,6 +128,14 @@ def profile(request, pk):
     comment = Comment.objects.filter(author=pk)
     liked_post = LikePost.objects.filter(author=pk)
     liked_comment = LikeComment.objects.filter(author=pk)
+    #
+    follower=request.user.username
+    user=pk
+    if FollowerCount.objects.filter(follower=follower, followed_user=user).first():
+        button_title = 'unfollow'
+    else:
+        button_title = 'follow'
+    #
     context={
         'title': 'PROFILE',
         'user_object': user_object,
@@ -136,6 +144,7 @@ def profile(request, pk):
         'user_comment': comment,
         'liked_post': liked_post,
         'liked_comment': liked_comment,
+        'button_title': button_title,
              }
     return render(request, 'core/profile/profile.html', context)
 
@@ -145,19 +154,14 @@ def follow(request):
         follower=request.POST['follower']
         followed_user=request.POST['followed_user']
         if FollowerCount.objects.filter(follower=follower, followed_user=followed_user).first():
-            delete_follower=FollowerCount.objects.get(follwer=follower, followed_user=followed_user)
+            delete_follower=FollowerCount.objects.get(follower=follower, followed_user=followed_user)
             delete_follower.delete()
-            context={
-                'button_title': 'follow',
-            }
-            return redirect('/profile/'+followed_user, context)    
+           
+            return redirect('/profile/'+followed_user)    
         else:
             create_follower=FollowerCount.objects.create(follower=follower, followed_user=followed_user)
             create_follower.save()
-            context={
-                'button_title': 'unfollow',
-            }
-            return redirect('/profile/'+followed_user, context)  
+            return redirect('/profile/'+followed_user)  
     else:
         return redirect('home')
 # end of profile action

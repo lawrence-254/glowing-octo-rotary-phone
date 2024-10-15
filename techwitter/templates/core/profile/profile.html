@@ -9,7 +9,11 @@
         {% csrf_token %}
         <input value="{{user.username}}" type="hidden" name="follower"/>
         <input value="{{user_object.username}}" type="hidden" name="followed_user"/>
+        {%if user_object.username == user.username %}
+        <a href="/settings"><button type="button">settings</button></a>
+        {%else%}
         <a><button type="submit">{{button_title}} ok</button></a>
+        {%endif%}
     </form>
 </div>
 <h5>{{user_profile.bio}}</h5>
