@@ -1,7 +1,14 @@
-{% include './base.html'%}
+<!-- {% include './base.html'%} -->
 {% block content%}
 <h5>profile page</h5>
-
 <h3>{{user_profile.user.username}}</h3>
+<div>
+    <form>
+        {% csrf_token %}
+        <input value="{{user.username}}" type="hidden" name="follower"/>
+        <input value="{{user_object.username}}" type="hidden" name="followed_user"/>
+        <a href="#"><button type="button">follow</button></a>
+    </form>
+</div>
 <h5>{{user_profile.bio}}</h5>
 {% endblock %}

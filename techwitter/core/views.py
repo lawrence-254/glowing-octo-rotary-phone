@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
-from .models import Profile, Post, LikePost, Comment, LikeComment
+from .models import Profile, Post, LikePost, Comment, LikeComment, FollowerCount
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseBadRequest
 from django.shortcuts import get_object_or_404
@@ -139,6 +139,28 @@ def profile(request, pk):
              }
     return render(request, 'core/profile/profile.html', context)
 
+@login_required(login_url='index')
+def follow(request):
+    if request.method=='POST':
+        follower=request.POST['follower']
+        followed_user=request.POST['followed_user']
+
+        if FollowerCount.objects.filter(follower=follower, followed_user=followed_user).first():
+            delete_follower=FollowerCount.objects.get(follwer=follower, followed_user=followed_user)
+            delete_follower.delete()
+            context={
+                'button_title': 'follow',
+            }
+            return redirect('/profile/'+followed_user, context)    
+        else:
+            create_follower=FollowerCount.objects.create(follower=follower, followed_user=followed_user)
+            create_follower.save()
+            context={
+                'button_title': 'unfollow',
+            }
+            return redirect('/profile/'+followed_user, context)  
+    else:
+        return redirect('home')
 # end of profile action
 # views
 def index(request):

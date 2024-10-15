@@ -10,7 +10,7 @@ urlpatterns = [
     path('reset', views.reset_password, name='reset'),
     path('settings', views.settings, name='settings'),
     path('profile/<str:pk>', views.profile, name='profile'),
-    path('follow',views.follow, name='follow'),
+    path('follow', views.follow, name='follow'),
     # post actions
     path('create', views.create, name='create'),
     path('like-post', views.like_post, name='like-post'),
