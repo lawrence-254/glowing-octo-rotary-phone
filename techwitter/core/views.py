@@ -221,8 +221,8 @@ def like_post(request):
         post.likes -= 1
     post.save()
 
-    # return redirect('view_post', post_id=post_id)
-    return redirect('home')
+    return redirect('/view?post_id='+post_id)
+    # return redirect('home')
     
     
 @login_required(login_url='index')
