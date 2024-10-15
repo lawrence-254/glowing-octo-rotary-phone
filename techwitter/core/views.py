@@ -5,6 +5,7 @@ from .models import Profile, Post, LikePost, Comment, LikeComment, FollowerCount
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseBadRequest
 from django.shortcuts import get_object_or_404
+from itertools import chain
 
 
 #Authentication
@@ -139,7 +140,7 @@ def profile(request, pk):
     # 
     user_follower = FollowerCount.objects.filter(followed_user=user)
     number_of_follower =len(user_follower)
-    user_following=FollowerCount.objects.filter(following=user)
+    user_following=FollowerCount.objects.filter(follower=user)
     number_of_following=len(user_following)
     # 
     context={
@@ -186,10 +187,26 @@ def home(request):
     user_object = User.objects.get(username=request.user.username)
     profile_object = Profile.objects.get(user=user_object)
     post_object = Post.objects.all()
+    # 
+    list_of_followed=[]
+    feed=[]
+
+    user_followed = FollowerCount.objects.filter(follower=request.user.username)
+
+    for users in user_followed:
+        list_of_followed.append(users.user)
+
+    for username in list_of_followed:
+        feed_list = Post.objects.filter(author=username)
+        feed.append(feed_list)
+
+    feed_to_timeline = list(chain(*feed))
+    # 
     context= {
         'title':'Home',
         'user_profile': profile_object,
-        'post_object': post_object
+        'post_object': post_object,
+        'feed_list': feed_to_timeline,
               }
     # print(post_object)
     # print(profile_object)
