@@ -1,7 +1,8 @@
 *{
-    background-color: navajowhite;
 }
 .base-navbar {
+        background-color: navajowhite;
+
     padding: 10px 20px;
     display: flex;
     justify-content: space-between;
@@ -93,3 +94,22 @@
 }
 
 /* home */
+.home-container{
+    background-color: #FFF44F;
+    background-color: #FFEF00;
+    background-color: #FFDF00;
+    background-color: #FFFF31;
+    background-color: #FFF700;
+    /* maybe1 */
+    background-color: #F7C04A;
+    /* maybe1 */
+    /* maybe2 */
+    background-color: #FFDB58;
+    /* maybe2 */
+    /* maybe3 */
+    background-color: #FFCA4B;
+    /* maybe3 */
+    /* maybe4 */
+    background-color: #EEDC82;
+    /* maybe4 */
+}
