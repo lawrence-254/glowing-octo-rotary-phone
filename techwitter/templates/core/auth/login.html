@@ -14,32 +14,34 @@
 <body>
     {% block content%}
 <div class="auth-container">
-    <div>
+    <div class="auth-warning">
         {%for message in messages%}
         <h4>{{message}}</h4>
         {%endfor%}
     </div>
-    <div>
-    <form method="POST">
-        {% csrf_token %}
-        <div class="">
-            <label>Email or Username</label>
-            <input type="text" name="emailname" placeholder="Enter username or email"/>
-        </div>
-        <div>
-            <label>Password</label>
-            <input type="password" name="password" placeholder="Enter password"/>
-        </div>
-        <div>
-            <input type="checkbox"/>
-            <label>Reemember Me</label>
-            <span><a href="reset">FORGOT YOUR PASSWORD</a></span>
-        </div>
-        <button type="submit">LOGIN</button>
-    </form>
+    <div class="auth-form-div">
+        <h2 class="auth-form-title">LOGIN</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="auth-input-div">
+                <label>Email or Username</label>
+                <input type="text" name="emailname" placeholder="Enter username or email"/>
+            </div>
+            <div class="auth-input-div">
+                <label>Password</label>
+                <input type="password" name="password" placeholder="Enter password"/>
+            </div>
+            <div class="auth-input-div">
+                <input type="checkbox"/>
+                <label>Remember Me</label>
+            </div>
+            <button class="submit-button" type="submit">LOGIN</button>
+        </form>
 
-    <h5>Don't have an account? <span><a href="register">REGISTER</a></span></h5>
-</div>
+        <h5>Don't have an account? <span><a class="button-link" href="register">REGISTER</a></span></h5>
+        <span><a class="button-link" href="reset">FORGOT YOUR PASSWORD</a></span>
+
+    </div>
 </div>
 {%endblock%}
 </body>

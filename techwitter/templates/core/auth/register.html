@@ -14,36 +14,39 @@
 <body>
     {% block content%}
 <div class="auth-container">
-    <div>
+    <div class="auth-warning">
         {%for message in messages%}
         <h4>{{message}}</h4>
         {%endfor%}
     </div>
-    <form method="POST">
-        {% csrf_token %}
-        <div>
-            <label>Email</label>
-            <input type="email" name="email" placeholder="Enter your email"/>
-        </div>
-        <div>
-            <label>Username</label>
-            <input type="text" name="username" placeholder="Enter username"/>
-        </div>
-        <div>
-            <label>Password</label>
-            <input type="password" name="password" placeholder="Enter password"/>
-        </div>
-        <div>
-            <label>Confirm Password</label>
-            <input type="password" name="confirmPassword" placeholder="confirm password"/>
-        </div>
-        <div>
-            <input type="checkbox"/>
-            <label>I Accept terms and conditions</label>
-        </div>
-        <button type="submit">Register</button>
-    </form>
-    <h5>Have an account? <span><a href="login">LOGIN</a></span></h5>
+    <div class="auth-form-div">
+        <h2 class="auth-form-title">REGISTER</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="auth-input-div">
+                <label>Email</label>
+                <input type="email" name="email" placeholder="Enter your email"/>
+            </div>
+            <div class="auth-input-div">
+                <label>Username</label>
+                <input type="text" name="username" placeholder="Enter username"/>
+            </div>
+            <div class="auth-input-div">
+                <label>Password</label>
+                <input type="password" name="password" placeholder="Enter password"/>
+            </div>
+            <div class="auth-input-div">
+                <label>Confirm Password</label>
+                <input type="password" name="confirmPassword" placeholder="confirm password"/>
+            </div>
+            <div class="auth-input-div">
+                <input type="checkbox"/>
+                <label>I Accept terms and conditions</label>
+            </div>
+            <button class="submit-button" type="submit">Register</button>
+        </form>
+        <h5>Have an account? <span><a class="button-link" href="login">LOGIN</a></span></h5>
+</div>
 </div>
 {%endblock%}
 </body>

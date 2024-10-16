@@ -92,7 +92,7 @@ a .base-title {
     }
 }
 
-/* index container */
+/* auth container */
 .auth-container{
     display: flex;
     align-items: center;
@@ -105,34 +105,30 @@ a .base-title {
     margin-left: 20vw;
 }
 
-.index-title{
-    flex: 0.4;
-    margin: 0 10px;
-    padding:20px;
-    justify-content: space-around;
+.auth-warning{
+    color: maroon;
 }
-
-.index-list{
-    flex: 0.6;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    list-style: none;
-    border-left: 5px dotted #d8b503;
+.auth-form-div{
+    width:80%;
+    align-items: center;
+    justify-content: center;
 }
-.list-button{
+.auth-form-title{
+    justify-content: center;
+}
+.submit-button{
     width: 100px;
-    height: 40px;
+    height: 30px;
     color: #000;
     background-color: #d8b503;
+    border-radius: 30px;
 }
 .button-link{
     text-decoration: none;
-    background-color: #d8b503;
-    color: #000;
+    color: #7c6a12;
 }
 @media (max-width: 900px) {
-.auth-container{
+    .auth-container{
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -144,38 +140,5 @@ a .base-title {
         margin-top: 10vw;
         margin-left: 10vw;
     }
-    .index-title{
-        margin: 20 10px;
-        padding:20px;
-        justify-content:space-around;
-        justify-self: center;
-    }
-    .index-list{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        list-style: none;
-        border-left: none;
-        width: 70%;
-        justify-self: center;
-        align-self: center;
-        align-items: center;
-        align-content: center;
-    }
-    .list{
-        justify-self: space-around;
-        align-self: center;
-
-    }
-    .list-button{
-        width: 100px;
-        height: 40px;
-        color: #000;
-        background-color: #d8b503;
-    }
-    .button-link{
-        text-decoration: none;
-        background-color: #d8b503;
-        color: #000;
-    }
+   
 }
