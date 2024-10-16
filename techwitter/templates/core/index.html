@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-    <link rel="stylesheet" href="{% static 'css/tailwind.css' %}">
     {% if title %}
     <title>{{title}} - TechWitter</title>
     {%else%}
@@ -13,20 +12,21 @@
     {%endif%}
 </head>
 <body>
-    {% block content%}
-    <nav class="base-navbar">
-        <a href="home"><h1 class="base-title">TechWitter</h1></a>
-        <ul class="nav-list">    
-                <li><a href="login">LOGIN</a></li>
-                <li><a href="register">REGISTER</a></li>
-        </ul>
-    </nav>
+{% block content%}
 <div class="index-container">
-<h1>Welcome to TECHWITTER</h1>
-<ul>
-    <li><button><a href="login">LOGIN</a></button></li>
-    <li><button><a href="register">REGISTER</a></button></li>
-</ul>
+    <h1 class="index-title">Welcome to TECHWITTER</h1>
+    <ul class="index-list">
+        <li class="list">
+            <button class="list-button">
+                <a href="login" class="button-link">LOGIN</a>
+            </button>
+        </li>
+        <li class="list">
+            <button class="list-button">
+                <a href="register" class="button-link">REGISTER</a>
+            </button>
+        </li>
+    </ul>
 </div>
 {% endblock %}
 </body>
