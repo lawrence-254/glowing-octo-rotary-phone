@@ -26,10 +26,10 @@ SECRET_KEY = 'django-insecure-(!bv5d8apkb_-0w=ctdtlu4151#$a%sut&#r&tiav9g2glvz@d
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 APPEND_SLASH = False
 
-
+AUTH_USER_MODEL = 'core_user.User'
 # Application definition
 
 INSTALLED_APPS = [
@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'core'
+    'core',
+    'core.user'
 ]
 
 MIDDLEWARE = [
@@ -81,6 +82,13 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    #     'NAME': techwitter,
+    #     'USER': 'techwitter',
+    #     'HOST': 'localhost',
+    #     'PORT': '5432'
+    # }
 }
 
 
@@ -129,3 +137,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT=os.path.join(BASE_DIR, 'media')
+

@@ -8,7 +8,7 @@ from django.http import Http404
 """
 User manager model
 """
-class UserManager(BaseUserMah=manager):
+class UserManager(BaseUserManager):
     def get_object_by_public_id(self, public_id):
         try:
             instance = self.get(public_id=public_id)
