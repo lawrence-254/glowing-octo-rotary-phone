@@ -26,4 +26,4 @@ def RegisterViewSet(ViewSet):
             "user": serializer.data,
             "refresh": res["refresh"],
             "access": res["access"] 
-        })
+        }, status=status.HTTP_201_CREATED)
