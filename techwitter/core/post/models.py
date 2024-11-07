@@ -5,7 +5,7 @@ from core.abstract.models import AbstractModel, AbstractManager
 class PostManager(AbstractManager):
     pass
 
-class PostModel(AbstractModel):
+class Post(AbstractModel):
     author= models.ForeignKey(to="core_user.User", on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     image =models.ImageField(upload_to='post_images')
