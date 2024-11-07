@@ -5,6 +5,8 @@ from core.abstract.viewsets import AbstractViewSet
 from core.post.models import Post
 from core.post.serializers import PostSerializer
 
+
+
 class PostViewSet(AbstractViewSet):
     http_method_names = ('post', 'get')
     permission_classes = (IsAuthenticated,)
