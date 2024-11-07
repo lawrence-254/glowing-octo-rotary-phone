@@ -64,6 +64,7 @@ class User(AbstractBaseUser, AbstractModel, PermissionsMixin):
     email = models.EmailField(db_index=True, unique=True)
     is_active = models.BooleanField(default=True)
     is_superuser = models.BooleanField(default=False)
+    post_liked = models.ManyToManyField("core_post.post", related_name="liked_by")
     # created_at = models.DateTimeField(auto_now=True)
     # updated_at = models.DateTimeField(auto_now_add=True)
 
