@@ -1,5 +1,6 @@
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
+from rest_framework.decorators import action
 
 from core.abstract.viewsets import AbstractViewSet
 from core.post.models import Post
@@ -41,7 +42,7 @@ class PostViewSet(AbstractViewSet):
             serializer.data, status=status.HTTP_200_OK
         )
     
-    @action(methods=['post'], detail=True):
+    @action(methods=['post'], detail=True)
     def remove_like(self, request, *args, **kwargs):
         post = self.get_object()
         user = self.request.user
