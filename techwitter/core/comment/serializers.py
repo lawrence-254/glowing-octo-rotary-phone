@@ -18,6 +18,17 @@ class CommentSerializer(AbstractSerializer):
 
         return rep
     
+    def validate_post(self, value):
+       if self.instance:
+           return self.instance.post
+       return value
+    
+    def update(self, instance, validated_data):
+        if not instance.edited:
+            validated_data["edited"]=True
+        instance = super().update(instance, validated_data)
+        return instance
+    
     class Meta:
         model = Comment
         fields = ['id', 'post', 'author', 'body', 'edited', 'created', 'updated']

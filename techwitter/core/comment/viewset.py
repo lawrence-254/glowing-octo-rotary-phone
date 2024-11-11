@@ -36,7 +36,4 @@ class CommentViewSet(AbstractViewSet):
             serializer.data, status=status.HTTP_201_CREATED
         )
 
-    def validate_post(self, value):
-        if self.instance:
-            return self.instance.post
-        return value
+   
