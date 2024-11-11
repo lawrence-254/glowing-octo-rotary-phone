@@ -4,7 +4,8 @@
     "axios-auth-refresh": "^3.3.6",
     "bootstrap": "^5.3.3",
     "react-bootstrap": "^2.10.5",
-    "react-router-dom": "^6.27.0"
+    "react-router-dom": "^6.27.0",
+    "styled-components": "^6.1.13"
   },
   "packageManager": "yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610"
 }
