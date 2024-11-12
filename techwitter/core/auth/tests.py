@@ -23,3 +23,17 @@ class TestAuthenticationViewSet:
         assert response.data['user']['username'] == user.username
         assert response.data['user']['email'] == user.email
     
+    def test_register(self, client, db):
+        data={
+            "username": "johnDoe",
+            "email": "john@doe.mail",
+            "password": "testpassword",
+            "first_name": "john",
+            "last_name": "doe"
+        }
+
+        response = client.post(self.endpoint + "register/", data)
+
+        assert response.status_code == status.HTTP_201_CREATED
+
+    
