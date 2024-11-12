@@ -1,4 +1,6 @@
 from rest_framework import status
+from rest_framework import status
+
 
 from core.fixtures.user import user
 from core.fixtures.post import post
@@ -34,23 +36,23 @@ class TestPostViewSet:
     #     assert response.data['title']  == data['title']
     #     assert response.data['author']['id'] == user.public_id.hex
 
-    # def test_update(self, client, user, post):
-    #     client.force_authenticate(user=user)
-    #     data = {
-    #         "title": "Test Post Title Update",
-    #         "body": "Test Post Body Update",
-    #         "author": user.public_id.hex
-    #     }
-    #     response = client.put(self.endpoint + str(post.public_id) + "/", data)
+    def test_update(self, client, user, post):
+        client.force_authenticate(user=user)
+        data = {
+            "title": "Test Post Title Update",
+            "body": "Test Post Body Update",
+            "author": user.public_id.hex
+        }
+        response = client.put(self.endpoint + str(post.public_id) + "/", data)
 
-    #     assert response.status_code == status.HTTP_200_OK
-    #     assert response.data['body'] == data['body']
-    #     assert response.data['title'] == data['title']
+        assert response.status_code == status.HTTP_200_OK
+        assert response.data['body'] == data['body']
+        assert response.data['title'] == data['title']
 
-    # def test_delete(self, client, user, post):
-    #     client.force_authenticate(user=user)
-    #     response = client.delete(self.endpoint + str(post.public_id) + "/")
-    #     assert response.status_code == status.HTTP_204_NO_CONTENT
+    def test_delete(self, client, user, post):
+        client.force_authenticate(user=user)
+        response = client.delete(self.endpoint + str(post.public_id) + "/")
+        assert response.status_code == status.HTTP_204_NO_CONTENT
 
 
     # """Test for non-registered/anonymous users users"""
