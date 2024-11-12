@@ -18,3 +18,4 @@ class Post(AbstractModel):
     
     class Meta:
         db_table = "'techwitter.post"
+
