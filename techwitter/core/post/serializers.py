@@ -36,7 +36,7 @@ class PostSerializer(AbstractSerializer):
             return False
         return request.user.has_liked(instance)
     
-    def get_likes_count(elf, instance):
+    def get_likes_count(self, instance):
         return instance.liked_by.count
     
     class Meta:
