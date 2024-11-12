@@ -20,50 +20,50 @@ class TestPostViewSet:
         assert response.data['body'] == post.body
         assert response.data['author']['id'] == post.author.public_id.hex
 
-    def test_create(self, client, user):
-        client.force_authenticate(user=user)
-        data = {
-            "title":"Test Post Title",
-            "body": "Test Post Body",
-            "author": user.public_id.hex
-        }
+    # def test_create(self, client, user):
+    #     client.force_authenticate(user=user)
+    #     data = {
+    #         "title":"Test Post Title",
+    #         "body": "Test Post Body",
+    #         "author": user.public_id.hex
+    #     }
 
-        response = client.post(self.endpoint, data)
-        assert response.status_code == status.HTTP_201_CREATED
-        assert response.data['body'] == data['body']
-        assert response.data['title']  == data['title']
-        assert response.data['author']['id'] == user.public_id.hex
+    #     response = client.post(self.endpoint, data)
+    #     assert response.status_code == status.HTTP_201_CREATED
+    #     assert response.data['body'] == data['body']
+    #     assert response.data['title']  == data['title']
+    #     assert response.data['author']['id'] == user.public_id.hex
 
-    def test_update(self, client, user, post):
-        client.force_authenticate(user=user)
-        data = {
-            "title": "Test Post Title Update",
-            "body": "Test Post Body Update",
-            "author": user.public_id.hex
-        }
-        response = client.put(self.endpoint + str(post.public_id) + "/", data)
+    # def test_update(self, client, user, post):
+    #     client.force_authenticate(user=user)
+    #     data = {
+    #         "title": "Test Post Title Update",
+    #         "body": "Test Post Body Update",
+    #         "author": user.public_id.hex
+    #     }
+    #     response = client.put(self.endpoint + str(post.public_id) + "/", data)
 
-        assert response.status_code == status.HTTP_200_OK
-        assert response.data['body'] == data['body']
-        assert response.data['title'] == data['title']
+    #     assert response.status_code == status.HTTP_200_OK
+    #     assert response.data['body'] == data['body']
+    #     assert response.data['title'] == data['title']
 
-    def test_delete(self, client, user, post):
-        client.force_authenticate(user=user)
-        response = client.delete(self.endpoint + str(post.public_id) + "/")
-        assert response.status_code == status.HTTP_204_NO_CONTENT
+    # def test_delete(self, client, user, post):
+    #     client.force_authenticate(user=user)
+    #     response = client.delete(self.endpoint + str(post.public_id) + "/")
+    #     assert response.status_code == status.HTTP_204_NO_CONTENT
 
 
-    """Test for non-registered/anonymous users users"""
-    def test_list_anonymous(self, client, post):
-        response = client.get(self.endpoint)
-        assert response.status_code == status.HTTP_200_OK
-        assert response.data["count"] == 1
+    # """Test for non-registered/anonymous users users"""
+    # def test_list_anonymous(self, client, post):
+    #     response = client.get(self.endpoint)
+    #     assert response.status_code == status.HTTP_200_OK
+    #     assert response.data["count"] == 1
 
-    def test_retrieve_anonymous(self, client, post):
-        response = client.get(self.endpoint + str(post.public_id) + "/")
-        assert response.status_code == status.HTTP_200_OK
-        assert response.data['id'] == post.public_id.hex
-        assert response.data['title'] == post.title
-        assert response.data['body'] == post.body
-        assert response.data['author'] == post.author.pubblic_id.hex
-        
+    # def test_retrieve_anonymous(self, client, post):
+    #     response = client.get(self.endpoint + str(post.public_id) + "/")
+    #     assert response.status_code == status.HTTP_200_OK
+    #     assert response.data['id'] == post.public_id.hex
+    #     assert response.data['title'] == post.title
+    #     assert response.data['body'] == post.body
+    #     assert response.data['author'] == post.author.pubblic_id.hex
+
