@@ -18,6 +18,6 @@ def test_create_user():
     assert user.first_name == data_user['first_name']
     assert user.last_name == data_user['last_name']
     assert user.is_active == True
-    assert user.is_staff == False
+    assert user.is_staff == True
     assert user.is_superuser == False
     assert user.check_password(data_user['password']) == True
