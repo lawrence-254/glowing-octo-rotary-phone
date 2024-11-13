@@ -69,3 +69,25 @@ class TestPostViewSet:
         assert response.data['body'] == post.body
         assert response.data['author'] == post.author.public_id.hex
 
+    def test_create_anonymous(self, client):
+        data = {
+            "Body": "Test Body Anonymous",
+            "title": "Test Title Anonymous",
+            "author": "test_anonymous_user"
+        }
+        response = client.post(self.endpoint, data)
+        assert response.status_code == status.HTTP_401_UNAUTHORIZED
+
+    def test_update_anonymous(self, client, post):
+        data = {
+            "Body": "Test Body Anonymous",
+            "title": "Test Title Anonymous",
+            "author": "test_anonymous_user"
+        }
+        response = client.put(self.endpoint + str(post.public_id) + "/", data)
+        assert response.status_code == status.HTTP_401_UNAUTHORIZED
+
+    def test_delete_anonymous(self, client, post):
+        
+        response = client.delete(self.endpoint + str(post.public_id) + "/")
+        assert response.status_code == status.HTTP_401_UNAUTHORIZED
