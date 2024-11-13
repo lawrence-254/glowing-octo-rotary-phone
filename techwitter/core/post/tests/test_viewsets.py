@@ -39,8 +39,8 @@ class TestPostViewSet:
     def test_update(self, client, user, post):
         client.force_authenticate(user=user)
         data = {
-            "title": "Test Post Title Update",
-            "body": "Test Post Body Update",
+            "title": "Test Post Title",
+            "body": "Test Post Body",
             "author": user.public_id.hex
         }
         response = client.put(self.endpoint + str(post.public_id) + "/", data)
@@ -71,8 +71,8 @@ class TestPostViewSet:
 
     def test_create_anonymous(self, client):
         data = {
-            "Body": "Test Body Anonymous",
-            "title": "Test Title Anonymous",
+            "Body": "Test Post Body",
+            "title": "Test Post Title",
             "author": "test_anonymous_user"
         }
         response = client.post(self.endpoint, data)
@@ -80,8 +80,8 @@ class TestPostViewSet:
 
     def test_update_anonymous(self, client, post):
         data = {
-            "Body": "Test Body Anonymous",
-            "title": "Test Title Anonymous",
+            "Body": "Test Post Body",
+            "title": "Test Post Title",
             "author": "test_anonymous_user"
         }
         response = client.put(self.endpoint + str(post.public_id) + "/", data)
