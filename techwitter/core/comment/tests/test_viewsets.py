@@ -59,3 +59,35 @@ class TestCommentViewSet:
         response = client.delete(self.endpoint + str(post.public_id) + "/comment/" + str(comment.public_id) + "/")
 
         assert response.status_code == status.HTTP_204_NO_CONTENT
+
+
+    def test_list_anonymous(self, client, post, comment):
+        response = client.get(self.endpoint + str(post.public_id) + "/comment/")
+        assert response.status_code == status.HTTP_200_OK
+        assert response.data["count"] == 1
+
+    def test_retrieve_anonymous(self, client, post, comment):
+        response = client.get(self.endpoint + str(post.public_id) + "/comment/" + str(comment.public_id) + "/")
+        assert response.status_code == status.HTTP_200_OK
+
+    def test_create_anonyous(self, client, post, comment):
+        data={
+            "title": "Test Comment Title",
+            "body": "Test Comment Body",
+            "post": post.public_id.hex
+        }
+        response = client.post(self.endpoint + str(post.public_id) + "/comment/", data)
+        assert response.status_code == status.HTTP_401_UNAUTHORIZED
+
+    def test_update_anonymous(self, client, post, comment):
+        data={
+            "title": "Test Comment Title",
+            "body": "Test Comment Body",
+            "post": post.public_id.hex
+        }
+        response = client.put(self.endpoint + str(post.public_id) + "/comment/" + str(comment.public_id)+ "/", data)
+        assert response.status_code == status.HTTP_401_UNAUTHORIZED
+
+    def test_delete_anonymous(self, client, post, comment):
+        response = client.delete(self.endpoint + str(post.public_id) + "/comment/" + str(comment.public_id) +"/")
+        assert response.status_code == status.HTTP_401_UNAUTHORIZED
