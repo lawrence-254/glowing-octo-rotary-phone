@@ -1,5 +1,5 @@
 import axios from "axios";
-import CreateAuthRefreshingInterceptor from "axios-auth-refresh";
+import createAuthRefreshInterceptor from "axios-auth-refresh";
 
 const axiosService = axios.create({
     baseURL: "http://localhost:8000",
@@ -25,5 +25,19 @@ const refreshAuthLogic = async(failedRequest) => {
         headers:{
             Authorization: `Bearer ${refresh}`,
         },
-    })
+    }).then((resp) => {
+        const {access,refresh} =resp.data;
+        failedRequest.response.config.headers["Authorization"] = "Bearer"+access;
+        localStorage.setItem("auth", JSON.stringify({access, refresh}));
+    }).catch(()=>{
+        localStorage.removeItem("auth");
+    });
 }
+
+createAuthRefreshInterceptor(axiosService, refreshAuthLogic);
+
+export function fetcher(url){
+    return axiosService.get(url).then((res)=>res.data);
+}
+
+export default axiosService;
