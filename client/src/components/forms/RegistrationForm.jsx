@@ -42,12 +42,14 @@ const RegistrationForm = () => {
         });
     };
     const FormContainer = styled.div`
-    background: yellow;
     width: 80vw;
     height: 70vh;
     display: grid;
     margin-left: 10vw;
     margin-top:15vh;
+    border: solid 2px grey;
+    align-items: center;
+    justify-items: center;
     `;
     const FormTitle = styled.h2`
     font-weight: 10px;
@@ -64,7 +66,7 @@ const RegistrationForm = () => {
     `
 
     const ErrorBox = styled.div`
-    color:red;
+    color: red;
     `
     const SubmitButton = styled.button`
     background: green;
