@@ -43,10 +43,8 @@ const RegistrationForm = () => {
     };
     const FormContainer = styled.div`
     width: 80vw;
-    height: 70vh;
+    height: auto;
     display: grid;
-    margin-left: 10vw;
-    margin-top:15vh;
     border: solid 2px grey;
     align-items: center;
     justify-items: center;

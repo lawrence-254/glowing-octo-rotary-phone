@@ -45,8 +45,6 @@ const LoginForm = () => {
     width: 80vw;
     height: 70vh;
     display: grid;
-    margin-left: 10vw;
-    margin-top:15vh;
     border: solid 2px grey;
     align-items: center;
     justify-items: center;

@@ -5,7 +5,10 @@ import styled from "styled-components"
 
 const MainContainer = styled.div`
 width:100%;
+display: grid;
 justify-items: center;
+align-items: center;
+height: 100vh;
 `
 const Title = styled.h1`
 color: black
