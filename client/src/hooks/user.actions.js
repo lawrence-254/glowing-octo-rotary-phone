@@ -10,6 +10,12 @@ function useUserActions(){
         logout
     };
     // register function
+    function register(data){
+        return axios.post(`${baseURL}/auth/register`, data).then((res)=>{
+            setUserData(data);
+            navigate('/')
+        })
+    }
 
     //login function
     function login(data){
@@ -46,3 +52,5 @@ function useUserActions(){
         }))
     }
 }
+
+export {useUserActions}
