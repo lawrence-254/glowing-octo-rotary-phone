@@ -1,56 +1,70 @@
-import axios from"axios"
-import {useNavigate} from "react-router-dom"
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-function useUserActions(){
+function useUserActions() {
     const navigate = useNavigate();
-    const baseURL = "http://localhost:8000/api";
+    const baseURL = "/api";
+
     return {
         register,
         login,
-        logout
+        logout,
     };
-    // register function
-    function register(data){
-        return axios.post(`${baseURL}/auth/register`, data).then((res)=>{
-            setUserData(data);
-            navigate('/')
-        })
+
+    function setUserData(res) {
+        localStorage.setItem("auth", JSON.stringify({
+            access: res.data.access,
+            refresh: res.data.refresh,
+            user: res.data.user
+        }));
     }
 
-    //login function
-    function login(data){
-        return axios.post(`${baseURL}/auth/login/`, data).then((res)=>{
-            setUserData(data);
-            navigate('/');
-        })
+    function register(data) {
+        return axios.post(`${baseURL}/auth/register`, data)
+            .then((res) => {
+                setUserData(res);
+                navigate('/');
+            })
+            .catch((error) => {
+                console.error("Registration error:", error);
+                throw error;
+            });
     }
-    
+
+    function login(data) {
+        return axios.post(`${baseURL}/auth/login/`, data)
+            .then((res) => {
+                setUserData(res);
+                navigate('/');
+            })
+            .catch((error) => {
+                console.error("Login error:", error);
+                throw error;
+            });
+    }
+
+    function logout() {
+        localStorage.removeItem("auth");
+        navigate('/login');
+    }
+
 }
-//logout function
-function logout(){
-    localStorage.removeItem("auth");
-}
-// get user
-function getUser(){
+
+// Define getUser, getAccessToken, and getRefreshToken outside of useUserActions
+function getUser() {
     const auth = JSON.parse(localStorage.getItem("auth"));
-    return auth.user;
+    return auth ? auth.user : null;
 }
-//get access token
-function getAccessToken(){
+
+function getAccessToken() {
     const auth = JSON.parse(localStorage.getItem("auth"));
-    return auth.access;
+    return auth ? auth.access : null;
 }
-// get refresh token
-function getRefreshToken(){
-    const auth = JSON.parse(localStorage("auth"));
-    return auth.refresh;
+
+function getRefreshToken() {
+    const auth = JSON.parse(localStorage.getItem("auth"));
+    return auth ? auth.refresh : null;
 }
-//set access token, refresh token, and user property
-function setUserData(data){
-    localStorage.setItem("auth", JSON.stringify({
-        access: res.data.access,
-        refresh:  res.data.refresh,
-        user: res.data.user
-    }))
-}
-export {useUserActions, getUser, getAccessToken, getRefreshToken}
+
+// export default useUserActions;
+export { useUserActions, getUser, getAccessToken, getRefreshToken };

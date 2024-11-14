@@ -1,42 +1,47 @@
 import axios from "axios";
 import createAuthRefreshInterceptor from "axios-auth-refresh";
-import {getAccesToken, getRefreshToken} from "../hooks/user.actions"
+import { getAccessToken, getRefreshToken } from "../hooks/user.actions";
 
 const axiosService = axios.create({
     baseURL: "http://localhost:8000",
-    headers:{
+    headers: {
         "content-type": "application/json",
     },
-})
+});
 
-axiosService.interceptors.request.use(async (config)=>{
-    config.headers.Authorization = `Bearer ${getAccesToken()}`;
+axiosService.interceptors.request.use(async (config) => {
+    const accessToken = getAccessToken();
+    if (accessToken) {
+        config.headers.Authorization = `Bearer ${accessToken}`;
+    }
     return config;
-})
+});
+
 axiosService.interceptors.response.use(
     (res) => Promise.resolve(res),
     (err) => Promise.reject(err)
-)
+);
 
-const refreshAuthLogic = async(failedRequest) => {
-    return axios.post("/refresh/token/", null, {
-        baseURL: "http://localhost:8000",
-        headers:{
+const refreshAuthLogic = async (failedRequest) => {
+    return axiosService.post("/refresh/token/", null, {
+        headers: {
             Authorization: `Bearer ${getRefreshToken()}`,
         },
     }).then((resp) => {
-        const {access,refresh, user} =resp.data;
-        failedRequest.response.config.headers["Authorization"] = "Bearer"+access;
-        localStorage.setItem("auth", JSON.stringify({access, refresh, user}));
-    }).catch(()=>{
+        const { access, refresh, user } = resp.data;
+        failedRequest.response.config.headers["Authorization"] = `Bearer ${access}`;
+        localStorage.setItem("auth", JSON.stringify({ access, refresh, user }));
+        return Promise.resolve();
+    }).catch(() => {
         localStorage.removeItem("auth");
+        return Promise.reject();
     });
-}
+};
 
 createAuthRefreshInterceptor(axiosService, refreshAuthLogic);
 
-export function fetcher(url){
-    return axiosService.get(url).then((res)=>res.data);
+export function fetcher(url) {
+    return axiosService.get(url).then((res) => res.data);
 }
 
 export default axiosService;

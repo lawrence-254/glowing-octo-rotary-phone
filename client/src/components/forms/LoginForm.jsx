@@ -1,114 +1,76 @@
-import React, {useState} from "react"
-import axios from "axios"
-import {useNavigate} from "react-router-dom"
-import styled from "styled-components"
-// import {Form, Button} from "react-bootstrap"
-import {useUserActions} from "../../hooks/user.actions"
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Form, Button, Container, Alert } from "react-bootstrap";
+import { useUserActions } from "../../hooks/user.actions";
 
 const LoginForm = () => {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     const [validated, setValidated] = useState(false);
     const [form, setForm] = useState({});
     const [error, setError] = useState(null);
-    const userActions = useUserActions()
+    const userActions = useUserActions();
 
-    const handleSubmit =(event)=>{
+    const handleSubmit = (event) => {
         event.preventDefault();
         const loginForm = event.currentTarget;
 
-        if (loginForm.checkValidity()=== false){
+        if (loginForm.checkValidity() === false) {
             event.stopPropagation();
-        };
+        } else {
+            const userData = {
+                username: form.username,
+                password: form.password,
+            };
+
+            userActions.login(userData).catch((err) => {
+                setError(err?.response?.data?.message || "An error occurred.");
+            });
+        }
 
         setValidated(true);
-
-        const userData = {
-            username : form.username,
-            password: form.password,
-            // email: form.email,
-        };
-        userActions.login(userData).catch((err)=>{
-                if (err.message){
-                    setError(err.request.response);
-                }
-            });
-
-
-        // axios.post("http://localhost/8000/api/auth/login/", userData).then((res)=>{
-        //     localStorage.setItem("auth", JSON.stringify({
-        //         access: res.data.access,
-        //         refresh: res.data.refresh,
-        //         user: res.data.user
-        //     }));
-        //     navigate("/");
-        // }).catch((err)=>{
-        //     if (err.message){
-        //         setError(err.request.response);
-        //     }
-        // });
     };
-    const FormContainer = styled.div`
-    width: 80vw;
-    height: auto;
-    display: grid;
-    border: solid 2px grey;
-    align-items: center;
-    justify-items: center;
-    `;
-    const FormTitle = styled.h2`
-    font-weight: 10px;
-    `;
 
-    const FormDiv = styled.div`
-    width: 90%;
-    `
-    const FormLabel = styled.label`
-    font-weight: 7px
-    `
-    const FormInput = styled.input`
-    width: 100%
-    `
+    return (
+        <Container style={{ maxWidth: "400px", marginTop: "2rem" }}>
+            <h2>Login</h2>
+            <Form noValidate validated={validated} onSubmit={handleSubmit}>
+                <Form.Group controlId="formUsername" className="mb-3">
+                    <Form.Label>Username</Form.Label>
+                    <Form.Control
+                        type="text"
+                        placeholder="Enter your username..."
+                        value={form.username}
+                        onChange={(e) => setForm({ ...form, username: e.target.value })}
+                        required
+                    />
+                    <Form.Control.Feedback type="invalid">
+                        This field is required.
+                    </Form.Control.Feedback>
+                </Form.Group>
 
-    const ErrorBox = styled.div`
-    color: red;
-    `
-    const SubmitButton = styled.button`
-    background: green;
-    width: 80px;
-    `
+                <Form.Group controlId="formPassword" className="mb-3">
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control
+                        type="password"
+                        placeholder="Enter password"
+                        value={form.password}
+                        onChange={(e) => setForm({ ...form, password: e.target.value })}
+                        minLength="8"
+                        required
+                    />
+                    <Form.Control.Feedback type="invalid">
+                        Password must be at least 8 characters.
+                    </Form.Control.Feedback>
+                </Form.Group>
 
-  return (
-    <FormContainer
-     validated={validated} onSubmit={handleSubmit}>
-        <FormTitle>Login</FormTitle>
-        <FormDiv>
-            <FormLabel>Username</FormLabel>
-            <FormInput
-            type="text"
-            placeholder="Enter your username..."
-            value={form.username}
-            onChange={(e)=>setForm({...form, username: e.target.value })}
-            required
-            />
-            {/* <Form.Control.Feedback type="invalid">
-                This Field is required
-            </Form.Control.Feedback> */}
-        </FormDiv>
-        <FormDiv>
-            <FormLabel>Password</FormLabel>
-            <FormInput
-            value={form.password}
-            minLength="8"
-            onChange={(e)=>setForm({...form, password: e.target.value})}
-            required
-            type="password"
-            placeholder="Enter password"
-            />
-        </FormDiv>
-        <ErrorBox>{error && <p>{error}</p>}</ErrorBox>
-        <SubmitButton>submit</SubmitButton>
-    </FormContainer>
-)
-}
+                {error && <Alert variant="danger">{error}</Alert>}
 
-export default LoginForm
+                <Button variant="primary" type="submit">
+                    Submit
+                </Button>
+            </Form>
+        </Container>
+    );
+};
+
+export default LoginForm;

@@ -1,147 +1,131 @@
-import React, {useState} from "react"
-import axios from "axios"
-import {useNavigate} from "react-router-dom"
-import styled from "styled-components"
+import React, { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { Form, Button, Container, Alert } from "react-bootstrap";
 
 const RegistrationForm = () => {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     const [validated, setValidated] = useState(false);
-    const [form, setForm] = useState({});
+    const [form, setForm] = useState({
+        username: "",
+        first_name: "",
+        last_name: "",
+        password: "",
+        email: "",
+        bio: ""
+    });
     const [error, setError] = useState(null);
 
-    const handleSubmit =(event)=>{
+    const handleSubmit = (event) => {
         event.preventDefault();
         const registrationForm = event.currentTarget;
 
-        if (registrationForm.checkValidity()=== false){
+        if (registrationForm.checkValidity() === false) {
             event.stopPropagation();
-        };
+        } else {
+            const userData = { ...form };
+            axios.post("http://localhost:8000/api/auth/register/", userData)
+                .then((res) => {
+                    localStorage.setItem("auth", JSON.stringify({
+                        access: res.data.access,
+                        refresh: res.data.refresh,
+                        user: res.data.user
+                    }));
+                    navigate("/");
+                })
+                .catch((err) => {
+                    setError(err.response?.data?.message || "An error occurred.");
+                });
+        }
 
         setValidated(true);
-
-        const userData = {
-            username : form.username,
-            first_name: form.first_name,
-            last_name: form.last_name,
-            password: form.password,
-            email: form.email,
-            bio: form.bio
-        };
-
-        axios.post("http://localhost/8000/api/auth/register/", userData).then((res)=>{
-            localStorage.setItem("auth", JSON.stringify({
-                access: res.data.access,
-                refresh: res.data.refresh,
-                user: res.data.user
-            }));
-            navigate("/");
-        }).catch((err)=>{
-            if (err.message){
-                setError(err.request.response);
-            }
-        });
     };
-    const FormContainer = styled.form`
-    width: 80vw;
-    height: auto;
-    display: grid;
-    border: solid 2px grey;
-    align-items: center;
-    justify-items: center;
-    `;
-    const FormTitle = styled.h2`
-    font-weight: 10px;
-    `;
 
-    const FormDiv = styled.div`
-    width: 90%;
-    `
-    const FormLabel = styled.label`
-    font-weight: 7px
-    `
-    const FormInput = styled.input`
-    width: 100%
-    `
+    return (
+        <Container style={{ maxWidth: "600px", marginTop: "2rem" }}>
+            <h2>REGISTER</h2>
+            <Form noValidate validated={validated} onSubmit={handleSubmit}>
+                <Form.Group controlId="formUsername" className="mb-3">
+                    <Form.Label>Username</Form.Label>
+                    <Form.Control
+                        type="text"
+                        placeholder="Enter your username"
+                        value={form.username}
+                        onChange={(e) => setForm({ ...form, username: e.target.value })}
+                        required
+                    />
+                    <Form.Control.Feedback type="invalid">
+                        This field is required
+                    </Form.Control.Feedback>
+                </Form.Group>
 
-    const ErrorBox = styled.div`
-    color: red;
-    `
-    const SubmitButton = styled.button`
-    background: green;
-    width: 80px;
-    `
+                <Form.Group controlId="formFirstName" className="mb-3">
+                    <Form.Label>First Name</Form.Label>
+                    <Form.Control
+                        type="text"
+                        placeholder="Enter First Name"
+                        value={form.first_name}
+                        onChange={(e) => setForm({ ...form, first_name: e.target.value })}
+                        required
+                    />
+                </Form.Group>
 
-  return (
-    <FormContainer validated={validated} onSubmit={handleSubmit}>
-        <FormTitle>REGISTER</FormTitle>
-        <FormDiv>
-            <FormLabel>Username</FormLabel>
-            <FormInput
-            type="text"
-            placeholder="Enter your username..."
-            value={form.username}
-            onChange={(e)=>setForm({...form, username: e.target.value })}
-            required
-            />
-            {/* <Form.Control.Feedback type="invalid">
-                This Field is required
-            </Form.Control.Feedback> */}
-        </FormDiv>
-        <FormDiv>
-            <FormLabel>First Name</FormLabel>
-            <FormInput
-            value={form.first_name}
-            onChange={(e)=>setForm({...form, first_name: e.target.value})}
-            required
-            type="text"
-            placeholder="Enter First Name"
-            />
-        </FormDiv>
-        <FormDiv>
-            <FormLabel>Last Name</FormLabel>
-            <FormInput
-            value={form.last_name}
-            onChange={(e)=>setForm({...form, last_name: e.target.value})}
-            required
-            type="text"
-            placeholder="Enter Last Name"
-            />
-        </FormDiv>
-        <FormDiv>
-            <FormLabel>Email</FormLabel>
-            <FormInput
-            value={form.email}
-            onChange={(e)=>setForm({...form, email: e.target.value})}
-            required
-            type="email"
-            placeholder="Enter email"
-            />
-        </FormDiv>
-        <FormDiv>
-            <FormLabel>Password</FormLabel>
-            <FormInput
-            value={form.password}
-            minLength="8"
-            onChange={(e)=>setForm({...form, password: e.target.value})}
-            required
-            type="password"
-            placeholder="Enter password"
-            />
-        </FormDiv>
-        <FormDiv>
-            <FormLabel>Bio</FormLabel>
-            <FormInput
-            value={form.bio}
-            onChange={(e)=>setForm({...form, bio: e.target.value})}
-            as="textarea"
-            row={3}
-            placeholder="Enter bio...(optional)"
-            />
-        </FormDiv>
-        <ErrorBox>{error && <p>{error}</p>}</ErrorBox>
-        <SubmitButton>submit</SubmitButton>
-    </FormContainer>
-)
-}
+                <Form.Group controlId="formLastName" className="mb-3">
+                    <Form.Label>Last Name</Form.Label>
+                    <Form.Control
+                        type="text"
+                        placeholder="Enter Last Name"
+                        value={form.last_name}
+                        onChange={(e) => setForm({ ...form, last_name: e.target.value })}
+                        required
+                    />
+                </Form.Group>
 
-export default RegistrationForm
+                <Form.Group controlId="formEmail" className="mb-3">
+                    <Form.Label>Email</Form.Label>
+                    <Form.Control
+                        type="email"
+                        placeholder="Enter email"
+                        value={form.email}
+                        onChange={(e) => setForm({ ...form, email: e.target.value })}
+                        required
+                    />
+                </Form.Group>
+
+                <Form.Group controlId="formPassword" className="mb-3">
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control
+                        type="password"
+                        placeholder="Enter password"
+                        minLength="8"
+                        value={form.password}
+                        onChange={(e) => setForm({ ...form, password: e.target.value })}
+                        required
+                    />
+                    <Form.Control.Feedback type="invalid">
+                        Password must be at least 8 characters.
+                    </Form.Control.Feedback>
+                </Form.Group>
+
+                <Form.Group controlId="formBio" className="mb-3">
+                    <Form.Label>Bio</Form.Label>
+                    <Form.Control
+                        as="textarea"
+                        rows={3}
+                        placeholder="Enter bio... (optional)"
+                        value={form.bio}
+                        onChange={(e) => setForm({ ...form, bio: e.target.value })}
+                    />
+                </Form.Group>
+
+                {error && <Alert variant="danger">{error}</Alert>}
+
+                <Button variant="success" type="submit">
+                    Submit
+                </Button>
+            </Form>
+        </Container>
+    );
+};
+
+export default RegistrationForm;
