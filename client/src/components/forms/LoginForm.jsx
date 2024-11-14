@@ -11,9 +11,9 @@ const LoginForm = () => {
 
     const handleSubmit =(event)=>{
         event.preventDefault();
-        const registrationForm = event.currentTarget;
+        const loginForm = event.currentTarget;
 
-        if (registrationForm.checkValidity()=== false){
+        if (loginForm.checkValidity()=== false){
             event.stopPropagation();
         };
 
@@ -21,11 +21,8 @@ const LoginForm = () => {
 
         const userData = {
             username : form.username,
-            first_name: form.first_name,
-            last_name: form.last_name,
             password: form.password,
-            email: form.email,
-            bio: form.bio
+            // email: form.email,
         };
 
         axios.post("http://localhost/8000/api/auth/login/", userData).then((res)=>{
@@ -43,7 +40,7 @@ const LoginForm = () => {
     };
     const FormContainer = styled.div`
     width: 80vw;
-    height: 70vh;
+    height: auto;
     display: grid;
     border: solid 2px grey;
     align-items: center;

@@ -41,7 +41,7 @@ const RegistrationForm = () => {
             }
         });
     };
-    const FormContainer = styled.div`
+    const FormContainer = styled.form`
     width: 80vw;
     height: auto;
     display: grid;
