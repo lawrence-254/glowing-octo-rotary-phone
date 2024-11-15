@@ -44,7 +44,7 @@ const RegistrationForm = () => {
     return (
         <Container style={{ maxWidth: "600px", marginTop: "2rem" }}>
             <h2>REGISTER</h2>
-            <Form noValidate validated={validated} onSubmit={handleSubmit}>
+            <Form id="registration-form" className="border p-4 rounded" noValidate validated={validated} onSubmit={handleSubmit}>
                 <Form.Group controlId="formUsername" className="mb-3">
                     <Form.Label>Username</Form.Label>
                     <Form.Control

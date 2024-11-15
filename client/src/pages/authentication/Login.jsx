@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import LoginForm from "../components/forms/LoginForm"; 
+import LoginForm from "../../components/forms/LoginForm"; 
 import { Container, Row, Col, Button, Card } from "react-bootstrap";
 
 const Login = () => {

@@ -2,8 +2,8 @@ import React from 'react';
 import {Route, Routes} from "react-router-dom";
 import ProtectedRoutes from "./routes/ProtectedRoutes";
 import Home from "./pages/Home";
-import Registration from './pages/Registration';
-import Login from './pages/Login';
+import Registration from './pages/authentication/Registration';
+import Login from './pages/authentication/Login';
 
 const App = () => {
   return (
