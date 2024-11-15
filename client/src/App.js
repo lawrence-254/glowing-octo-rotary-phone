@@ -9,8 +9,6 @@ const App = () => {
   return (
     <div>
       <Routes>
-        <Route path="/login/" element={<Login/>}/>
-        <Route path="/register/" element={<Registration/>}/>
         {/* protected routes and requires authentication */}
         <Route path='/' element={
           <ProtectedRoutes>
@@ -18,6 +16,8 @@ const App = () => {
           </ProtectedRoutes>
           }/>
           {/* end of protected routes */}
+          <Route path="/login/" element={<Login/>}/>
+          <Route path="/register/" element={<Registration/>}/>
       </Routes>
     </div>
   )
