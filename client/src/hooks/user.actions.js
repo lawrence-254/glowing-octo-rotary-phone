@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 function useUserActions() {
     const navigate = useNavigate();
-    const baseURL = "/api";
+    const baseURL = "http;//localhost:8000/api";
 
     return {
         register,
@@ -31,6 +31,8 @@ function useUserActions() {
             });
     }
 
+  
+
     function login(data) {
         return axios.post(`${baseURL}/auth/login/`, data)
             .then((res) => {
@@ -38,7 +40,7 @@ function useUserActions() {
                 navigate('/');
             })
             .catch((error) => {
-                console.error("Login error:", error);
+                console.error("Login error:", error.message);
                 throw error;
             });
     }

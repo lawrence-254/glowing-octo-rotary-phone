@@ -1,46 +1,78 @@
 import React, { useState } from "react";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Form, Button, Container, Alert } from "react-bootstrap";
-import { useUserActions } from "../../hooks/user.actions";
+// import { useUserActions } from "../../hooks/user.actions";
+import axios from "axios"
 
 const LoginForm = () => {
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
     const [validated, setValidated] = useState(false);
     const [form, setForm] = useState({});
     const [error, setError] = useState(null);
-    const userActions = useUserActions();
+    // const userActions = useUserActions();
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
+    // const handleSubmit = (event) => {
+    //     event.preventDefault();
+    //     const loginForm = event.currentTarget;
+
+    //     if (loginForm.checkValidity() === false) {
+    //         event.stopPropagation();
+    //     } else {
+    //         const userData = {
+    //             email: form.email,
+    //             password: form.password,
+    //         };
+
+    //         userActions.login(userData).catch((err) => {
+    //             setError(err.request.response);
+    //             console.log("login error", error)
+    //         });
+    //     }
+
+    //     setValidated(true);
+    // };
+
+
+    const handleSubmit = (event)=>{
+        event.preventDefault()
         const loginForm = event.currentTarget;
 
-        if (loginForm.checkValidity() === false) {
+        if (loginForm.checkValidity()===false){
             event.stopPropagation();
-        } else {
-            const userData = {
-                username: form.username,
-                password: form.password,
-            };
+        };
+        setValidated(true);
 
-            userActions.login(userData).catch((err) => {
-                setError(err?.response?.data?.message || "An error occurred.");
-            });
+        const userData = {
+            email: form.email,
+            password: form.password,
         }
 
-        setValidated(true);
-    };
+        axios.post("http://localhost:8000/api/auth/login/", userData).then((res)=>{
+            localStorage.setItem("auth", JSON.stringify({
+                access: res.data.access,
+                refresh: res.data.refresh,
+                user: res.data.user,
+            }));
+            navigate("/");
+        }).catch((err)=>{
+            if (err.message){
+                setError(err.request.response);
+                console.log("login error", error)
+            }
+        })
+    }
 
     return (
         <Container style={{ maxWidth: "400px", marginTop: "2rem" }}>
             <h2>Login</h2>
             <Form id="login-form" noValidate validated={validated} onSubmit={handleSubmit} className="border p-4 rounded">
                 <Form.Group controlId="formUsername" className="mb-3">  
-                    <Form.Label>Username</Form.Label>
+                    <Form.Label>Email</Form.Label>
                     <Form.Control
                         type="text"
                         placeholder="Enter your username..."
-                        value={form.username}
-                        onChange={(e) => setForm({ ...form, username: e.target.value })}
+                        value={form.email}
+                        onChange={(e) => setForm({ ...form, email: e.target.value })}
                         required
                     />
                     <Form.Control.Feedback type="invalid">
