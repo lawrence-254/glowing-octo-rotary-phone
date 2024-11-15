@@ -33,8 +33,8 @@ const LoginForm = () => {
     return (
         <Container style={{ maxWidth: "400px", marginTop: "2rem" }}>
             <h2>Login</h2>
-            <Form noValidate validated={validated} onSubmit={handleSubmit}>
-                <Form.Group controlId="formUsername" className="mb-3">
+            <Form noValidate validated={validated} onSubmit={handleSubmit} className="border p-4 rounded">
+                <Form.Group controlId="formUsername" className="mb-3">  
                     <Form.Label>Username</Form.Label>
                     <Form.Control
                         type="text"
@@ -62,9 +62,9 @@ const LoginForm = () => {
                         Password must be at least 8 characters.
                     </Form.Control.Feedback>
                 </Form.Group>
-
-                {error && <Alert variant="danger">{error}</Alert>}
-
+                <div className="text-content text-danger">
+                    {error && <Alert variant="danger">{error}</Alert>}
+                </div>
                 <Button variant="primary" type="submit">
                     Submit
                 </Button>
