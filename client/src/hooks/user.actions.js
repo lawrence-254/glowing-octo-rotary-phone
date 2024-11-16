@@ -118,7 +118,7 @@ function getAccessToken(){
     return auth.access;
 };
 
-function getRfreshToken(){
+function getRefreshToken(){
     const auth = JSON.parse(localStorage.getItem("auth"));
     return auth.refresh;
 };
@@ -133,3 +133,5 @@ function setUserData(res){
     })
 );
 }
+
+export {useUserActions, getUser, getAccessToken, getRefreshToken }
