@@ -44,13 +44,19 @@ function getUser(){
 };
 
 function getAccessToken(){
-    const auth = JSON.parse(localStorage.getItme("auth"));
-    return auth.access;
+    const auth = JSON.parse(localStorage.getItem("auth"));
+    if (auth){
+        return auth.access;
+    }
+    return false
 };
 
 function getRefreshToken(){
     const auth = JSON.parse(localStorage.getItem("auth"));
-    return auth.refresh;
+    if (auth){
+        return auth.refresh;
+    }
+    return false
 };
 
 //setting access token and user property

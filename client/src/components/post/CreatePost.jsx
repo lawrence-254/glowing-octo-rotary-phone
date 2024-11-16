@@ -13,7 +13,25 @@ function CreatePost(){
 
     const handleSubmit = (event)=>{
         event.preventDefault()
-        
+        const createPostForm = event.currentTarget;
+
+        if (createPostForm.checkValidity()===false){
+            event.stopPropagation();
+        }
+        setValidated(true);
+
+        const formData = {
+            author: user.id,
+            title: form.title,
+            body: form.body,
+            image: form.image
+        }
+        axiosService.post("/post/", formData).then(()=>{
+            handleClose();
+            setForm({});
+        }).catch((err)=>{
+            console.log(err)
+        })
     }
     return(
         <>
@@ -48,9 +66,9 @@ function CreatePost(){
                         </Form.Group>
                         <Form.Group>
                             <Form.Control
-                            name="picture"
-                            value={form.picture}
-                            onChange={(e)=>setForm({...form, picture: e.target.value})}
+                            name="image"
+                            value={form.image}
+                            onChange={(e)=>setForm({...form, image: e.target.value})}
                             type="file"
                             />
                         </Form.Group>

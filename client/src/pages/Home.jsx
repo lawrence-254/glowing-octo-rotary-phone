@@ -2,6 +2,7 @@ import styled from "styled-components"
 import {getUser} from "../hooks/user.actions"
 import React from 'react'
 import Layout from "../components/navigation/Layout"
+import CreatePost from "../components/post/CreatePost"
 
 const HomeContainerMain = styled.div`
 align-items: center;
@@ -17,10 +18,7 @@ alignSelf: center
 
 const Home = () => {
 
-  const user= getUser()
-
-  console.log("user", user);
-  
+  const user= getUser()  
   
   return (
     <Layout>
@@ -28,7 +26,7 @@ const Home = () => {
         <HomeTitle>
             {user.username}
         </HomeTitle>
-        Home
+        <CreatePost/>
     </HomeContainerMain>
     </Layout>
   )
