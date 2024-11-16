@@ -37,7 +37,10 @@ function useUserActions(){
 //fetch user
 function getUser(){
     const auth = JSON.parse(localStorage.getItem("auth"));
-    return auth.user;
+    if (auth){
+        return auth.user;
+    }
+    return false
 };
 
 function getAccessToken(){

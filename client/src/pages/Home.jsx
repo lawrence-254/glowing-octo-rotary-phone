@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import {getUser} from "../hooks/user.actions"
-import Navbar from "../components/navbar/Navbar"
+import Navbar from "../components/navigation/Navbar"
 
 
 import React from 'react'
