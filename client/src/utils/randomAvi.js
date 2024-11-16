@@ -1,0 +1,1 @@
+export const randomAvi = () => `https://i.pravatar.cc/300?img=${Math.ceil(Math.random() * 60)}`
