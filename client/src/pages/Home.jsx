@@ -22,7 +22,9 @@ alignSelf: center
 const Home = () => {
 
   const user= getUser()  
-  
+  if (!user){
+    return<>Loading...</>
+  }
   return (
     <Layout>
     <HomeContainerMain>
