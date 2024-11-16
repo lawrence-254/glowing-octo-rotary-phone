@@ -1,9 +1,7 @@
 import styled from "styled-components"
 import {getUser} from "../hooks/user.actions"
-import Navbar from "../components/navigation/Navbar"
-
-
 import React from 'react'
+import Layout from "../components/navigation/Layout"
 
 const HomeContainerMain = styled.div`
 align-items: center;
@@ -25,13 +23,14 @@ const Home = () => {
   
   
   return (
+    <Layout>
     <HomeContainerMain>
-      <Navbar />
         <HomeTitle>
             {user.username}
         </HomeTitle>
         Home
     </HomeContainerMain>
+    </Layout>
   )
 }
 
