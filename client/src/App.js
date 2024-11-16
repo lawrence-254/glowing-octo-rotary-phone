@@ -11,9 +11,9 @@ const App = () => {
       <Routes>
         {/* protected routes and requires authentication */}
         <Route path='/' element={
-          <ProtectedRoutes>
+          // <ProtectedRoutes>
             <Home/>
-          </ProtectedRoutes>
+          ///* </ProtectedRoutes> */}
           }/>
           {/* end of protected routes */}
           <Route path="/login/" element={<Login/>}/>

@@ -11,26 +11,6 @@ const LoginForm = () => {
     const [error, setError] = useState(null);
     const userActions = useUserActions();
 
-    // const handleSubmit = (event) => {
-    //     event.preventDefault();
-    //     const loginForm = event.currentTarget;
-
-    //     if (loginForm.checkValidity() === false) {
-    //         event.stopPropagation();
-    //     } else {
-    //         const userData = {
-    //             email: form.email,
-    //             password: form.password,
-    //         };
-
-    //         userActions.login(userData).catch((err) => {
-    //             setError(err.request.response);
-    //             console.log("login error", error)
-    //         });
-    //     }
-
-    //     setValidated(true);
-    // };
 
 
     const handleSubmit = (event)=>{
@@ -46,19 +26,11 @@ const LoginForm = () => {
             email: form.email,
             password: form.password,
         }
-
-        // axios.post("http://localhost:8000/api/auth/login/", userData).then((res)=>{
-        //     localStorage.setItem("auth", JSON.stringify({
-        //         access: res.data.access,
-        //         refresh: res.data.refresh,
-        //         user: res.data.user,
-        //     }));
-        //     navigate("/");
-        // })
-        userActions.login(userData).catch((err)=>{
+        userActions.login(userData)
+        .catch((err)=>{
             if (err.message){
-                setError(err.request.response);
-                console.log("login error", error);
+                setError(err.request);
+                console.log("login error", err);
             }
         })
     }

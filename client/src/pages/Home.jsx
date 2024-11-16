@@ -1,4 +1,6 @@
 import styled from "styled-components"
+import {getUser} from "../hooks/user.actions"
+
 
 import React from 'react'
 
@@ -12,10 +14,16 @@ alignSelf: center
 `
 
 const Home = () => {
+
+  const user= getUser()
+
+  console.log("user", user);
+  
+  
   return (
     <HomeContainerMain>
         <HomeTitle>
-            prof
+            {user.username}
         </HomeTitle>
         Home
     </HomeContainerMain>
