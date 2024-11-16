@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Form, Button, Container, Alert } from "react-bootstrap";
-// import { useUserActions } from "../../hooks/user.actions";
+import { useUserActions } from "../../hooks/user.actions";
 import axios from "axios"
 
 const LoginForm = () => {
@@ -9,7 +9,7 @@ const LoginForm = () => {
     const [validated, setValidated] = useState(false);
     const [form, setForm] = useState({});
     const [error, setError] = useState(null);
-    // const userActions = useUserActions();
+    const userActions = useUserActions();
 
     // const handleSubmit = (event) => {
     //     event.preventDefault();
@@ -47,17 +47,18 @@ const LoginForm = () => {
             password: form.password,
         }
 
-        axios.post("http://localhost:8000/api/auth/login/", userData).then((res)=>{
-            localStorage.setItem("auth", JSON.stringify({
-                access: res.data.access,
-                refresh: res.data.refresh,
-                user: res.data.user,
-            }));
-            navigate("/");
-        }).catch((err)=>{
+        // axios.post("http://localhost:8000/api/auth/login/", userData).then((res)=>{
+        //     localStorage.setItem("auth", JSON.stringify({
+        //         access: res.data.access,
+        //         refresh: res.data.refresh,
+        //         user: res.data.user,
+        //     }));
+        //     navigate("/");
+        // })
+        userActions.login(userData).catch((err)=>{
             if (err.message){
                 setError(err.request.response);
-                console.log("login error", error)
+                console.log("login error", error);
             }
         })
     }

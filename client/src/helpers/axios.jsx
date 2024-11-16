@@ -10,10 +10,10 @@ const axiosService = axios.create({
 });
 
 axiosService.interceptors.request.use(async (config) => {
-    const accessToken = getAccessToken();
-    if (accessToken) {
-        config.headers.Authorization = `Bearer ${accessToken}`;
-    }
+    // const accessToken = getAccessToken();
+    // if (accessToken) {
+    config.headers.Authorization = `Bearer ${getAccessToken()}`;
+    // }
     return config;
 });
 
@@ -29,7 +29,7 @@ const refreshAuthLogic = async (failedRequest) => {
         },
     }).then((resp) => {
         const { access, refresh, user } = resp.data;
-        failedRequest.response.config.headers["Authorization"] = `Bearer ${access}`;
+        failedRequest.response.config.headers["Authorization"] = "Bearer " + access;
         localStorage.setItem("auth", JSON.stringify({ access, refresh, user }));
         return Promise.resolve();
     }).catch(() => {
