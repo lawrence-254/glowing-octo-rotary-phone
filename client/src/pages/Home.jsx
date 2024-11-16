@@ -3,7 +3,6 @@ import {getUser} from "../hooks/user.actions"
 import React from 'react'
 import Layout from "../components/navigation/Layout"
 import {Row, Col, Image} from "react-bootstrap"
-import useSWR from "swr"
 import {fetcher} from "../helpers/axios"
 import CreatePost from "../components/post/CreatePost"
 
