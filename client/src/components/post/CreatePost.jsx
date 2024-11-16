@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import {Button, Form, Modal} from "react-bootstrap";
 import axiosService from "../../helpers/axios";
 import {getUser} from "../../hooks/user.actions";
+import Toaster from "./Toast";
 
 function CreatePost(){
     const [show, setShow]= useState(false);
@@ -10,6 +11,10 @@ function CreatePost(){
     const [form, setForm] = useState({})
     const [validated, setValidated]=useState(false)
     const user = getUser();
+
+    const [showToast, setShowToast]= useState(false);
+    const [toastMessage, setToastMessage] = useState("");
+    const [toastType, setToastType] = useState(false)
 
     const handleSubmit = (event)=>{
         event.preventDefault()
@@ -26,11 +31,16 @@ function CreatePost(){
             body: form.body,
             image: form.image
         }
+        console.log(formData)
+
         axiosService.post("/post/", formData).then(()=>{
             handleClose();
+            setToastMessage("Post made");
+            setToastType("success");
             setForm({});
-        }).catch((err)=>{
-            console.log(err)
+        }).catch(()=>{
+            setToastMessage("An Error occured...");
+            setToastType("danger");
         })
     }
     return(
@@ -80,6 +90,13 @@ function CreatePost(){
                     </Button>
                 </Modal.Footer>
             </Modal>
+            <Toaster
+            title="Post!"
+            message={toastMessage}
+            showToast={showToast}
+            type={toastType}
+            onClose={()=>setShowToast(false)}
+            />
         </Form.Group>
         </>
     )

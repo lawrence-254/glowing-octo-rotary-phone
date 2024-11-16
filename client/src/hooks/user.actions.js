@@ -53,10 +53,8 @@ function getAccessToken(){
 
 function getRefreshToken(){
     const auth = JSON.parse(localStorage.getItem("auth"));
-    if (auth){
-        return auth.refresh;
-    }
-    return false
+    if (auth) return auth.refresh;
+   
 };
 
 //setting access token and user property
