@@ -7,6 +7,14 @@ function CreatePost(){
     const [show, setShow]= useState(false);
     const handleClose=()=>setShow(false);
     const handleShow=()=>setShow(true);
+    const [form, setForm] = useState({})
+    const [validated, setValidated]=useState(false)
+    const user = getUser();
+
+    const handleSubmit = (event)=>{
+        event.preventDefault()
+        
+    }
     return(
         <>
         <Form.Group className="my-3 w-75">
@@ -16,7 +24,44 @@ function CreatePost(){
             placeholder="Share with the world"
             onClick={handleShow}
             />
-
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton className="border-0">
+                    <Modal.Title>Make A Post</Modal.Title>
+                </Modal.Header>
+                <Modal.Body className="border-0">
+                    <Form noValidate validated={validated} onSubmit={handleSubmit}>
+                        <Form.Group className="mb-3">
+                            <Form.Control
+                            name="title"
+                            value={form.title}
+                            onChange={(e)=>setForm({...form, title:e.target.value})}
+                            type="text"
+                            />
+                        </Form.Group>
+                        <Form.Group className="mb-3">
+                            <Form.Control
+                            name="body"
+                            value={form.body}
+                            onChange={(e)=>setForm({...form, body:e.target.value})}
+                            as="textarea"
+                            />
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Control
+                            name="picture"
+                            value={form.picture}
+                            onChange={(e)=>setForm({...form, picture: e.target.value})}
+                            type="file"
+                            />
+                        </Form.Group>
+                    </Form>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="primary" onClick={handleSubmit} disabled={form.body === undefined}>
+                        Post
+                    </Button>
+                </Modal.Footer>
+            </Modal>
         </Form.Group>
         </>
     )
