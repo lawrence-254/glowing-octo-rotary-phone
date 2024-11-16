@@ -10,10 +10,7 @@ const axiosService = axios.create({
 });
 
 axiosService.interceptors.request.use(async (config) => {
-    // const accessToken = getAccessToken();
-    // if (accessToken) {
     config.headers.Authorization = `Bearer ${getAccessToken()}`;
-    // }
     return config;
 });
 

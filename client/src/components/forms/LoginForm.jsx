@@ -1,11 +1,8 @@
 import React, { useState } from "react";
-// import { useNavigate } from "react-router-dom";
 import { Form, Button, Container, Alert } from "react-bootstrap";
 import { useUserActions } from "../../hooks/user.actions";
-// import axios from "axios"
 
 const LoginForm = () => {
-    // const navigate = useNavigate();
     const [validated, setValidated] = useState(false);
     const [form, setForm] = useState({});
     const [error, setError] = useState(null);
@@ -29,8 +26,7 @@ const LoginForm = () => {
         userActions.login(userData)
         .catch((err)=>{
             if (err.message){
-                setError(err.request);
-                console.log("login error", err);
+                setError(err);
             }
         })
     }

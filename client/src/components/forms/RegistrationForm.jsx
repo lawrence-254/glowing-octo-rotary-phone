@@ -34,7 +34,7 @@ const RegistrationForm = () => {
                     navigate("/");
                 })
                 .catch((err) => {
-                    setError(err.response?.data?.message || "An error occurred.");
+                    setError(err || "An error occurred.");
                 });
         }
 

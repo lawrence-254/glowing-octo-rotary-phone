@@ -13,9 +13,7 @@ function useUserActions(){
 
     function login(data){
         return axios.post(`${baseURL}/auth/login/`, data).then((res)=>{
-            console.log("res", res)
             setUserData(res);
-            console.log("set", res.data.user)
             navigate('/');
 
         });
@@ -23,7 +21,7 @@ function useUserActions(){
 
     function register(data){
         return axios.post(`${baseURL}/auth/register/`, data).then((res)=>{
-            setUserData(data);
+            setUserData(res);
             navigate('/');
         });
     };
