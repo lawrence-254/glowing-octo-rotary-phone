@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Form, Button, Container, Alert } from "react-bootstrap";
+import "../../css/components/forms/RegisterForm.css";
 
 const RegistrationForm = () => {
     const navigate = useNavigate();
@@ -12,7 +13,7 @@ const RegistrationForm = () => {
         last_name: "",
         password: "",
         email: "",
-        bio: ""
+        bio: "",
     });
     const [error, setError] = useState(null);
 
@@ -24,13 +25,17 @@ const RegistrationForm = () => {
             event.stopPropagation();
         } else {
             const userData = { ...form };
-            axios.post("http://localhost:8000/api/auth/register/", userData)
+            axios
+                .post("http://localhost:8000/api/auth/register/", userData)
                 .then((res) => {
-                    localStorage.setItem("auth", JSON.stringify({
-                        access: res.data.access,
-                        refresh: res.data.refresh,
-                        user: res.data.user
-                    }));
+                    localStorage.setItem(
+                        "auth",
+                        JSON.stringify({
+                            access: res.data.access,
+                            refresh: res.data.refresh,
+                            user: res.data.user,
+                        })
+                    );
                     navigate("/");
                 })
                 .catch((err) => {
@@ -42,20 +47,27 @@ const RegistrationForm = () => {
     };
 
     return (
-        <Container style={{ maxWidth: "600px", marginTop: "2rem" }}>
+        <Container className="registration-container">
             <h2>REGISTER</h2>
-            <Form id="registration-form" className="border p-4 rounded" noValidate validated={validated} onSubmit={handleSubmit}>
+            <Form
+                id="registration-form"
+                noValidate
+                validated={validated}
+                onSubmit={handleSubmit}
+            >
                 <Form.Group controlId="formUsername" className="mb-3">
                     <Form.Label>Username</Form.Label>
                     <Form.Control
                         type="text"
                         placeholder="Enter your username"
                         value={form.username}
-                        onChange={(e) => setForm({ ...form, username: e.target.value })}
+                        onChange={(e) =>
+                            setForm({ ...form, username: e.target.value })
+                        }
                         required
                     />
                     <Form.Control.Feedback type="invalid">
-                        This field is required
+                        This field is required.
                     </Form.Control.Feedback>
                 </Form.Group>
 
@@ -65,7 +77,9 @@ const RegistrationForm = () => {
                         type="text"
                         placeholder="Enter First Name"
                         value={form.first_name}
-                        onChange={(e) => setForm({ ...form, first_name: e.target.value })}
+                        onChange={(e) =>
+                            setForm({ ...form, first_name: e.target.value })
+                        }
                         required
                     />
                 </Form.Group>
@@ -76,7 +90,9 @@ const RegistrationForm = () => {
                         type="text"
                         placeholder="Enter Last Name"
                         value={form.last_name}
-                        onChange={(e) => setForm({ ...form, last_name: e.target.value })}
+                        onChange={(e) =>
+                            setForm({ ...form, last_name: e.target.value })
+                        }
                         required
                     />
                 </Form.Group>
@@ -87,7 +103,9 @@ const RegistrationForm = () => {
                         type="email"
                         placeholder="Enter email"
                         value={form.email}
-                        onChange={(e) => setForm({ ...form, email: e.target.value })}
+                        onChange={(e) =>
+                            setForm({ ...form, email: e.target.value })
+                        }
                         required
                     />
                 </Form.Group>
@@ -99,7 +117,9 @@ const RegistrationForm = () => {
                         placeholder="Enter password"
                         minLength="8"
                         value={form.password}
-                        onChange={(e) => setForm({ ...form, password: e.target.value })}
+                        onChange={(e) =>
+                            setForm({ ...form, password: e.target.value })
+                        }
                         required
                     />
                     <Form.Control.Feedback type="invalid">
@@ -114,7 +134,9 @@ const RegistrationForm = () => {
                         rows={3}
                         placeholder="Enter bio... (optional)"
                         value={form.bio}
-                        onChange={(e) => setForm({ ...form, bio: e.target.value })}
+                        onChange={(e) =>
+                            setForm({ ...form, bio: e.target.value })
+                        }
                     />
                 </Form.Group>
 
