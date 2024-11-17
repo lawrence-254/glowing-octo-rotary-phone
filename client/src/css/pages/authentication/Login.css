@@ -1,0 +1,56 @@
+/* Login.css */
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  
+  .login-row {
+    width: 100%;
+    display: flex;
+  }
+  
+  .left-column {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 2rem;
+  }
+  
+  .right-column {
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 2rem;
+  }
+  
+  .left-column h1 {
+    margin-bottom: 1.5rem;
+  }
+  
+  .left-column p {
+    margin-bottom: 1rem;
+    color: #6c757d; /* Bootstrap's .text-muted */
+  }
+  
+  .button-link {
+    text-decoration: none;
+  }
+  
+  .card {
+    width: 100%;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    background-color: #fff;
+  }
+  
+  .card-body {
+    padding: 0;
+  }
+  
