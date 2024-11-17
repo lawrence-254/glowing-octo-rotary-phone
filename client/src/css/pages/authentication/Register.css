@@ -1,0 +1,67 @@
+/* Registration.css */
+
+/* Full-screen container with centering */
+.registration-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  
+  .registration-row {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  /* Left Column */
+  .left-column {
+    width: 100%;
+    max-width: 500px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  
+  .left-column h1 {
+    color: #007bff;
+    margin-bottom: 1.5rem;
+  }
+  
+  .left-column p {
+    color: #6c757d;
+    margin-bottom: 1rem;
+  }
+  
+  .left-column .link {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .left-column .link:hover {
+    text-decoration: underline;
+  }
+  
+  /* Right Column (Registration Form) */
+  .right-column {
+    width: 100%;
+    max-width: 500px;
+    padding: 2rem;
+  }
+  
+  .registration-card {
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 2rem;
+  }
+  
+  /* Form container inside the card */
+  .registration-form-container {
+    padding-top: 2rem;
+  }
+  
