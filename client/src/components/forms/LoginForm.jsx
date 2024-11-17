@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Form, Button, Container, Alert } from "react-bootstrap";
 import { useUserActions } from "../../hooks/user.actions";
+import "./LoginForm.css";
+import '../../css/components/forms/LoginForm.css'
 
 const LoginForm = () => {
     const [validated, setValidated] = useState(false);
@@ -8,34 +10,33 @@ const LoginForm = () => {
     const [error, setError] = useState(null);
     const userActions = useUserActions();
 
-
-
-    const handleSubmit = (event)=>{
-        event.preventDefault()
+    const handleSubmit = (event) => {
+        event.preventDefault();
         const loginForm = event.currentTarget;
 
-        if (loginForm.checkValidity()===false){
+        if (loginForm.checkValidity() === false) {
             event.stopPropagation();
-        };
+        }
         setValidated(true);
 
         const userData = {
             email: form.email,
             password: form.password,
-        }
-        userActions.login(userData)
-        .catch((err)=>{
-            if (err.message){
-                setError(err);
-            }
-        })
-    }
+        };
+        userActions
+            .login(userData)
+            .catch((err) => {
+                if (err.message) {
+                    setError(err);
+                }
+            });
+    };
 
     return (
-        <Container style={{ maxWidth: "400px", marginTop: "2rem" }}>
+        <Container className="login-container">
             <h2>Login</h2>
-            <Form id="login-form" noValidate validated={validated} onSubmit={handleSubmit} className="border p-4 rounded">
-                <Form.Group controlId="formUsername" className="mb-3">  
+            <Form id="login-form" noValidate validated={validated} onSubmit={handleSubmit}>
+                <Form.Group controlId="formUsername">
                     <Form.Label>Email</Form.Label>
                     <Form.Control
                         type="text"
@@ -49,7 +50,7 @@ const LoginForm = () => {
                     </Form.Control.Feedback>
                 </Form.Group>
 
-                <Form.Group controlId="formPassword" className="mb-3">
+                <Form.Group controlId="formPassword">
                     <Form.Label>Password</Form.Label>
                     <Form.Control
                         type="password"
@@ -63,7 +64,7 @@ const LoginForm = () => {
                         Password must be at least 8 characters.
                     </Form.Control.Feedback>
                 </Form.Group>
-                <div className="text-content text-danger">
+                <div className="text-danger">
                     {error && <Alert variant="danger">{error}</Alert>}
                 </div>
                 <Button variant="primary" type="submit">
