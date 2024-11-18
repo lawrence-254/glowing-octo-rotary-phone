@@ -1,21 +1,26 @@
 import React from "react";
-import {Toast, ToastContainer} from "react-bootstrap";
+import "../../css/post/Toast.css";
 
-function Toaster(props){
-    const {showToast, title, message, onClose, type} =props;
+function Toaster(props) {
+  const { showToast, title, message, onClose, type } = props;
 
-    return(
-        <ToastContainer  position="top-center">
-            <Toast onClick={onClose} show={showToast} delay={1500} autohide bg={type}>
-                <Toast.Header>
-                    <strong className="me-auto">{title}</strong>
-                </Toast.Header>
-                <Toast.Body>
-                    <p className="text-white">{message}</p>
-                </Toast.Body>
-            </Toast>
-        </ToastContainer>
+  return (
+    showToast && (
+      <div className={`toast-container ${type}`}>
+        <div className="toast">
+          <div className="toast-header">
+            <strong className="toast-title">{title}</strong>
+            <button className="toast-close" onClick={onClose}>
+              &times;
+            </button>
+          </div>
+          <div className="toast-body">
+            <p>{message}</p>
+          </div>
+        </div>
+      </div>
     )
+  );
 }
 
-export default Toaster
+export default Toaster;
