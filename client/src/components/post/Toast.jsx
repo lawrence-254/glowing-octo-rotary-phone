@@ -1,5 +1,5 @@
 import React from "react";
-import "../../css/post/Toast.css";
+import "../../css/components/post/Toast.css";
 
 function Toaster(props) {
   const { showToast, title, message, onClose, type } = props;

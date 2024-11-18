@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axiosService from "../../helpers/axios";
 import { getUser } from "../../hooks/user.actions";
 import Toaster from "./Toast";
-import "../../css/post/CreatePost.css";
+import "../../css/components/post/CreatePost.css";
 
 function CreatePost() {
   const [show, setShow] = useState(false);
