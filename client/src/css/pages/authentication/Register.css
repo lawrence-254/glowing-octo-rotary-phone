@@ -2,54 +2,59 @@
 
 /* Full-screen container with centering */
 .registration-container {
+  width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    height: 100vh;
   }
   
   .registration-row {
     width: 100%;
     display: flex;
+    flex-direction: row;
     justify-content: center;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    height: 98%;
+
   }
   
   /* Left Column */
-  .left-column {
-    width: 100%;
-    max-width: 500px;
+  .registration-left-column {
+    width: 50%;
     padding: 2rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+    height: 100%;
   }
   
-  .left-column h1 {
+  .registration-left-column h1 {
     color: #007bff;
     margin-bottom: 1.5rem;
   }
   
-  .left-column p {
+  .registration-left-column p {
     color: #6c757d;
     margin-bottom: 1rem;
   }
   
-  .left-column .link {
+  .registration-left-column .link {
     color: #007bff;
     text-decoration: none;
   }
   
-  .left-column .link:hover {
+  .registration-left-column .link:hover {
     text-decoration: underline;
   }
   
   /* Right Column (Registration Form) */
-  .right-column {
-    width: 100%;
-    max-width: 500px;
+  .registration-right-column {
+    width: 50%;
     padding: 2rem;
+    height: 100%;
+
   }
   
   .registration-card {
@@ -65,3 +70,29 @@
     padding-top: 2rem;
   }
   
+@media (max-width: 768px){
+  .registration-row {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: nowrap;
+  }
+  .registration-left-column {
+    width: 100%;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+    background: red;
+    z-index: 1;
+  }
+  .registration-right-column {
+    width: 90%;
+    padding: 2rem;
+    height: fit-content;
+    z-index: -1;
+  }
+}

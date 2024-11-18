@@ -8,7 +8,7 @@ const Registration = () => {
     <div className="registration-container">
       <div className="registration-row">
         {/* Left Column: Title and Link to Login */}
-        <div className="left-column">
+        <div className="registration-left-column">
           <h1>TechWitter</h1>
           <p>Welcome to your tech discussion forum</p>
           <hr />
@@ -17,9 +17,8 @@ const Registration = () => {
             login
           </Link>
         </div>
-
         {/* Right Column: Registration Form */}
-        <div className="right-column">
+        <div className="registration-right-column">
           <div className="registration-card">
             <div className="registration-form-container">
               <RegistrationForm />

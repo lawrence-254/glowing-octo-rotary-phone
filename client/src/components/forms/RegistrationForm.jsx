@@ -47,7 +47,7 @@ const RegistrationForm = () => {
     };
 
     return (
-        <Container className="registration-container">
+        <Container className="registration-form-container">
             <h2>REGISTER</h2>
             <Form
                 id="registration-form"
