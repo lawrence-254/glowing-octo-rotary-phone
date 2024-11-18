@@ -1,13 +1,14 @@
 import React from "react";
 import Navigationbar from "./Navbar";
+import "./Layout.css";
 
-function Layout(props){
-    return(
-        <>
-        <Navigationbar/>
-        <div className='container m-5'>{props.children}</div>
-        </>
-    )
+function Layout(props) {
+  return (
+    <>
+      <Navigationbar />
+      <div className="container">{props.children}</div>
+    </>
+  );
 }
 
 export default Layout;
