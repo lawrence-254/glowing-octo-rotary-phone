@@ -10,7 +10,7 @@ const Login = () => {
         <div className="left-column">
           <h1>TechWitter</h1>
           <p>Welcome to your tech discussion forum</p>
-          <hr />
+          <hr/>
           <p>Don't have an account?</p>
           <Link to="/register/" className="button-link">
             <button className="btn btn-outline-primary btn-lg">REGISTER</button>
