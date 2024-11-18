@@ -32,7 +32,7 @@ const LoginForm = () => {
     };
 
     return (
-        <Container className="login-container">
+        <Container className="login-container container-box">
             <h2>Login</h2>
             <Form id="login-form" noValidate validated={validated} onSubmit={handleSubmit}>
                 <Form.Group controlId="formUsername">

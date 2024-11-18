@@ -7,11 +7,13 @@
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 400px; /* Restricts the container size on larger screens */
+    max-width: 400px; 
     display: flex;
-    flex-direction: column; /* Ensures items stack vertically */
+    flex-direction: column;
 }
-
+.login-container.container-box{
+    background: bisque;
+}
 /* Form Heading */
 .login-container h2 {
     text-align: center;
