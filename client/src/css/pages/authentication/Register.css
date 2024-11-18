@@ -1,98 +1,131 @@
-/* Registration.css */
-
 /* Full-screen container with centering */
 .registration-container {
   width: 100vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
-  .registration-row {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    flex-wrap: nowrap;
-    height: 98%;
+  min-height: 100vh; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f8f9fa;
+  padding: 1rem;
+  box-sizing: border-box; 
+}
 
-  }
-  
-  /* Left Column */
-  .registration-left-column {
-    width: 50%;
-    padding: 2rem;
-    display: flex;
+/* Main row container */
+.registration-row {
+  width: 100%;
+  max-width: 1200px; 
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: nowrap; 
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+}
+
+/* Left Column */
+.registration-left-column {
+  flex: 1; 
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: #f1f1f1;
+  box-sizing: border-box;
+}
+
+.registration-left-column h1 {
+  color: #007bff;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+}
+
+.registration-left-column p {
+  color: #6c757d;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.registration-left-column .link {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.registration-left-column .link:hover {
+  text-decoration: underline;
+}
+
+/* Right Column (Registration Form) */
+.registration-right-column {
+  flex: 1; 
+  padding: 2rem;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.registration-card {
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+/* Form container inside the card */
+.registration-form-container {
+  padding-top: 2rem;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .registration-row {
     flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    height: 100%;
+    align-items: center;
+    height: auto;
+    overflow: visible;
   }
-  
+
+  .registration-left-column,
+  .registration-right-column {
+    width: 100%;
+    padding: 1.5rem;
+    text-align: center;
+    order: 1; 
+  }
+
+  .registration-left-column {
+    color: white;
+  }
+
   .registration-left-column h1 {
-    color: #007bff;
-    margin-bottom: 1.5rem;
-  }
-  
-  .registration-left-column p {
-    color: #6c757d;
+    font-size: 1.8rem;
     margin-bottom: 1rem;
   }
-  
-  .registration-left-column .link {
-    color: #007bff;
-    text-decoration: none;
-  }
-  
-  .registration-left-column .link:hover {
-    text-decoration: underline;
-  }
-  
-  /* Right Column (Registration Form) */
-  .registration-right-column {
-    width: 50%;
-    padding: 2rem;
-    height: 100%;
 
+  .registration-left-column p {
+    font-size: 0.95rem;
   }
-  
-  .registration-card {
-    width: 100%;
-    background-color: #fff;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    padding: 2rem;
+
+  .registration-left-column .link {
+    color: #fff; 
+    font-weight: bold;
   }
-  
-  /* Form container inside the card */
-  .registration-form-container {
-    padding-top: 2rem;
-  }
-  
-@media (max-width: 768px){
-  .registration-row {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    flex-wrap: nowrap;
-  }
-  .registration-left-column {
-    width: 100%;
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: fit-content;
-    background: red;
-    z-index: 1;
-  }
+
   .registration-right-column {
-    width: 90%;
-    padding: 2rem;
-    height: fit-content;
-    z-index: -1;
+    background-color: #f9f9f9;
+    margin-top: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    order: 2;
+  }
+
+  .registration-card {
+    padding: 1.5rem;
   }
 }

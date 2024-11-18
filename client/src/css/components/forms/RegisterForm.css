@@ -1,34 +1,37 @@
-/* Container styling */
+/* Responsive Registration Form Container */
 .registration-form-container {
-    /* max-width: 600px; */
-    width:100%;
+    width: 100%;
+    max-width: 600px; 
     margin: 2rem auto;
-    padding: 1rem;
+    padding: 1.5rem;
     background-color: #fdfdfd;
     border-radius: 8px;
     display: flex;
     flex-direction: column;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
 }
 
-/* Form heading */
+/* Form Heading */
 .registration-form-container h2 {
-    /* text-align: center; */
     margin-bottom: 1.5rem;
     color: #333;
     font-family: "Arial", sans-serif;
     text-transform: uppercase;
     letter-spacing: 1px;
+    font-size: 1.8rem; 
+    text-align: center; 
 }
 
-/* Form labels */
+/* Form Labels */
 .registration-form-container form label {
     font-weight: bold;
     margin-bottom: 0.5rem;
     display: block;
     color: #555;
+    font-size: 1rem;
 }
 
-/* Form inputs */
+/* Form Inputs and Textarea */
 .registration-form-container form input,
 .registration-form-container form textarea {
     width: 100%;
@@ -44,10 +47,16 @@
 .registration-form-container form textarea:focus {
     border-color: #28a745;
     outline: none;
-    box-shadow: 0 0 3px rgba(40, 167, 69, 0.5);
+    box-shadow: 0 0 5px rgba(40, 167, 69, 0.5); 
 }
 
-/* Submit button */
+/* Textarea Resize */
+.registration-form-container form textarea {
+    resize: vertical; 
+    min-height: 120px;
+}
+
+/* Submit Button */
 .registration-form-container .btn-success {
     width: 100%;
     padding: 0.75rem;
@@ -57,14 +66,15 @@
     font-size: 1rem;
     color: white;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .registration-form-container .btn-success:hover {
     background-color: #218838;
+    transform: scale(1.02); 
 }
 
-/* Error alert */
+/* Error Alert */
 .registration-form-container .alert-danger {
     margin-top: 1rem;
     font-size: 0.9rem;
@@ -75,18 +85,31 @@
     border-radius: 4px;
 }
 
-/* Bio field */
-.registration-form-container form textarea {
-    resize: vertical;
-}
-
-/* Responsive adjustments */
+/* Responsive Adjustments */
 @media (max-width: 768px) {
     .registration-form-container {
-        padding: 0.75rem;
+        padding: 1rem; 
     }
 
     .registration-form-container h2 {
         font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .registration-form-container form input,
+    .registration-form-container form textarea {
+        font-size: 0.95rem;
+    }
+
+    .registration-form-container .btn-success {
+        font-size: 0.95rem;
+    }
+}
+
+/* Optional: Ultra-small screen adjustments */
+@media (max-width: 480px) {
+    .registration-form-container h2 {
+        font-size: 1.3rem;
+        letter-spacing: 0.5px; 
     }
 }
