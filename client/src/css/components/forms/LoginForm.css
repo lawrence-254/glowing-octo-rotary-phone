@@ -70,26 +70,26 @@
 /* Responsive Styling for Mobile */
 @media (max-width: 768px) {
     .login-container {
-        margin: 1rem; /* Reduce margins for smaller screens */
-        padding: 1rem; /* Keep padding compact */
-        max-width: 100%; /* Ensure full-width layout on mobile */
+        margin: 1rem;
+        padding: 1rem;
+        max-width: 100%;
     }
 
     .login-container h2 {
-        font-size: 1.5rem; /* Adjust heading size for smaller screens */
+        font-size: 1.5rem;
     }
 
     .login-container form label {
-        font-size: 0.9rem; /* Slightly smaller label text */
+        font-size: 0.9rem;
     }
 
     .login-container form input {
-        padding: 0.5rem; /* Reduce padding for inputs */
-        font-size: 0.9rem; /* Adjust font size */
+        padding: 0.5rem;
+        font-size: 0.9rem;
     }
 
     .login-container .btn-primary {
-        padding: 0.5rem; /* Compact button padding */
-        font-size: 0.9rem; /* Adjust font size */
+        padding: 0.5rem;
+        font-size: 0.9rem;
     }
 }
