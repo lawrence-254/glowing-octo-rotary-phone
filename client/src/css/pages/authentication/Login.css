@@ -1,10 +1,13 @@
 /* Login.css */
 
 .login-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-height: 100vh;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-content: space-around;
   }
   
   .login-row {
@@ -19,6 +22,7 @@
     justify-content: center;
     align-items: flex-start;
     padding: 2rem;
+
   }
   
   .right-column {
@@ -45,9 +49,9 @@
   .card {
     width: 100%;
     padding: 2rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
     border-radius: 8px;
-    background-color: #fff;
+    /* background-color: #fff; */
   }
   
   .card-body {
