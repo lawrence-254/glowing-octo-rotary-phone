@@ -27,7 +27,10 @@ function Post(props){
                         className='image'
                         />
                         <div className='details'>
-                            
+                            <p className='info'>{post.author.name}</p>
+                            <p className='info btm'>
+                                <small>{format(post.created_at)}</small>
+                            </p>
                         </div>
                     </div>
                 </h3>
