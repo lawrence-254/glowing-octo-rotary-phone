@@ -2,6 +2,7 @@ import React,{useState} from 'react';
 import {format}from'timeago.js';
 import { LikeFilled, CommentOutlined, LikeOutlined} from"@ant-design/icons";
 import {Image, Card, Dropdown, Button, Modal, Form} from "react-bootstrap";
+import {Link} from "react-router-dom";
 import axiosService from "../../helpers/axios";
 import Toast from "./Toast"
 
@@ -14,7 +15,7 @@ const MoreToggleIcon = React.foward.Ref(({onClick}, ref)=>(
         e.preventDefault();
         onClick(e);
     }}>
-        <MoreOutlined/>
+        {/* <MoreOutlined/> */}
     </Link>
 ))
 
