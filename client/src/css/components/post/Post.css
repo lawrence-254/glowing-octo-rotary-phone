@@ -60,3 +60,11 @@
     display: flex;
     flex-direction:row;
 }
+
+.card .footer .post-misceleneous .footer-like-outlined-icon{
+    width: 24px;
+    height: 24px;
+    padding: 2pc;
+    font-size: 20px;
+    /* color: boolean(post.liked? #0d6efd : #c4c4c4) */
+}

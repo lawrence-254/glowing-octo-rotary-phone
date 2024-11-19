@@ -8,7 +8,7 @@ import "../../css/components/post/Post.css";
 
 function Post(props){
     const {post,refresh} = props;
-    const handleClick = ()=>{
+    const handleLikeClick = ()=>{
         axiosService.post(`/post/${post.id}/${action}/`).then(()=>{
             refresh();
         }).catch((err)=>console.log(err))
@@ -45,7 +45,16 @@ function Post(props){
             </Card.Body>
             <Card.Footer className="footer">
                 <div className="post-miscleneous">
-
+                    <LikeOutlined className='footer-like-outlined-icon' onClick={()=>{
+                        if (post.liked){
+                            handleLikeClick("remove_like");
+                        }else{
+                            handleLikeClick("like")
+                        }
+                    }}/>
+                    <p>
+                        <small>like</small>
+                    </p>
                 </div>
             </Card.Footer>
         </Card>
