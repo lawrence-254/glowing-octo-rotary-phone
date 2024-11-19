@@ -21,6 +21,7 @@ const MoreToggleIcon = React.foward.Ref(({onClick}, ref)=>(
 
 function Post(props){
     const {post,refresh} = props;
+    const [action, setAction]=useState();
     const handleLikeClick = ()=>{
         axiosService.post(`/post/${post.id}/${action}/`).then(()=>{
             refresh();
