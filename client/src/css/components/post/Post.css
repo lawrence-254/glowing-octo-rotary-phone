@@ -68,3 +68,14 @@
     font-size: 20px;
     /* color: boolean(post.liked? #0d6efd : #c4c4c4) */
 }
+.card .footer .comment-box-trigger{
+    display: flex;
+    flex-direction: row;
+}
+.card .footer .comment-box-trigger .comment-icon{
+    width: 24px;
+    height: 24px;
+    padding: 2px;
+    font-size: 20px;
+    color: #c4c4c4;
+}

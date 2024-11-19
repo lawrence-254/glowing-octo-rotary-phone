@@ -56,6 +56,12 @@ function Post(props){
                         <small>like</small>
                     </p>
                 </div>
+                <div className="comment-box-trigger">
+                    <CommentOutlined className='comment-icon'/>
+                    <p>
+                        <small>comment</small>
+                    </p>
+                </div>
             </Card.Footer>
         </Card>
     )
