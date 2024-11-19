@@ -26,6 +26,9 @@ function Post(props){
                         height={48}
                         className='image'
                         />
+                        <div className='details'>
+                            
+                        </div>
                     </div>
                 </h3>
             </div>
