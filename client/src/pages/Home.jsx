@@ -11,11 +11,13 @@ align-items: center;
 justify-items:center;
 align-contents:center;
 justify-content: center;
+podding-top: 2rem;
 `
 const HomeTitle = styled.h1`
 color: pink;
 display: flex;
 alignSelf: center
+padding:1em;
 `
 
 const Home = () => {
