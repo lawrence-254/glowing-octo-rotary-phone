@@ -1,0 +1,21 @@
+.card {
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+    border-radius: 10px;
+}
+
+.card .body .title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.card .body .title .image-container .image{
+    /* to be added */
+    background: red;
+}
+.card .body .title .image-container .details{
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-start;
+    align-self: center;
+}
