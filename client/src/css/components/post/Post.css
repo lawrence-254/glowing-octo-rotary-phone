@@ -48,3 +48,15 @@
 .card .body .post-reaction .post-reaction-info{
     font-size: 6rem;
 }
+
+.card .footer{
+    display: flex;
+    background: whitesmoke;
+    width:80%;
+    justify-content: space-between;
+}
+
+.card .footer .post-misceleneous{
+    display: flex;
+    flex-direction:row;
+}

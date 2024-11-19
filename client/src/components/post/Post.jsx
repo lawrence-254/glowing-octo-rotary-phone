@@ -14,9 +14,8 @@ function Post(props){
         }).catch((err)=>console.log(err))
     };
     return(
-        <>
         <Card className='card'>
-            <div className="body">
+            <Card.Body className="body">
                 <h3 className="title">
                     <div className='image-container'>
                         <Image
@@ -43,9 +42,13 @@ function Post(props){
                         <small>likes: {post.likes_count}</small>
                     </p>
                 </div>
-            </div>
+            </Card.Body>
+            <Card.Footer className="footer">
+                <div className="post-miscleneous">
+
+                </div>
+            </Card.Footer>
         </Card>
-        </>
     )
 }
 
