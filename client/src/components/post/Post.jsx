@@ -1,10 +1,22 @@
 import React,{useState} from 'react';
 import {format}from'timeago.js';
 import { LikeFilled, CommentOutlined, LikeOutlined} from"@ant-design/icons";
-import {Image, Card, Dropdown} from "react-bootstrap";
+import {Image, Card, Dropdown, Button, Modal, Form} from "react-bootstrap";
 import axiosService from "../../helpers/axios";
+import Toast from "./Toast"
+
 import "../../css/components/post/Post.css";
 
+const MoreToggleIcon = React.foward.Ref(({onClick}, ref)=>(
+    <Link to="#"
+    ref={ref}
+    onClick={(e)=>{
+        e.preventDefault();
+        onClick(e);
+    }}>
+        <MoreOutlined/>
+    </Link>
+))
 
 function Post(props){
     const {post,refresh} = props;
@@ -13,6 +25,7 @@ function Post(props){
             refresh();
         }).catch((err)=>console.log(err))
     };
+
     return(
         <Card className='card'>
             <Card.Body className="body">
