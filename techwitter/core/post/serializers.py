@@ -7,41 +7,46 @@ from core.user.models import User
 from core.user.serializers import UserSerializer
 
 class PostSerializer(AbstractSerializer):
-    author = serializers.SlugRelatedField(queryset=User.objects.all(), slug_field='public_id')
+    author = serializers.SlugRelatedField(
+        queryset=User.objects.all(),
+        slug_field='public_id'
+    )
     liked = serializers.SerializerMethodField()
     likes_count = serializers.SerializerMethodField()
     
     def validate_author(self, value):
         if self.context["request"].user != value:
-            raise ValidationError("You need to have an account to create a post")
+            raise ValidationError("You can only create posts for your own account.")
         return value
     
     def to_representation(self, instance):
         rep = super().to_representation(instance)
-        author = User.objects.get_object_by_public_id(rep["author"])
-        rep["author"] = UserSerializer(author).data
-
+        # Fetch author details by public_id
+        author = User.objects.filter(public_id=rep["author"]).first()
+        if author:
+            rep["author"] = UserSerializer(author).data
         return rep
     
     def update(self, instance, validated_data):
         if not instance.edited:
-            validated_data['edited'] = True
-
+            validated_data['edited'] = True 
         instance = super().update(instance, validated_data)
         return instance
     
     def get_liked(self, instance):
         request = self.context.get('request', None)
-        if request is None or request.user.is_anonymous:
+        if not request or request.user.is_anonymous:
             return False
         return request.user.has_liked(instance)
     
     def get_likes_count(self, instance):
+        # Assuming 'liked_by' is a ManyToMany field
         return instance.liked_by.count()
     
     class Meta:
         model = Post
-        fields = ['id', 'author', 'title', 'image', 'body', 'edited', 'created_at', 'updated_at', 'liked', 'likes_count']
-        read_only_fields = ["edited"]
-
-    
+        fields = [
+            'id', 'author', 'title', 'image', 'body', 'edited', 
+            'created_at', 'updated_at', 'liked', 'likes_count'
+        ]
+        read_only_fields = ['id', 'created_at', 'updated_at', 'edited']

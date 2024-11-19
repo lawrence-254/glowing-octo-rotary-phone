@@ -6,17 +6,26 @@ from rest_framework_simplejwt.exceptions import TokenError, InvalidToken
 
 from core.auth.serializers import LoginSerializer
 
+
 class LoginViewSet(ViewSet):
+    """
+    A ViewSet for handling user login using JWT authentication.
+    """
     serializer_class = LoginSerializer
-    permission_classes = (AllowAny,)
+    permission_classes = [AllowAny]
     http_method_names = ['post']
 
     def create(self, request, *args, **kwargs):
         serializer = self.serializer_class(data=request.data)
         try:
             serializer.is_valid(raise_exception=True)
+            return Response(serializer.validated_data, status=status.HTTP_200_OK)
         except TokenError as e:
-            raise InvalidToken(e.args[0])
-        return Response(
-            serializer.validated_data, status=status.HTTP_200_OK
-        )
+            # Handles invalid token errors
+            raise InvalidToken(detail=str(e))
+        except Exception as e:
+            # General error handling for unexpected exceptions
+            return Response(
+                {"error": "An unexpected error occurred.", "details": str(e)},
+                status=status.HTTP_400_BAD_REQUEST
+            )

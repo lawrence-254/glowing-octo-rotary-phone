@@ -1,4 +1,5 @@
-from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework import status
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.decorators import action
 
@@ -7,21 +8,20 @@ from core.post.models import Post
 from core.post.serializers import PostSerializer
 
 
-
 class PostViewSet(AbstractViewSet):
     http_method_names = ('post', 'get', 'put', 'delete')
-    permission_classes = (IsAuthenticated,)
-    # permission_classes=(AllowAny,)
+    permission_classes = (IsAuthenticated,) 
     serializer_class = PostSerializer
 
     def get_queryset(self):
         return Post.objects.all()
     
     def get_object(self):
-        obj = Post.objects.get_object_by_public_id(self.kwargs['pk'])
-
+        obj = Post.objects.filter(public_id=self.kwargs['pk']).first() 
+        if not obj:
+            from rest_framework.exceptions import NotFound
+            raise NotFound("Post not found")
         self.check_object_permissions(self.request, obj)
-
         return obj
     
     def create(self, request, *args, **kwargs):
@@ -37,8 +37,7 @@ class PostViewSet(AbstractViewSet):
         post = self.get_object()
         user = self.request.user
         user.like(post)
-        serializer = self.serializer_class(post)
-
+        serializer = self.get_serializer(post, context={'request': request})
         return Response(
             serializer.data, status=status.HTTP_200_OK
         )
@@ -47,8 +46,8 @@ class PostViewSet(AbstractViewSet):
     def remove_like(self, request, *args, **kwargs):
         post = self.get_object()
         user = self.request.user
-        user.remove_like(post)
-        serializer = self.serializer_class(post)
+        user.remove_like(post)  # Assuming `remove_like` is a method on the User model
+        serializer = self.get_serializer(post, context={'request': request})
         return Response(
             serializer.data, status=status.HTTP_200_OK
         )
