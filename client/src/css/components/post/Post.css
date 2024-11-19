@@ -26,3 +26,25 @@
 .card .body .title .image-container .details .info.btm{
     font-weight:200;
 }
+.card .body .post-body{
+    font-size: 8rem;
+}
+.card .body .post-reaction{
+    display: flex;
+    flex-direction:row;
+}
+
+.card .body .post-reaction .like-icon{
+    color: #fff;
+    background: #0d6efd;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    font-size: 75%;
+    padding:2px;
+    margin:3px;
+}
+
+.card .body .post-reaction .post-reaction-info{
+    font-size: 6rem;
+}

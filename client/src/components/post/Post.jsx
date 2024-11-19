@@ -34,8 +34,16 @@ function Post(props){
                         </div>
                     </div>
                 </h3>
+                <p className="post-body">
+                    {post.body}
+                </p>
+                <div className="post-reaction">
+                    <LikeFilled className='like-icon'/>
+                    <p className='post-reaction-info'>
+                        <small>likes: {post.likes_count}</small>
+                    </p>
+                </div>
             </div>
-
         </Card>
         </>
     )
