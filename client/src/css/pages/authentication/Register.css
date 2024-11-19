@@ -60,7 +60,7 @@
 /* Right Column (Registration Form) */
 .registration-right-column {
   flex: 1; 
-  padding: 2rem;
+  padding-right: 2rem;
   background-color: #fff;
   display: flex;
   flex-direction: column;
@@ -73,7 +73,7 @@
   background-color: #fff;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-  padding: 2rem;
+  padding-right: 2rem;
   box-sizing: border-box;
 }
 

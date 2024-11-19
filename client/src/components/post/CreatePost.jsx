@@ -51,8 +51,8 @@ function CreatePost() {
       <div className="form-group">
         <input
           className="post-input"
-          type="text"
-          placeholder="Share with the world"
+          type="button"
+          value="Share with the world"
           onClick={handleShow}
         />
         {show && (

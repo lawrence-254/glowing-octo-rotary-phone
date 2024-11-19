@@ -21,7 +21,7 @@ body, html, p, button {
     display: flex;
     justify-content: center;
     width: 90%;
-    max-width: 400px; 
+    max-width: 400px;
   }
   
   /* Toast styles */
@@ -33,6 +33,8 @@ body, html, p, button {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     overflow: hidden;
     animation: fade-in 0.5s ease-out;
+    background: burlywood;
+
   }
   
   /* Toast header */
@@ -45,6 +47,8 @@ body, html, p, button {
     font-weight: bold;
     font-size: 1rem;
     color: white;
+    background: burlywood;
+
   }
   
   .toast-title {
