@@ -16,6 +16,7 @@ const RegistrationForm = () => {
         bio: "",
     });
     const [error, setError] = useState(null);
+    const [fieldErrors, setFieldErrors] = useState({});
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -39,11 +40,16 @@ const RegistrationForm = () => {
                     navigate("/");
                 })
                 .catch((error) => {
-                    if (error.response && error.response.data){
-                        console.log("error response data:", error.response.data)
-                        setError(error.response.data)
-                    }else{
-                        console.log("unexpected error:", error.message)
+                    if (error.response && error.response.data) {
+                        console.log("Error response data:", error.response.data);
+
+                        // Set general errors
+                        setError(error.response.data.non_field_errors || null);
+
+                        // Set field-specific errors
+                        setFieldErrors(error.response.data);
+                    } else {
+                        console.log("Unexpected error:", error.message);
                         setError(error.message || "Unexpected error occurred.");
                     }
                 });
@@ -55,6 +61,7 @@ const RegistrationForm = () => {
     return (
         <Container className="registration-form-container">
             <h2>REGISTER</h2>
+            {error && <Alert variant="danger">{error}</Alert>}
             <Form
                 id="registration-form"
                 noValidate
@@ -71,9 +78,10 @@ const RegistrationForm = () => {
                             setForm({ ...form, username: e.target.value })
                         }
                         required
+                        isInvalid={!!fieldErrors.username}
                     />
                     <Form.Control.Feedback type="invalid">
-                        This field is required.
+                        {fieldErrors.username || "This field is required."}
                     </Form.Control.Feedback>
                 </Form.Group>
 
@@ -87,7 +95,11 @@ const RegistrationForm = () => {
                             setForm({ ...form, first_name: e.target.value })
                         }
                         required
+                        isInvalid={!!fieldErrors.first_name}
                     />
+                    <Form.Control.Feedback type="invalid">
+                        {fieldErrors.first_name || "This field is required."}
+                    </Form.Control.Feedback>
                 </Form.Group>
 
                 <Form.Group controlId="formLastName" className="mb-3">
@@ -100,7 +112,11 @@ const RegistrationForm = () => {
                             setForm({ ...form, last_name: e.target.value })
                         }
                         required
+                        isInvalid={!!fieldErrors.last_name}
                     />
+                    <Form.Control.Feedback type="invalid">
+                        {fieldErrors.last_name || "This field is required."}
+                    </Form.Control.Feedback>
                 </Form.Group>
 
                 <Form.Group controlId="formEmail" className="mb-3">
@@ -113,7 +129,11 @@ const RegistrationForm = () => {
                             setForm({ ...form, email: e.target.value })
                         }
                         required
+                        isInvalid={!!fieldErrors.email}
                     />
+                    <Form.Control.Feedback type="invalid">
+                        {fieldErrors.email || "Please provide a valid email address."}
+                    </Form.Control.Feedback>
                 </Form.Group>
 
                 <Form.Group controlId="formPassword" className="mb-3">
@@ -127,9 +147,10 @@ const RegistrationForm = () => {
                             setForm({ ...form, password: e.target.value })
                         }
                         required
+                        isInvalid={!!fieldErrors.password}
                     />
                     <Form.Control.Feedback type="invalid">
-                        Password must be at least 8 characters.
+                        {fieldErrors.password || "Password must be at least 8 characters."}
                     </Form.Control.Feedback>
                 </Form.Group>
 
@@ -145,8 +166,6 @@ const RegistrationForm = () => {
                         }
                     />
                 </Form.Group>
-
-                {error && <Alert variant="danger">{error}</Alert>}
 
                 <Button variant="success" type="submit">
                     Submit

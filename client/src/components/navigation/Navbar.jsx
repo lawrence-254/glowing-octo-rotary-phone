@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../css/navigation/Navbar.css";
 
 function Navigationbar() {
   const navigate = useNavigate();
+  const [isDropdownVisible, setDropdownVisible] = useState(false);
+
   const handleLogout = () => {
     localStorage.removeItem("auth");
     navigate("/login/");
+  };
+
+  const toggleDropdown = () => {
+    setDropdownVisible(!isDropdownVisible);
   };
 
   return (
@@ -18,8 +24,9 @@ function Navigationbar() {
             src="#"
             alt="User Avatar"
             className="navbar-avatar"
+            onClick={toggleDropdown} // Toggle dropdown visibility on click
           />
-          <ul className="dropdown">
+          <ul className={`dropdown ${isDropdownVisible ? "visible" : ""}`}>
             <li><a href="#">Profile</a></li>
             <li><button onClick={handleLogout}>Logout</button></li>
           </ul>
@@ -30,5 +37,3 @@ function Navigationbar() {
 }
 
 export default Navigationbar;
-
-

@@ -68,12 +68,17 @@ body, html, ul, li, a, button {
     border-radius: 4px;
     overflow: hidden;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: none; 
   }
   
   .dropdown li {
     padding: 0.5rem 1rem;
     color: #333;
     cursor: pointer;
+  }
+
+  .dropdown.visible {
+    display: block;
   }
   
   .dropdown li:hover {
