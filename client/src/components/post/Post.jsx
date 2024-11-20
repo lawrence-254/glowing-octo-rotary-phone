@@ -8,16 +8,16 @@ import Toast from "./Toast"
 
 import "../../css/components/post/Post.css";
 
-const MoreToggleIcon = React.foward.Ref(({onClick}, ref)=>(
-    <Link to="#"
-    ref={ref}
-    onClick={(e)=>{
-        e.preventDefault();
-        onClick(e);
-    }}>
-        {/* <MoreOutlined/> */}
-    </Link>
-))
+// const MoreToggleIcon = React.foward.Ref(({onClick}, ref)=>(
+//     <Link to="#"
+//     ref={ref}
+//     onClick={(e)=>{
+//         e.preventDefault();
+//         onClick(e);
+//     }}>
+//         {/* <MoreOutlined/> */}
+//     </Link>
+// ))
 
 function Post(props){
     const {post,refresh} = props;

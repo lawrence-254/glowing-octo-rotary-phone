@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import LoginForm from "../../components/forms/LoginForm"; 
 import '../../css/pages/authentication/Login.css'
+
 const Login = () => {
   return (
     <div className="login-container">

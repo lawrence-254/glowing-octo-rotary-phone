@@ -1,27 +1,12 @@
 import React from 'react'
-import styled from "styled-components"
 import { getUser } from "../hooks/user.actions"
 import Layout from "../components/navigation/Layout"
-import { Row, Col } from "react-bootstrap"
+import { Row, Col, Container } from "react-bootstrap"
 import useSWR from 'swr'
 import { fetcher } from "../helpers/axios"
 import CreatePost from "../components/post/CreatePost"
 import Post from "../components/post/Post"
-
-const HomeContainerMain = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding-top: 2rem;
-`
-
-const HomeTitle = styled.h1`
-  color: pink;
-  display: flex;
-  align-self: center;
-  padding: 1em;
-`
+import "../css/pages/Home.css"
 
 const Home = () => {
   const user = getUser()  
@@ -33,21 +18,25 @@ const Home = () => {
 
   return (
     <Layout>
-      <HomeContainerMain>
-        <HomeTitle>
-          {user.username}
-        </HomeTitle>
-        <Row>
-          <Col>
-            <CreatePost />
-          </Col>
-        </Row>
-        <Row>
-          {data?.results?.map((p, i) => (
-            <Post key={i} post={p} refresh={mutate} />
-          ))}
-        </Row>
-      </HomeContainerMain>
+      <Container>
+        <div className="home-container-main">
+          <h1 className="home-title">
+            {user.username}
+          </h1>
+          <Row>
+            <Col xs={12} md={8} lg={6}>
+              <CreatePost />
+            </Col>
+          </Row>
+          <Row>
+            {data?.results?.map((p, i) => (
+              <Col key={i} xs={12} sm={6} md={4} lg={3}>
+                <Post post={p} refresh={mutate} />
+              </Col>
+            ))}
+          </Row>
+        </div>
+      </Container>
     </Layout>
   )
 }
