@@ -22,9 +22,11 @@ class LoginViewSet(ViewSet):
             return Response(serializer.validated_data, status=status.HTTP_200_OK)
         except TokenError as e:
             # Handles invalid token errors
+            print(e)
             raise InvalidToken(detail=str(e))
         except Exception as e:
             # General error handling for unexpected exceptions
+            print(e)
             return Response(
                 {"error": "An unexpected error occurred.", "details": str(e)},
                 status=status.HTTP_400_BAD_REQUEST
