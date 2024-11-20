@@ -38,8 +38,14 @@ const RegistrationForm = () => {
                     );
                     navigate("/");
                 })
-                .catch((err) => {
-                    setError(err || "An error occurred.");
+                .catch((error) => {
+                    if (error.response && error.response.data){
+                        console.log("error response data:", error.response.data)
+                        setError(error.response.data)
+                    }else{
+                        console.log("unexpected error:", error.message)
+                        setError(error.message || "Unexpected error occurred.");
+                    }
                 });
         }
 

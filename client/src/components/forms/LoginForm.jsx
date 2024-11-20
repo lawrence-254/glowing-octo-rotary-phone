@@ -24,9 +24,13 @@ const LoginForm = () => {
         };
         userActions
             .login(userData)
-            .catch((err) => {
-                if (err.message) {
-                    setError(err);
+            .catch((error) => {
+                if (error.response && error.response.data){
+                    console.log("error response data:", error.response.data)
+                    setError(error.response.data)
+                }else{
+                    console.log("unexpected error:", error.message)
+                    setError(error.message || "An error occurred.");
                 }
             });
     };
