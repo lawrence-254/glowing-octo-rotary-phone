@@ -10,16 +10,18 @@ import UpdatePost from './UpdatePost';
 
 import "../../css/components/post/Post.css";
 
-const MoreToggleIcon = React.foward.Ref(({onClick}, ref)=>(
-    <Link to="#"
-    ref={ref}
-    onClick={(e)=>{
-        e.preventDefault();
-        onClick(e);
-    }}>
-        <MoreOutlined/>
+const MoreToggleIcon = React.forwardRef(({ onClick }, ref) => (
+    <Link
+        to="#"
+        ref={ref}
+        onClick={(e) => {
+            e.preventDefault();
+            onClick(e);
+        }}
+    >
+        <MoreOutlined />
     </Link>
-))
+));
 
 function Post(props){
     const {post,refresh} = props;
