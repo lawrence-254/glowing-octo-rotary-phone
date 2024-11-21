@@ -6,6 +6,7 @@ import {Link} from "react-router-dom";
 import axiosService from "../../helpers/axios";
 import Toaster from "./Toast"
 import { getUser } from '../../hooks/user.actions';
+import UpdatePost from './UpdatePost';
 
 import "../../css/components/post/Post.css";
 
@@ -62,7 +63,9 @@ function Post(props){
                             <Dropdown>
                                 <Dropdown.Toggle as={MoreToggleIcon}></Dropdown.Toggle>
                                 <Dropdown.Menu>
-                                    <Dropdown.Item>Update</Dropdown.Item>
+                                    <Dropdown.Item>
+                                        <UpdatePost post={post} refresh={refresh}/>
+                                    </Dropdown.Item>
                                     <Dropdown.Item
                                     onClick={handleDelete}
                                     className="dropdown-item">Delete</Dropdown.Item>
