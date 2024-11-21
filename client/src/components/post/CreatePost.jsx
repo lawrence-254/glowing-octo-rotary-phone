@@ -4,7 +4,8 @@ import { getUser } from "../../hooks/user.actions";
 import Toaster from "./Toast";
 import "../../css/components/post/CreatePost.css";
 
-function CreatePost() {
+function CreatePost(props) {
+  const {refresh} = props
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -38,6 +39,7 @@ function CreatePost() {
         setToastType("success");
         setShowToast(true);
         setForm({});
+        refresh();
       })
       .catch(() => {
         setToastMessage("An Error occurred...");
