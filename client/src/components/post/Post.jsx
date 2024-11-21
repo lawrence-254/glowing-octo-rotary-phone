@@ -1,10 +1,11 @@
 import React,{useState} from 'react';
 import {format}from'timeago.js';
-import { LikeFilled, CommentOutlined, LikeOutlined} from"@ant-design/icons";
+import { LikeFilled, CommentOutlined, LikeOutlined, MoreOutlined} from"@ant-design/icons";
 import {Image, Card, Dropdown, Button, Modal, Form} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import axiosService from "../../helpers/axios";
-import Toast from "./Toast"
+import Toaster from "./Toast"
+import { getUser } from '../../hooks/user.actions';
 
 import "../../css/components/post/Post.css";
 
