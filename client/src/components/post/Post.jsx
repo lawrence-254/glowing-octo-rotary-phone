@@ -8,20 +8,28 @@ import Toast from "./Toast"
 
 import "../../css/components/post/Post.css";
 
-// const MoreToggleIcon = React.foward.Ref(({onClick}, ref)=>(
-//     <Link to="#"
-//     ref={ref}
-//     onClick={(e)=>{
-//         e.preventDefault();
-//         onClick(e);
-//     }}>
-//         {/* <MoreOutlined/> */}
-//     </Link>
-// ))
+const MoreToggleIcon = React.foward.Ref(({onClick}, ref)=>(
+    <Link to="#"
+    ref={ref}
+    onClick={(e)=>{
+        e.preventDefault();
+        onClick(e);
+    }}>
+        <MoreOutlined/>
+    </Link>
+))
 
 function Post(props){
     const {post,refresh} = props;
     const [action, setAction]=useState();
+    const [showToast, setShowToast] = useState(false);
+    const user = getUser();
+    const handleDelete = ()=>{
+        axiosService.delete(`/post/${post.id}/`).then(()=>{
+            setShowToast(true);
+            refresh();
+        }).catch((err)=>console.error(err))
+    }
     const handleLikeClick = ()=>{
         axiosService.post(`/post/${post.id}/${action}/`).then(()=>{
             refresh();
@@ -29,6 +37,7 @@ function Post(props){
     };
 
     return(
+        <>
         <Card className='card'>
             <Card.Body className="body">
                 <h3 className="title">
@@ -47,6 +56,19 @@ function Post(props){
                             </p>
                         </div>
                     </div>
+                    {user.name === post.author.name && (
+                        <div>
+                            <Dropdown>
+                                <Dropdown.Toggle as={MoreToggleIcon}></Dropdown.Toggle>
+                                <Dropdown.Menu>
+                                    <Dropdown.Item>Update</Dropdown.Item>
+                                    <Dropdown.Item
+                                    onClick={handleDelete}
+                                    className="dropdown-item">Delete</Dropdown.Item>
+                                </Dropdown.Menu>
+                            </Dropdown>
+                        </div>
+                    )}
                 </h3>
                 <p className="post-body">
                     {post.body}
@@ -79,6 +101,14 @@ function Post(props){
                 </div>
             </Card.Footer>
         </Card>
+        <Toaster
+        title="Post!"
+        message="post deleted"
+        type="danger"
+        showToast={showToast}
+        onClose={()=>setShowToast(false)}
+        />
+        </>
     )
 }
 

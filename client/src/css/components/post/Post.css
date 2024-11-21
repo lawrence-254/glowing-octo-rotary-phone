@@ -26,6 +26,7 @@
 .card .body .title .image-container .details .info.btm{
     font-weight:200;
 }
+
 .card .body .post-body{
     font-size: 8rem;
 }
@@ -78,4 +79,8 @@
     padding: 2px;
     font-size: 20px;
     color: #c4c4c4;
+}
+
+.dropdown-item{
+    color: red;
 }
