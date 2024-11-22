@@ -4,6 +4,7 @@ import ProtectedRoutes from "./routes/ProtectedRoutes";
 import Home from "./pages/Home";
 import Registration from './pages/authentication/Registration';
 import Login from './pages/authentication/Login';
+import SinglePost from './pages/SinglePost';
 
 const App = () => {
   return (
@@ -14,6 +15,11 @@ const App = () => {
           <ProtectedRoutes>
             <Home/>
          </ProtectedRoutes>
+          }/>
+          <Route path='/post/:postId/' element={
+            <ProtectedRoutes>
+              <SinglePost/>
+            </ProtectedRoutes>
           }/>
           {/* end of protected routes */}
           <Route path="/login/" element={<Login/>}/>

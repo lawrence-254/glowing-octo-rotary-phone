@@ -117,7 +117,7 @@ function Post(props){
         {isSinglePost && (
             <p className='ms-1 fs-6'>
                 <small>
-                    <link>
+                    <link to={`/post/${post.id}/`}>
                     {post.comments_count} comments
                     </link>
                 </small>

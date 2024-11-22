@@ -10,6 +10,7 @@ import Comment from '../components/comments/Comment';
 
 
 function SinglePost() {
+    console.log(useParams())
     let {postId} = useParams();
     const { data, error, mutate } = useSWR(`/post/${postId}/comment/`, fetcher, { refreshInterval: 1000 });
 
