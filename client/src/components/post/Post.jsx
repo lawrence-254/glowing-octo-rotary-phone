@@ -42,7 +42,7 @@ function Post(props){
 
     return(
         <>
-        <Card className='card'>
+        <Card className='card post-card'>
             <Card.Body className="body">
                 <h3 className="title">
                     <div className='image-container'>
