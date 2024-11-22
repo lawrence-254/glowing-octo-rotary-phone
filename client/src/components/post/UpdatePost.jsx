@@ -11,10 +11,10 @@ function UpdatePost(props) {
     const handleOpen = ()=>setShow(true);
   return (
     <>
-    <Dropdown.Item onClick={handleOpen}>Modify</Dropdown.Item>
-    <Modal show={show} onHide={handleClose}>
-        {/*  */}
-    </Modal>
+      <Dropdown.Item onClick={handleOpen}>Modify</Dropdown.Item>
+      <Modal show={show} onHide={handleClose}>
+          {/*  */}
+      </Modal>
     </>
   )
 }

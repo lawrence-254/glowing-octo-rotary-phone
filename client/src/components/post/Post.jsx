@@ -54,14 +54,14 @@ function Post(props){
                         className='image'
                         />
                         <div className='details'>
-                            <p className='info'>{post.author.name}</p>
+                            <p className='info'>{post.author.username}</p>
                             <p className='info btm'>
                                 <small>{format(post.created_at)}</small>
                             </p>
                         </div>
                     </div>
-                    {user.name === post.author.name && (
-                        <div>
+                    {user.username === post.author.username && (
+                        <div className="dropper">
                             <Dropdown>
                                 <Dropdown.Toggle as={MoreToggleIcon}></Dropdown.Toggle>
                                 <Dropdown.Menu>

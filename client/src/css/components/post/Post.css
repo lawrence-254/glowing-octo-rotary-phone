@@ -19,6 +19,7 @@
     justify-content:flex-start;
     align-self: center;
     margin-top:2rem;
+    background: green;
 }
 .card .body .title .image-container .details .info{
     font-size: 6rem;   
@@ -83,4 +84,7 @@
 
 .dropdown-item{
     color: red;
+}
+.dropper{
+    background: yellow;
 }
