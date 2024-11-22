@@ -15,6 +15,7 @@ function CreateComment(props) {
     const user = getUser();
 
     const handleSubmit = (event)=>{
+        
 
     };
 
