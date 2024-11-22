@@ -25,7 +25,7 @@ const Home = () => {
           </h1>
           <Row>
             <Col xs={12} md={8} lg={6}>
-              <CreatePost refresh={data.post.mutate} />
+              <CreatePost refresh={mutate} />
             </Col>
           </Row>
           <Row>
