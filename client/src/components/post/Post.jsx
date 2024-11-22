@@ -24,7 +24,7 @@ const MoreToggleIcon = React.forwardRef(({ onClick }, ref) => (
 ));
 
 function Post(props){
-    const {post,refresh} = props;
+    const {post,refresh, isSinglePost} = props;
     const [action, setAction]=useState();
     const [showToast, setShowToast] = useState(false);
     const user = getUser();
@@ -114,6 +114,23 @@ function Post(props){
         showToast={showToast}
         onClose={()=>setShowToast(false)}
         />
+        {isSinglePost && (
+            <p className='ms-1 fs-6'>
+                <small>
+                    <link>
+                    {post.comments_count} comments
+                    </link>
+                </small>
+            </p>
+        )}
+        {isSinglePost && (
+            <div className="comment-box-trigger">
+            <CommentOutlined className='comment-icon'/>
+            <p>
+                <small>comment</small>
+            </p>
+        </div>
+        )}
         </>
     )
 }
