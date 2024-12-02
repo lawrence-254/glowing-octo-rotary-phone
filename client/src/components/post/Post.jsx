@@ -76,6 +76,7 @@ function Post(props){
                         </div>
                     )}
                 </h3>
+                {post.title && (<h2>{post.title}</h2>)}
                 <p className="post-body">
                     {post.body}
                 </p>

@@ -20,10 +20,14 @@ function SinglePost() {
             <Row className='justify-content-center'>
                 <Col sm={8}>
                 <Post post={data.results} refresh={mutate} isSinglePost/>
+                <CreateComment postId={data.results.id} refresh={mutate}/>
                 </Col>
             </Row>
         ):(
-        <div>Loading...</div>
+        <div>
+          Loading...
+          <p>{error}</p>
+        </div>
         )}
     </Layout>
   )

@@ -1,8 +1,9 @@
 import React,{useState, useContext} from 'react';
-import {Button,Form, Image, } from 'react-bootstrap';
+import {Button,Form, Image, Card, Dropdown } from 'react-bootstrap';
 import axiosService from '../../helpers/axios';
 import {getUser} from '../../hooks/user.actions';
 import { Context } from '../navigation/Layout';
+
 
 
 function CreateComment(props) {
@@ -15,8 +16,36 @@ function CreateComment(props) {
     const user = getUser();
 
     const handleSubmit = (event)=>{
-        
+        event.preventDefault();
+        const createCommentForm = event.currentTarget;
 
+        if (createCommentForm.checkValidity()===false){
+            event.stopPropagation();
+        }
+        setValidated(true);
+
+        const commentFormData = {
+            author: user.id,
+            body: form.body,
+            post: postId,
+        }
+        axiosService.post(`/post/${postId}/comment/`, commentFormData).then(()=>{
+            setForm({...form, title:"", body:""})
+            setToaster({
+                type: "success",
+                message: "Your comment posted",
+                show: true,
+                title: "Comment!",
+            })
+            refresh();
+        }).catch(()=>{
+            setToaster({
+                type:"danger",
+                message:"An error occured while trying to post your comment",
+                show: true,
+                title: "Error!"
+            })
+        })
     };
 
   return (

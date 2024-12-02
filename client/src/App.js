@@ -5,6 +5,8 @@ import Home from "./pages/Home";
 import Registration from './pages/authentication/Registration';
 import Login from './pages/authentication/Login';
 import SinglePost from './pages/SinglePost';
+import Erro from './pages/Erro';
+import Profile from './pages/Profile'
 
 const App = () => {
   return (
@@ -21,12 +23,45 @@ const App = () => {
               <SinglePost/>
             </ProtectedRoutes>
           }/>
+          <Route path='/profile/:profileId/' element={
+            <ProtectedRoutes>
+              <Profile/>
+            </ProtectedRoutes>
+          }/>
           {/* end of protected routes */}
           <Route path="/login/" element={<Login/>}/>
           <Route path="/register/" element={<Registration/>}/>
+          <Route path="*" element={<Erro/>}/>
       </Routes>
     </div>
   )
 }
 
 export default App
+
+// NOTE UNCOMMENT THE CODE ABOVE
+
+// import React from 'react';
+// import {Route, Routes} from "react-router-dom";
+// import Home from "./pages/Home";
+// import Registration from './pages/authentication/Registration';
+// import Login from './pages/authentication/Login';
+// import SinglePost from './pages/SinglePost';
+
+// const App = () => {
+//   return (
+//     <div>
+//       <Routes>
+//         {/* protected routes and requires authentication */}
+//         <Route path='/' element={<Home/>}/>
+//           <Route path='/post/:postId/' element={<SinglePost/>}/>
+//           {/* end of protected routes */}
+//           <Route path="/login/" element={<Login/>}/>
+//           <Route path="/register/" element={<Registration/>}/>
+//           <Route path="*" element={<Erro/>}/>
+//       </Routes>
+//     </div>
+//   )
+// }
+
+// export default App

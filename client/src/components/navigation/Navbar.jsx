@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../css/navigation/Navbar.css";
+import { getUser } from "../../hooks/user.actions";
 
 function Navigationbar() {
+  const user = getUser() 
   const navigate = useNavigate();
   const [isDropdownVisible, setDropdownVisible] = useState(false);
 
@@ -22,12 +24,12 @@ function Navigationbar() {
         <div className="navbar-profile">
           <img
             src="#"
-            alt="User Avatar"
+            alt={user.username}
             className="navbar-avatar"
             onClick={toggleDropdown} // Toggle dropdown visibility on click
           />
           <ul className={`dropdown ${isDropdownVisible ? "visible" : ""}`}>
-            <li><a href="#">Profile</a></li>
+            <li><a href={`/profile/${user.id}`}>Profile</a></li>
             <li><button onClick={handleLogout}>Logout</button></li>
           </ul>
         </div>
