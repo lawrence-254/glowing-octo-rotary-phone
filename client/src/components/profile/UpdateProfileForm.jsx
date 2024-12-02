@@ -9,9 +9,9 @@ function UpdateProfileForm(props) {
     const {profile} =props;
     const navigate = useNavigate()
 
-    const [validated, setValidated] = useState();
-    const [form, setForm] = useState()
-    const [error, setError] = useState();
+    const [validated, setValidated] = useState(false);
+    const [form, setForm] = useState(profile)
+    const [error, setError] = useState(null);
     const userActions = useUserActions();
 
     const [avatar, setAvatar] = useState();
@@ -20,7 +20,7 @@ function UpdateProfileForm(props) {
         event.preventDefault();
         const updateProfileForm = event.currentTarget
 
-        if (updateProfileForm.checkVality()=== false){
+        if (updateProfileForm.checkValidity()=== false){
             event.stopPropagation();
         }
         setValidated(true);

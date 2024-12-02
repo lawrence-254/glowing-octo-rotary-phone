@@ -1,5 +1,6 @@
 import {useNavigate} from "react-router-dom";
 import axiosService from "../helpers/axios";
+import axios from "axios";
 
 function useUserActions(){
     const navigate = useNavigate();
@@ -13,7 +14,7 @@ function useUserActions(){
     };
 
     function login(data){
-        return axiosService.post(`${baseURL}/auth/login/`, data).then((res)=>{
+        return axios.post(`${baseURL}/auth/login/`, data).then((res)=>{
             setUserData(res);
             navigate('/');
 

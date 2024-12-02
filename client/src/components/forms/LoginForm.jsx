@@ -27,14 +27,14 @@ const LoginForm = () => {
         userActions
             .login(userData)
             .then(() => setLoading(false))
-            .catch((error) => {
+            .catch((err) => {
                 setLoading(false);
-                if (error.response && error.response.data) {
-                    console.log("error response data:", error.response.data);
-                    setError(error.response.data.message || "An error occurred.");
+                if (err.response && err.response.data) {
+                    console.log("error response data:", err.response.data);
+                    setError(err.response.data.message || "An error occurred.");
                 } else {
-                    console.log("unexpected error:", error.message);
-                    setError(error.message || "An error occurred.");
+                    console.log("unexpected error:", err.message);
+                    setError(err.message || "An error occurred.");
                 }
             });
     };
