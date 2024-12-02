@@ -7,6 +7,7 @@ import Login from './pages/authentication/Login';
 import SinglePost from './pages/SinglePost';
 import Erro from './pages/Erro';
 import Profile from './pages/Profile'
+import ProfileEdit from './pages/ProfileEdit'
 
 const App = () => {
   return (
@@ -26,6 +27,11 @@ const App = () => {
           <Route path='/profile/:profileId/' element={
             <ProtectedRoutes>
               <Profile/>
+            </ProtectedRoutes>
+          }/>
+          <Route path='/profile/:profileId/edit/' element={
+            <ProtectedRoutes>
+              <ProfileEdit/>
             </ProtectedRoutes>
           }/>
           {/* end of protected routes */}
