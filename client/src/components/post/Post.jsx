@@ -77,9 +77,9 @@ function Post(props){
                     )}
                 </h3>
                 {post.title && (<h2>{post.title}</h2>)}
-                <p className="post-body">
+                {/* <p className="post-body">
                     {post.body}
-                </p>
+                </p> */}
                 <div className="post-reaction">
                     <LikeFilled className='like-icon'/>
                     <p className='post-reaction-info'>
