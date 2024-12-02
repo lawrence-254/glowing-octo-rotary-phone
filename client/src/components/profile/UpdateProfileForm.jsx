@@ -84,6 +84,50 @@ function UpdateProfileForm(props) {
                 This File is required
             </Form.Control.Feedback>
         </Form.Group>
+        <Form.Group className="mb-3">
+            <Form.Label>First Name</Form.Label>
+            <Form.Control
+            value={form.first_name}
+            onChange={(e)=>setForm({...form, first_name: e.target.value})}
+            required
+            type="text"
+            Placeholder="Enter your First Name"
+            />
+            <Form.Control.Feedback type="invalid">
+                This field is required
+            </Form.Control.Feedback>
+        </Form.Group>
+        <Form.Group className="mb-3">
+            <Form.Label>Last Name</Form.Label>
+            <Form.Control
+            value={form.last_name}
+            onChange={(e)=>setForm({...form, last_name: e.target.value})}
+            required
+            type="text"
+            placeholder="Enter your last name"
+            />
+            <Form.Control.Feedback type="invalid">
+                This field is required
+            </Form.Control.Feedback>
+        </Form.Group>
+        <Form.Group className="mb-3">
+            <Form.Label>Bio</Form.Label>
+            <Form.Control
+            value={form.bio}
+            onChange={(e)=>setForm({...form, bio: e.target.value})}
+            as="textarea"
+            rows={3}
+            placeholder="Tell people about yourself...(OPTIONAL)"
+            />
+        </Form.Group>
+        <div className="text-content text-danger">
+            {error && (
+                <p>{error}</p>
+            )}
+        </div>
+        <Button
+        variant="primary"
+        type="submit">Update profile edits</Button>
     </Form>
   )
 }
