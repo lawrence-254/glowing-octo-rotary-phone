@@ -3,6 +3,7 @@ from rest_framework.viewsets import ViewSet
 from rest_framework.permissions import AllowAny
 from rest_framework import status
 from rest_framework_simplejwt.tokens import RefreshToken
+
 from core.auth.serializers.register import RegisterSerializer
 
 class RegisterViewSet(ViewSet):
@@ -43,7 +44,7 @@ class RegisterViewSet(ViewSet):
             
             # Return a generic error response
             return Response(
-                {"error": "An error occurred during registration. Please try again."},
+                {"error": f"{e} An error occurred during registration. Please try again."},
                 status=status.HTTP_400_BAD_REQUEST
             )
 
