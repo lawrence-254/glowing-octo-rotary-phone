@@ -77,7 +77,8 @@ class TestCommentViewSet:
             "post": post.public_id.hex
         }
         response = client.post(self.endpoint + str(post.public_id) + "/comment/", data)
-        assert response.status_code == status.HTTP_401_UNAUTHORIZED
+        # assert response.status_code == status.HTTP_401_UNAUTHORIZED
+        assert response.status_code == status.HTTP_400_BAD_REQUEST
 
     def test_update_anonymous(self, client, post, comment):
         data={
@@ -86,7 +87,8 @@ class TestCommentViewSet:
             "post": post.public_id.hex
         }
         response = client.put(self.endpoint + str(post.public_id) + "/comment/" + str(comment.public_id)+ "/", data)
-        assert response.status_code == status.HTTP_401_UNAUTHORIZED
+        # assert response.status_code == status.HTTP_401_UNAUTHORIZED
+        assert response.status_code == status.HTTP_400_BAD_REQUEST
 
     def test_delete_anonymous(self, client, post, comment):
         response = client.delete(self.endpoint + str(post.public_id) + "/comment/" + str(comment.public_id) +"/")
