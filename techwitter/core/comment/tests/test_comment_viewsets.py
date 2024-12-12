@@ -54,11 +54,11 @@ class TestCommentViewSet:
         assert response.data['body'] == data['body']
 
 
-    # def test_delete(self, client, user, post, comment):
-    #     client.force_authenticate(user=user)
-    #     response = client.delete(self.endpoint + str(post.public_id) + "/comment/" + str(comment.public_id) + "/")
+    def test_delete(self, client, user, post, comment):
+        client.force_authenticate(user=user)
+        response = client.delete(self.endpoint + str(post.public_id) + "/comment/" + str(comment.public_id) + "/")
 
-    #     assert response.status_code == status.HTTP_204_NO_CONTENT
+        assert response.status_code == status.HTTP_204_NO_CONTENT
 
 
     # def test_list_anonymous(self, client, post, comment):
