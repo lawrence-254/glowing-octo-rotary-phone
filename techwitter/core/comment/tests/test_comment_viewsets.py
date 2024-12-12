@@ -39,19 +39,19 @@ class TestCommentViewSet:
         assert response.data['body'] == data['body']
         assert response.data['author']['id'] == user.public_id.hex
 
-    # def test_update(self, client,user, post, comment):
-    #     client.force_authenticate(user=user)
-    #     data={
-    #         "title": "Test Comment Title",
-    #         "body": "Test Comment Body",
-    #         "author": user.public_id.hex,
-    #         "post": post.public_id.hex
-    #     }
-    #     response =client.put(self.endpoint + str(post.public_id) + "/comment/" + str(comment.public_id) + "/", data)
+    def test_update(self, client,user, post, comment):
+        client.force_authenticate(user=user)
+        data={
+            "title": "Test Comment Title",
+            "body": "Test Comment Body",
+            "author": user.public_id.hex,
+            "post": post.public_id.hex
+        }
+        response =client.put(self.endpoint + str(post.public_id) + "/comment/" + str(comment.public_id) + "/", data)
 
-    #     assert response.status_code == status.HTTP_200_OK
-    #     assert response.data['title'] == data['title']
-    #     assert response.data['body'] == data['body']
+        assert response.status_code == status.HTTP_200_OK
+        assert response.data['title'] == data['title']
+        assert response.data['body'] == data['body']
 
 
     # def test_delete(self, client, user, post, comment):
