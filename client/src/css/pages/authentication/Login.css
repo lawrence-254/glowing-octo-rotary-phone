@@ -1,30 +1,35 @@
 /* Base styles */
 .login-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  max-height: 100vh;
-  flex-wrap: wrap;
-  flex-direction: column;
-  align-content: space-around;
+
+  background-color: #F7C04A;
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
 }
 
-.login-row {
-  width: 100%;
-  display: flex;
-}
+
 
 .left-column,
 .right-column {
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 2rem;
-}
+  text-align: center;
+  padding: 10px;
+  border: 5px solid black;
+} 
 
+.left-column{
+  background-color: aqua;
+
+}
+.right-column{
+display: block;
+}
+.left-col-container{
+  margin-top: 40%;
+}
 .left-column h1 {
+
   margin-bottom: 1.5rem;
 }
 
@@ -48,7 +53,7 @@
 }
 
 /* Mobile Styles */
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .login-container {
     flex-direction: column;
     max-height: auto; 
@@ -95,4 +100,24 @@
       padding: 2rem;
   
     }
-  }
+  } */
+
+  .home-container{
+    background-color: #FFF44F;
+    background-color: #FFEF00;
+    background-color: #FFDF00;
+    background-color: #FFFF31;
+    background-color: #FFF700;
+    /* maybe1 */
+    background-color: #F7C04A;
+    /* maybe1 */
+    /* maybe2 */
+    background-color: #FFDB58;
+    /* maybe2 */
+    /* maybe3 */
+    background-color: #FFCA4B;
+    /* maybe3 */
+    /* maybe4 */
+    background-color: #EEDC82;
+    /* maybe4 */
+}
