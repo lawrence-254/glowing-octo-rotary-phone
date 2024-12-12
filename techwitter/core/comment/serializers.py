@@ -12,7 +12,7 @@ class CommentSerializer(AbstractSerializer):
     post = serializers.SlugRelatedField(queryset=Post.objects.all(), slug_field='public_id')
 
     def to_representation(self, instance):
-        rep = super().to_respresentation(instance)
+        rep = super().to_representation(instance)
         author = User.objects.get_object_by_public_id(rep["author"])
         rep["author"] = UserSerializer(author).data
 
@@ -31,5 +31,5 @@ class CommentSerializer(AbstractSerializer):
     
     class Meta:
         model = Comment
-        fields = ['id', 'post', 'author', 'body', 'edited', 'created', 'updated']
+        fields = ['id', 'post', 'author', 'body', 'edited', 'created_at', 'updated_at']
         read_only_fields = ["edited"]
