@@ -30,6 +30,9 @@ function Layout({ children, hasNavigationBack }) {
           />
         )}
         <div className="container">{children}</div>
+        <footer>
+          all rights reserved footer
+        </footer>
       </div>
       <Toaster
         title={toaster.title}
