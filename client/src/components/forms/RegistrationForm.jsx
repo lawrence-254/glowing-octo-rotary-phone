@@ -179,7 +179,7 @@ const RegistrationForm = () => {
                 </Form.Group>
 
                 <Button variant="success" type="submit">
-                    Submit
+                    REGISTER
                 </Button>
             </Form>
         </Container>
