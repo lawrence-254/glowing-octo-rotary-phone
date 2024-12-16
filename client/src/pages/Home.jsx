@@ -15,7 +15,20 @@ const Home = () => {
   const profiles = useSWR("/user/?limit=5", fetcher);
 
   if (!user) {
-    return <>Loading...</>
+    return <div
+    style={{
+      // background:'black',
+      color: 'red',
+      width: '100vw',
+      height: '100vh',
+      justifyContent: 'center',
+      alignItems: 'center',
+      display: 'flex',
+      flexDirection: 'column',
+      fontSize:'69px',
+      background: 'radial-gradient(circle, black 40%, red 100%)'
+    }}
+    >LOADING...</div>
   }
 
   return (
