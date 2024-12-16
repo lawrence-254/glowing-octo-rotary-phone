@@ -1,5 +1,5 @@
 /* General Reset */
-body, html, ul, li, a, button {
+/* body, html, ul, li, a, button {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -19,16 +19,20 @@ body, html, ul, li, a, button {
     border: none;
     color: inherit;
     cursor: pointer;
-  }
+  } */
   
   /* Navbar Styling */
   .navbar {
-    background-color: #007bff;
-    color: white;
+    margin-top: 0;
+    background-color: orange;
+    color: rgb(241, 1, 129);
     padding: 0.5rem 1rem;
     position: fixed;
     width: 100%;
     z-index: 1000;
+    height: 3.5rem;
+    border-bottom: solid 5px black;
+    color: green
   }
   
   .navbar-container {
@@ -40,15 +44,21 @@ body, html, ul, li, a, button {
   }
   
   .navbar-brand {
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: bold;
-    color: white;
+    font-family: Chalkduster;
+    color: rgb(248, 19, 183);
+    text-decoration: none;
   }
-  
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
   .navbar-profile {
     position: relative;
     display: flex;
     align-items: center;
+    background-color: orangered;
   }
   
   .navbar-avatar {
@@ -63,18 +73,24 @@ body, html, ul, li, a, button {
     position: absolute;
     top: 50px;
     right: 0;
-    background-color: white;
-    border: 1px solid #ddd;
+    background-color: orange;
+    border: 2px solid black;
     border-radius: 4px;
     overflow: hidden;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    display: none; 
+    display: none;
+    
+  }
+  ul {
+    list-style: none;
   }
   
   .dropdown li {
     padding: 0.5rem 1rem;
     color: #333;
     cursor: pointer;
+    color: black;
+    font-weight: bolder;
   }
 
   .dropdown.visible {
@@ -82,11 +98,19 @@ body, html, ul, li, a, button {
   }
   
   .dropdown li:hover {
-    background-color: #f8f9fa;
+    background-color: orangered;
+    color: green;
   }
   
   .navbar-profile:hover .dropdown {
     display: block;
+  }
+
+  button {
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
   }
   
   /* Responsive Styling */

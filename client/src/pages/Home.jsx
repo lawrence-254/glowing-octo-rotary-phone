@@ -22,32 +22,41 @@ const Home = () => {
     <Layout>
       <Container>
         <div className="home-container-main">
-          {user&&(<h1 className="home-title">
+          
+          <Row >
+            <Col
+            xs={12} md={8} lg={6}
+            >
+              <CreatePost refresh={mutate} info={<>
+                {user&&(<h1 className="home-title">
             {user.username}
           </h1>)}
-          <Row>
-            <Col xs={12} md={8} lg={6}>
-              <CreatePost refresh={mutate} />
+                </>} />
             </Col>
-          </Row>
-          <Row>
-            {data?.results?.map((p, i) => (
-              <Col key={i} xs={12} sm={6} md={4} lg={3}>
-                <Post post={p} refresh={mutate} />
-              </Col>
-            ))}
-          </Row>
-        </div>
-        <Col sm={3} className="border rounded py-4 h-50">
-        <h4>Suggestions</h4>
-        <div className="d-flex flex-column">
-          {profiles.data && (profiles.data.results.map((profile, index)=>(
-            (profile.username != user.username) &&
-              <ProfileCard key={index} user={profile}/>
             
-          )))}
+          </Row>
+          <div className="container-post">
+
+          <Row className='post-section'>
+            {data?.results?.map((p, i) => (
+                <Post post={p} refresh={mutate} />
+            ))}
+          
+          </Row>
+          <Col sm={3} className='suggested-follow-secction'
+        //  className="border rounded py-4 h-50"
+         >
+            <h4>Suggestions</h4>
+            <div className="d-flex flex-column">
+              {profiles.data && (profiles.data.results.map((profile, index)=>(
+                (profile.username !== user.username) &&
+                  <ProfileCard key={index} user={profile}/>
+                
+              )))}
+            </div>
+            </Col>
+          </div>
         </div>
-        </Col>
       </Container>
     </Layout>
   )

@@ -57,9 +57,19 @@ const RegistrationForm = () => {
 
         setValidated(true);
     };
-
     return (
-        <Container className="registration-form-container">
+        <Container className="registration-form-container" style={{
+            width: '100%',
+            height: '90vh',
+            border: '1px solid #ddd',
+            borderRadius: '8px',
+            boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+            display: 'flex',
+            flexDirection: 'column',
+            color: 'bisque',
+            background: 'green',
+            overflow: 'hidden'
+        }}>
             <h2>REGISTER</h2>
             {error && <Alert variant="danger">{error}</Alert>}
             <Form
@@ -67,6 +77,7 @@ const RegistrationForm = () => {
                 noValidate
                 validated={validated}
                 onSubmit={handleSubmit}
+              
             >
                 <Form.Group controlId="formUsername" className="mb-3">
                     <Form.Label>Username</Form.Label>

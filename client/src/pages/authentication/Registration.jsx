@@ -6,7 +6,6 @@ import '../../css/pages/authentication/Register.css'
 const Registration = () => {
   return (
     <div className="registration-container">
-      <div className="registration-row">
         {/* Left Column: Title and Link to Login */}
         <div className="registration-left-column">
           <h1>TechWitter</h1>
@@ -26,7 +25,6 @@ const Registration = () => {
           </div>
         </div>
       </div>
-    </div>
   );
 };
 

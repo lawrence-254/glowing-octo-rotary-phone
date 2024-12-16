@@ -40,11 +40,11 @@ const LoginForm = () => {
     };
 
     return (
-        <Container className="login-container container-box">
+        <Container className="login-container-box">
             <h2>Login</h2>
             <Form id="login-form" noValidate validated={validated} onSubmit={handleSubmit}>
-                <Form.Group controlId="formUsername">
-                    <Form.Label>Email</Form.Label>
+                <Form.Group controlId="formUsername" className="form-group">
+                    <Form.Label className="label">Email</Form.Label>
                     <Form.Control
                         type="text"
                         placeholder="Enter your username..."
@@ -54,14 +54,15 @@ const LoginForm = () => {
                             setError(null);
                         }}
                         required
+                        className="input"
                     />
                     <Form.Control.Feedback type="invalid">
                         This field is required.
                     </Form.Control.Feedback>
                 </Form.Group>
 
-                <Form.Group controlId="formPassword">
-                    <Form.Label>Password</Form.Label>
+                <Form.Group controlId="formPassword" className="form-group">
+                    <Form.Label className="label">Password</Form.Label>
                     <Form.Control
                         type="password"
                         placeholder="Enter password"
@@ -72,6 +73,7 @@ const LoginForm = () => {
                         }}
                         minLength="8"
                         required
+                        className="input"
                     />
                     <Form.Control.Feedback type="invalid">
                         Password must be at least 8 characters.

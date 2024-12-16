@@ -1,90 +1,105 @@
 /* Responsive Registration Form Container */
 .registration-form-container {
     width: 100%;
-    max-width: 600px; 
-    margin: 2rem auto;
-    padding: 1.5rem;
-    background-color: #fdfdfd;
+    height: 90vh;
+    border: 1px solid #ddd;
     border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    color: bisque;
+    background: green;
+    overflow: hidden;
 }
 
 /* Form Heading */
 .registration-form-container h2 {
-    margin-bottom: 1.5rem;
+    /* margin-bottom: 1.5rem;
     color: #333;
     font-family: "Arial", sans-serif;
     text-transform: uppercase;
     letter-spacing: 1px;
-    font-size: 1.8rem; 
-    text-align: center; 
+    font-size: 1.8rem;  */
+    text-align: center;
+    color: orange;
+    text-align: center;
+    margin-bottom: 1.5rem;
 }
 
+.registration-form-container > Form{
+    height: 100%;
+    width: 100%;
+    overflow-y: auto;
+    margin: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+ }
 /* Form Labels */
 .registration-form-container form label {
-    font-weight: bold;
+    /* font-weight: bold;
     margin-bottom: 0.5rem;
     display: block;
     color: #555;
-    font-size: 1rem;
+    font-size: 1rem; */
+    font-size: large;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    display: block;
+    color: orange;
 }
 
 /* Form Inputs and Textarea */
 .registration-form-container form input,
 .registration-form-container form textarea {
-    width: 100%;
-    padding: 0.75rem;
-    margin-bottom: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 1rem;
-    box-sizing: border-box;
+    width: 69%;
+padding: 0.75rem;
+margin-bottom: 1rem;
+border: 1px solid #ccc;
+border-radius: 4px;
+font-size: 1rem;
+box-sizing: border-box;
 }
 
 .registration-form-container form input:focus,
 .registration-form-container form textarea:focus {
-    border-color: #28a745;
     outline: none;
-    box-shadow: 0 0 5px rgba(40, 167, 69, 0.5); 
+    box-shadow: 0 0 20px rgb(209, 216, 1);
 }
 
 /* Textarea Resize */
 .registration-form-container form textarea {
     resize: vertical; 
-    min-height: 120px;
+    min-height: 100px;
 }
 
 /* Submit Button */
 .registration-form-container .btn-success {
-    width: 100%;
+    cursor: pointer;
+    width: 40%;
     padding: 0.75rem;
-    background-color: #28a745;
+    background-color: rgb(190, 6, 138);
     border: none;
     border-radius: 4px;
     font-size: 1rem;
     color: white;
     cursor: pointer;
+    align-self: center;
     transition: background-color 0.3s ease, transform 0.2s ease;
+
 }
 
 .registration-form-container .btn-success:hover {
     background-color: #218838;
     transform: scale(1.02); 
+    color: rgb(190, 6, 138);;
+
 }
 
 /* Error Alert */
 .registration-form-container .alert-danger {
-    margin-top: 1rem;
-    font-size: 0.9rem;
-    color: #e3342f;
-    border: 1px solid #f5c6cb;
-    background-color: #f8d7da;
-    padding: 0.75rem;
-    border-radius: 4px;
+    color: #e3342f; 
 }
-
 /* Responsive Adjustments */
 @media (max-width: 768px) {
     .registration-form-container {

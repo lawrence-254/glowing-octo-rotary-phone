@@ -6,11 +6,9 @@ html, body, #root {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   height: 100%;
-  background-color: rgb(166, 34, 56);
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  background: green;
   /* overflow: hidden; */
 }
 

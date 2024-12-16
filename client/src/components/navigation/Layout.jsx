@@ -21,16 +21,30 @@ function Layout({ children, hasNavigationBack }) {
 
   return (
     <Context.Provider value={value}>
-      <div>
-        <Navigationbar />
+      <div className="main-container">
+      <Navigationbar />
+      
+        <div className="container">
         {hasNavigationBack && (
+          <>
           <ArrowLeftOutlined
             className="alol"
             onClick={() => navigate(-1)}
           />
+          <span className="alol" onClick={() => navigate(-1)}>Go Back</span>
+          </>
         )}
-        <div className="container">{children}</div>
-        <footer>
+          {children}
+          </div>
+          <footer style={{
+          background: 'green',
+          justifyContent: 'center',
+          height:'70px',
+          margin:'0',
+          display:'flex',
+          color:'orange',
+          borderTop:'5px solid orange'
+        }}>
           all rights reserved footer
         </footer>
       </div>

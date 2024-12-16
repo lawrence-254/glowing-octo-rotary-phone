@@ -1,7 +1,8 @@
 .card {
-    margin-top: 4rem;
-    margin-bottom: 4rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
     border-radius: 10px;
+    border: 2px solid black;
 }
 
 .card .body .title {
@@ -18,18 +19,19 @@
     flex-direction:column;
     justify-content:flex-start;
     align-self: center;
-    margin-top:2rem;
-    background: green;
+    /* margin-top:2rem; */
+    font-size: small;
+    /* background: green; */
 }
 .card .body .title .image-container .details .info{
-    font-size: 6rem;   
+    font-size: 2rem;   
 }
 .card .body .title .image-container .details .info.btm{
     font-weight:200;
 }
 
 .card .body .post-body{
-    font-size: 8rem;
+    font-size: 2rem;
 }
 .card .body .post-reaction{
     display: flex;
@@ -37,25 +39,28 @@
 }
 
 .card .body .post-reaction .like-icon{
-    color: #fff;
-    background: #0d6efd;
+    /* color: orange; */
+    /* background: green; */
     border-radius: 50%;
     width: 18px;
     height: 18px;
     font-size: 75%;
     padding:2px;
     margin:3px;
+    color: green;
 }
 
 .card .body .post-reaction .post-reaction-info{
-    font-size: 6rem;
+    font-size: 1rem;
 }
 
 .card .footer{
     display: flex;
-    background: whitesmoke;
-    width:80%;
+    /* background: whitesmoke; */
+    width:50%;
     justify-content: space-between;
+    /* border: 1px solid green; */
+    border-radius: 5px;
 }
 
 .card .footer .post-misceleneous{
@@ -79,19 +84,23 @@
     height: 24px;
     padding: 2px;
     font-size: 20px;
-    color: #c4c4c4;
+    color: green;
 }
 
 .dropdown-item{
-    color: red;
+    color: black;
 }
 .dropper{
-    background: yellow;
+    background: green;
 }
 
 .post-card {
-    border: 1px solid #ccc;
+    border: 1px solid black;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin-bottom: 16px;
+    height: fit-content;
 }
+/* .post-card .body .title{
+    width: 50%;
+    color: green;
+} */

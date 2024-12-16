@@ -5,7 +5,7 @@ import Toaster from "./Toast";
 import "../../css/components/post/CreatePost.css";
 
 function CreatePost(props) {
-  const {refresh} = props
+  const {refresh, info} = props
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -49,7 +49,9 @@ function CreatePost(props) {
   };
 
   return (
-    <>
+    <div className="main">
+            <>{info}</>
+
       <div className="form-group">
         <input
           className="post-input"
@@ -106,7 +108,7 @@ function CreatePost(props) {
           onClose={() => setShowToast(false)}
         />
       </div>
-    </>
+    </div>
   );
 }
 

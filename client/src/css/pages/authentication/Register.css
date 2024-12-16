@@ -1,17 +1,21 @@
 /* Full-screen container with centering */
 .registration-container {
-  width: 100vw;
+  /* width: 100vw;
   min-height: 100vh; 
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f8f9fa;
   padding: 1rem;
-  box-sizing: border-box; 
+  box-sizing: border-box;  */
+  background-color: #F7C04A;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
 }
 
 /* Main row container */
-.registration-row {
+/* .registration-row {
   width: 100%;
   max-width: 1200px; 
   display: flex;
@@ -22,11 +26,19 @@
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
-}
+  background: purple;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  color: bisque;
+  background: green;
+} */
 
 /* Left Column */
 .registration-left-column {
-  flex: 1; 
+  /* flex: 2; 
   padding: 2rem;
   display: flex;
   flex-direction: column;
@@ -34,23 +46,48 @@
   align-items: flex-start;
   background-color: #f1f1f1;
   box-sizing: border-box;
+  background: purple;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  color: bisque;
+  background: green; */
+  background-color: green;
+  text-align: center;
+  padding: 10px;
+  border: 5px solid black;
+  flex: 1;
+  
 }
 
 .registration-left-column h1 {
-  color: #007bff;
+  /* color: #007bff;
+  /* margin-bottom: 1.5rem; */
+  font-size: 3rem; 
+  margin-top: 40%;
+  font-family: Chalkduster;
+  /* color: teal */
+  color: rgb(248, 19, 183);
   margin-bottom: 1.5rem;
-  font-size: 2rem;
 }
 
 .registration-left-column p {
-  color: #6c757d;
+  /* color: #6c757d;
   margin-bottom: 1rem;
-  font-size: 1rem;
+  font-size: 1rem; */
+  font-family: Herculanum;
+  font-size: x-large;
+  margin-bottom: 1rem;
+  color: orange;
 }
 
 .registration-left-column .link {
-  color: #007bff;
   text-decoration: none;
+  color: rgb(248, 19, 183);
+font-size: xxx-large;
+font-family: Herculanum;
 }
 
 .registration-left-column .link:hover {
@@ -66,21 +103,27 @@
   flex-direction: column;
   justify-content: center;
   box-sizing: border-box;
+  text-align: center;
+  padding: 10px;
+  border: 5px solid black;
+  flex: 1;
+  background-color: orange;
+
 }
 
-.registration-card {
+/* .registration-card {
   width: 100%;
   background-color: #fff;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   padding-right: 2rem;
   box-sizing: border-box;
-}
+} */
 
 /* Form container inside the card */
-.registration-form-container {
+/* .registration-form-container {
   padding-top: 2rem;
-}
+} */
 
 /* Responsive Styles */
 @media (max-width: 768px) {

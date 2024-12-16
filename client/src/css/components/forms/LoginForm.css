@@ -1,63 +1,78 @@
 /* Base Container Styling */
-/* .login-container {
-    margin: 2rem auto;
-    padding: 1rem;
-    background-color: #f9f9f9;
+.login-container-box{
+    background: purple;
+    height: 60vh;
     border: 1px solid #ddd;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
-    /* width: 100%; */
-    /* max-width: 400px; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
-    height: 600px;
-} */
-/* .login-container.container-box{
-    background: bisque;
-} */
-/* Form Heading */
-/* .login-container h2 {
+    color: bisque;
+    background: green;
+}
+
+.login-container-box >h2{
+    color: orange;
     text-align: center;
     margin-bottom: 1.5rem;
-    color: #333;
-} */
-
-/* Form Labels */
-/* .login-container form label {
+    /* color: #333; */
+}
+.login-container-box > Form{
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.login-container-box > Form .form-group{
+    justify-content: space-around;
+}
+.login-container-box > Form .form-group .label{
+    font-size: large;
     font-weight: bold;
     margin-bottom: 0.5rem;
     display: block;
-    color: #555;
-} */
+    color: orange;
+}
+.login-container-box > Form .form-group .input{
+width: 69%;
+padding: 0.75rem;
+margin-bottom: 1rem;
+border: 1px solid #ccc;
+border-radius: 4px;
+font-size: 1rem;
+box-sizing: border-box;
+}
 
-/* Form Inputs */
-/* .login-container form input {
-    width: 100%;
-    padding: 0.75rem;
-    margin-bottom: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 1rem;
-    box-sizing: border-box;
-} */
-
-/* .login-container form input:focus {
-    border-color: #007bff;
+.login-container-box > Form .form-group .input:focus {
+    /* border-color: #007bff; */
     outline: none;
-    box-shadow: 0 0 3px rgba(0, 123, 255, 0.5);
-} */
+    box-shadow: 0 0 20px rgb(209, 216, 1);
+} 
 
-/* Submit Button */
-/* .login-container .btn-primary {
-    width: 100%;
+.login-container-box .btn-primary {
+    width: 40%;
     padding: 0.75rem;
-    background-color: #6408c6;
+    /* background-color: #6408c6; */
+    background-color: rgb(190, 6, 138);
     border: none;
     border-radius: 4px;
     font-size: 1rem;
     color: white;
     cursor: pointer;
-} */
+    align-self: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+
+}
+.login-container-box .btn-primary:hover {
+    background-color: #218838;
+    transform: scale(1.02);
+    color: rgb(190, 6, 138);;
+}
+.login-container-box > Form .text-danger{
+    color: maroon;
+}
+/* Submit Button */
+/*  */
 
 /* .login-container .btn-primary:hover {
     background-color: #0056b3;
@@ -72,26 +87,26 @@
 
 /* Responsive Styling for Mobile */
 @media (max-width: 768px) {
-    .login-container {
+    .login-container-box {
         margin: 1rem;
         padding: 1rem;
         max-width: 100%;
     }
 
-    .login-container h2 {
+    .login-container-box h2 {
         font-size: 1.5rem;
     }
 
-    .login-container form label {
+    .login-container-box form label {
         font-size: 0.9rem;
     }
 
-    .login-container form input {
+    .login-container-box form input {
         padding: 0.5rem;
         font-size: 0.9rem;
     }
 
-    .login-container .btn-primary {
+    .login-container-box .btn-primary {
         padding: 0.5rem;
         font-size: 0.9rem;
     }

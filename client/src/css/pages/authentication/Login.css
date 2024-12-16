@@ -4,13 +4,25 @@
   background-color: #F7C04A;
   width: 100%;
   height: 100vh;
-  /* display: grid; */
-  /* grid-template-columns: 1fr 1fr; */
-  /* gap: 1px; */
   display: flex;
   flex-direction: row;
 }
 
+.left-column {
+  background-color: aqua;
+  background-color: green;
+}
+.login-container .left-column .left-col-container > h1{
+  font-family: Chalkduster;
+  /* color: teal */
+  color: rgb(248, 19, 183);
+  font-size: 3rem;
+
+}
+.login-container .left-column .left-col-container > p{
+  font-family: Herculanum;
+  font-size: x-large;
+}
 .left-column, .right-column {
   text-align: center;
   padding: 10px;
@@ -18,12 +30,11 @@
   flex: 1;
 }
 
-.left-column {
-  background-color: aqua;
-}
 
 .right-column {
-  background-color: rgb(241, 1, 129);
+  /* background-color: rgb(241, 1, 129); */
+  background-color: orange;
+
 }
 
 .left-col-container {
@@ -36,7 +47,7 @@
 
 .left-column p {
   margin-bottom: 1rem;
-  color: #6c757d;
+  color: orange;
 }
 
 .button-link {
@@ -52,6 +63,14 @@
 .card-body {
   padding: 0;
 }
+.btn.btn-outline-primary.btn-lg{
+color: rgb(248, 19, 183);
+font-size: xxx-large;
+/* color: rgb(8, 163, 8); */
+font-family: Herculanum;
+
+}
+
 /* Mobile Styles */
  @media (max-width: 768px) {
   .login-container {
