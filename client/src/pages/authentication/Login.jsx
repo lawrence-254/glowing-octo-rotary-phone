@@ -21,7 +21,7 @@ const Login = () => {
 
         {/* Right Column: Login Form */}
         <div className="right-column">
-          <div className="card">
+          <div className="cards">
             <div className="card-body">
               <LoginForm />
             </div>
