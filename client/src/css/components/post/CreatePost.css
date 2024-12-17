@@ -16,10 +16,24 @@ button {
 }
 .main{
   display: flex;
-  flex-direction: row;
+  flex-direction: row-reverse;
   /* background: red; */
   justify-content: space-around;
-  width: 100%;
+  width: 91vw;
+  height: 50px
+}
+.info-container{
+  /* border: 1px solid blue; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.form-container{
+  /* border: 1px solid black; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
 }
 /* Post input field */
 .post-input {
@@ -95,7 +109,7 @@ button {
   width: 100%;
   padding: 10px;
   font-size: 1rem;
-  border: 2px solid #ccc;
+  border: 2px solid black;
   border-radius: 4px;
   outline: none;
   background-color: orange;

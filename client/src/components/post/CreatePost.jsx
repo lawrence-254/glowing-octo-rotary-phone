@@ -50,15 +50,15 @@ function CreatePost(props) {
 
   return (
     <div className="main">
-            <>{info}</>
-
-      <div className="form-group">
+      <div className="info-container">{info}</div>
+      <div className="form-group form-container">
         <input
           className="post-input"
           type="button"
           value="Share with the world"
           onClick={handleShow}
         />
+      </div>
         {show && (
           <div className="modal-overlay">
             <div className="modal">
@@ -107,7 +107,6 @@ function CreatePost(props) {
           type={toastType}
           onClose={() => setShowToast(false)}
         />
-      </div>
     </div>
   );
 }

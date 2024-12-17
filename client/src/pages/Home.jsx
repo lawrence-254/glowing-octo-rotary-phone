@@ -12,7 +12,7 @@ import ProfileCard from '../components/profile/ProfileCard'
 const Home = () => {
   const user = getUser()  
   const { data, error, mutate } = useSWR("/post/", fetcher, { refreshInterval: 1000 });
-  const profiles = useSWR("/user/?limit=5", fetcher);
+  const profiles = useSWR("/user/?limit=6", fetcher);
 
   if (!user) {
     return <div
@@ -26,7 +26,7 @@ const Home = () => {
       display: 'flex',
       flexDirection: 'column',
       fontSize:'69px',
-      background: 'radial-gradient(circle, black 40%, red 100%)'
+      background: 'radial-gradient(circle, orange 40%, green 100%)'
     }}
     >LOADING...</div>
   }
