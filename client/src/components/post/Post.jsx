@@ -46,13 +46,13 @@ function Post(props){
             <Card.Body className="body">
                 <h3 className="title">
                     <div className='image-container'>
-                        <Image
-                        src=""
+                        {post.author.image && <Image
+                        src={post.author.image}
                         roundedCircle
-                        width={48}
-                        height={48}
+                        width={58}
+                        height={58}
                         className='image'
-                        />
+                        /> }
                         <div className='details'>
                             <p className='info'>{post.author.username}</p>
                             <p className='info btm'>
