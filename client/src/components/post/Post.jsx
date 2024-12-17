@@ -46,15 +46,17 @@ function Post(props){
             <Card.Body className="body">
                 <h3 className="title">
                     <div className='image-container'>
-                        {post.author.image && <Image
+                        {/* {post.author.image &&  */}
+                        <Image
                         src={post.author.image}
                         roundedCircle
                         width={58}
                         height={58}
                         className='image'
-                        /> }
+                        />
+                        {/*}  */}
                         <div className='details'>
-                            <p className='info'>{post.author.username}</p>
+                        <p className='info'>{post.author.username}</p>
                             <p className='info btm'>
                                 <small>{format(post.created_at)}</small>
                             </p>
@@ -77,6 +79,17 @@ function Post(props){
                     )}
                 </h3>
                 {post.title && (<h2>{post.title}</h2>)}
+                {/* {post.image && */}
+                <div>
+                        <Image
+                        src={post.image}
+                        roundedCircle
+                        width={800}
+                        height={400}
+                        className='image'
+                        />
+                        </div>
+                        {/* } */}
                 <p className="post-body">
                     {post.body}
                 </p>
