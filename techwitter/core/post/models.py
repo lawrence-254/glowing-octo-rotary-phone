@@ -10,7 +10,7 @@ files functions
 """
 def post_directory_path(instance, filename):
     # location that the file will be uploaded to is MEDIA_ROOT/post_<id>/<filename>
-    return 'post_images_{0}/{1}'.format(instance.public_id, filename)
+    return 'post_images_/{0}/{1}'.format(instance.public_id, filename)
 
 class Post(AbstractModel):
     author = models.ForeignKey(

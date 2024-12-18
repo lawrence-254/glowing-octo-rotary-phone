@@ -48,7 +48,7 @@ files functions
 """
 def user_directory_path(instance, filename):
     # locatio that the file will be uploaded to is MEDIA_ROOT/user_<id>/<filename>
-    return 'user_images_{0}/{1}'.format(instance.public_id, filename)
+    return 'user_images_/{0}/{1}'.format(instance.public_id, filename)
 
 """
 User model that enables user information to be stored within the database

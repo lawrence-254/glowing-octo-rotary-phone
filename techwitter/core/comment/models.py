@@ -8,7 +8,7 @@ files functions
 """
 def comment_directory_path(instance, filename):
     # locatio that the file will be uploaded to is MEDIA_ROOT/comment_<id>/<filename>
-    return 'comment_images_{0}/{1}'.format(instance.public_id, filename)
+    return 'comment_images_/{0}/{1}'.format(instance.public_id, filename)
 
 class Comment(AbstractModel):
     title = models.CharField(max_length=150, blank=True, null=True)
