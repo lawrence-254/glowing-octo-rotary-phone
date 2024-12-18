@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 import {format}from'timeago.js';
 import { LikeFilled, CommentOutlined, LikeOutlined, MoreOutlined} from"@ant-design/icons";
-import {Image, Card, Dropdown, Button, Modal, Form} from "react-bootstrap";
+import {Image, Card, Dropdown} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import axiosService from "../../helpers/axios";
 import Toaster from "./Toast"
@@ -50,8 +50,8 @@ function Post(props){
                         <Image
                         src={post.author.image}
                         roundedCircle
-                        width={58}
-                        height={58}
+                        width={48}
+                        height={48}
                         className='image'
                         />
                         {/*}  */}
