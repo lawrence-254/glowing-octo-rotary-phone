@@ -46,7 +46,7 @@ function Post(props){
             <Card.Body className="body">
                 <h3 className="title">
                     <div className='image-container'>
-                        {/* {post.author.image &&  */}
+                        {post.author.image && 
                         <Image
                         src={post.author.image}
                         roundedCircle
@@ -54,7 +54,7 @@ function Post(props){
                         height={48}
                         className='image'
                         />
-                        {/*}  */}
+                        }
                         <div className='details'>
                         <p className='info'>{post.author.username}</p>
                             <p className='info btm'>
@@ -79,7 +79,7 @@ function Post(props){
                     )}
                 </h3>
                 {post.title && (<h2>{post.title}</h2>)}
-                {/* {post.image && */}
+                {post.image &&
                 <div>
                         <Image
                         src={post.image}
@@ -89,7 +89,7 @@ function Post(props){
                         className='image'
                         />
                         </div>
-                        {/* } */}
+                        }
                 <p className="post-body">
                     {post.body}
                 </p>

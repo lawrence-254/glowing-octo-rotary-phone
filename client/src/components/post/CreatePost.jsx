@@ -68,7 +68,7 @@ function CreatePost(props) {
                   &times;
                 </button>
               </div>
-              <form className={`modal-body ${validated ? "validated" : ""}`} onSubmit={handleSubmit}>
+              <form enctype="multipart/form-data" className={`modal-body ${validated ? "validated" : ""}`} onSubmit={handleSubmit} mult>
                 <div className="form-group">
                   <input
                     name="title"
