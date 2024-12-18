@@ -123,7 +123,7 @@ textarea {
 .post-button {
   width: 100%;
   padding: 10px 15px;
-  background: #007bff;
+  background: green;
   color: white;
   font-size: 1rem;
   border: none;
@@ -132,7 +132,7 @@ textarea {
 }
 
 .post-button:disabled {
-  background: #ccc;
+  background: goldenrod;
 }
 
 /* Responsive styles */
