@@ -64,6 +64,7 @@ function UpdateProfileForm(props) {
     noValidate
     validated={validated}
     onSubmit={handleSubmit}
+    enctype="multipart/form-data"
     >
         <Form.Group className="mb-3 d-flex flex-column">
             <Form.Label className="text-center">Avatar</Form.Label>

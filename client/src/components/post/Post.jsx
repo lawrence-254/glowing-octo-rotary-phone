@@ -84,8 +84,8 @@ function Post(props){
                         <Image
                         src={post.image}
                         roundedCircle
-                        width={800}
-                        height={400}
+                        width={900}
+                        height={530}
                         className='image'
                         />
                         </div>
