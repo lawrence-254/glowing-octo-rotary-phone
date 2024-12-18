@@ -41,7 +41,8 @@ function CreatePost(props) {
         setForm({});
         refresh();
       })
-      .catch(() => {
+      .catch((error) => {
+        console.error("Error posting:", error);
         setToastMessage("An Error occurred...");
         setToastType("danger");
         setShowToast(true);
@@ -89,7 +90,7 @@ function CreatePost(props) {
                 <div className="form-group">
                   <input
                     name="image"
-                    onChange={(e) => setForm({ ...form, image: e.target.value })}
+                    onChange={(e) => setForm({ ...form, image: e.target.files[0]})}
                     type="file"
                   />
                 </div>
