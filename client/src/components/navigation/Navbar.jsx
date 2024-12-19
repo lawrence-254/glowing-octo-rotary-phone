@@ -22,12 +22,14 @@ function Navigationbar() {
       <div className="navbar-container">
         <a href="#home" className="navbar-brand">TechWitter</a>
         <div className="navbar-profile">
-          <img
+          {user.avi ? (<img
             src="#"
-            alt={user.username}
+            alt=''
             className="navbar-avatar"
             onClick={toggleDropdown} // Toggle dropdown visibility on click
-          />
+          />):(<p
+            className="navbar-avatar-alt"
+            onClick={toggleDropdown}>{user.username}</p>)}
           <ul className={`dropdown ${isDropdownVisible ? "visible" : ""}`}>
             <li><a href={`/profile/${user.id}`}>Profile</a></li>
             <li><button onClick={handleLogout}>Logout</button></li>
