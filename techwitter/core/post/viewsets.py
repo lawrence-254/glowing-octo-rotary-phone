@@ -8,11 +8,13 @@ from core.abstract.viewsets import AbstractViewSet
 from core.post.models import Post
 from core.post.serializers import PostSerializer
 
+import logging
+logger = logging.getLogger(__name__)
 
 class PostViewSet(AbstractViewSet):
     http_method_names = ('post', 'get', 'put', 'delete')
     permission_classes = (IsAuthenticated,)
-    parser_classes=[MultiPartParserError, FormParser]
+    parser_classes = (MultiPartParserError, FormParser)
     serializer_class = PostSerializer
 
 
@@ -28,12 +30,16 @@ class PostViewSet(AbstractViewSet):
         return obj
     
     def create(self, request, *args, **kwargs):
-        serializer = self.get_serializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        self.perform_create(serializer)
+        logger.debug(f"Request data: {request}")
         return Response(
-            serializer.data, status=status.HTTP_201_CREATED
+            print(f"recieved data {request.data}")
         )
+        # serializer = self.get_serializer(data=request.data)
+        # serializer.is_valid(raise_exception=True)
+        # self.perform_create(serializer)
+        # return Response(
+        #     serializer.data, {"message": "Post Created successfully"}, status=status.HTTP_201_CREATED
+        # )
     
     @action(methods=['post'], detail=True)
     def like(self, request, *args, **kwargs):

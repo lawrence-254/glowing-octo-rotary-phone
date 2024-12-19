@@ -6,6 +6,8 @@ from core.post.models import Post
 from core.user.models import User
 from core.user.serializers import UserSerializer
 
+from django.conf import settings
+
 class PostSerializer(AbstractSerializer):
     author = serializers.SlugRelatedField(
         queryset=User.objects.all(),
@@ -23,6 +25,9 @@ class PostSerializer(AbstractSerializer):
         rep = super().to_representation(instance)
         # Fetch author details by public_id
         author = User.objects.filter(public_id=rep["author"]).first()
+        if settings.DEBUG:
+            request = self.context.get('request')
+            rep['image']= request.build_absolute_uri(rep['image'])
         if author:
             rep["author"] = UserSerializer(author).data
         return rep

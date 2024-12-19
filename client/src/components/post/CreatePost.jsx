@@ -19,10 +19,14 @@ function CreatePost(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (!form.title || !form.body) {
-      setValidated(true);
-      return;
+    const createPostForm= event.currentTarget;
+    if (createPostForm.checkValidity()===false){
+      event.stopPropagation()
     }
+    // if (!form.title || !form.body) {
+      setValidated(true);
+    //   return;
+    // }
 
     const formData = {
       author: user.id,
@@ -41,8 +45,9 @@ function CreatePost(props) {
         setForm({});
         refresh();
       })
-      .catch((error) => {
-        console.error("Error posting:", error);
+      .catch((err) => {
+        console.log("Error posting:", err);
+        console.log(formData)
         setToastMessage("An Error occurred...");
         setToastType("danger");
         setShowToast(true);
@@ -69,7 +74,7 @@ function CreatePost(props) {
                   &times;
                 </button>
               </div>
-              <form enctype="multipart/form-data" className={`modal-body ${validated ? "validated" : ""}`} onSubmit={handleSubmit} mult>
+              <form encType="multipart/form-data" className={`modal-body ${validated ? "validated" : ""}`} onSubmit={handleSubmit} mult>
                 <div className="form-group">
                   <input
                     name="title"

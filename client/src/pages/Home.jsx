@@ -52,7 +52,7 @@ const Home = () => {
 
           <Row className='post-section'>
             {data?.results?.map((p, i) => (
-                <Post post={p} refresh={mutate} />
+                <Post post={p} refresh={mutate} key={i} />
             ))}
           
           </Row>

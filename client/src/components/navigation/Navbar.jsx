@@ -23,7 +23,7 @@ function Navigationbar() {
         <a href="#home" className="navbar-brand">TechWitter</a>
         <div className="navbar-profile">
           {user.avi ? (<img
-            src="#"
+            src={user.avi}
             alt=''
             className="navbar-avatar"
             onClick={toggleDropdown} // Toggle dropdown visibility on click
