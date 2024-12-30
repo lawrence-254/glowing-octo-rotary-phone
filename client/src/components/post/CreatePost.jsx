@@ -28,15 +28,15 @@ function CreatePost(props) {
     //   return;
     // }
 
-    const formData = {
+    const postData = {
       author: user.id,
       title: form.title,
       body: form.body,
       image: form.image,
     };
-
+    const formData = JSON.stringify(postData)
     axiosService
-      .post("/post/", formData)
+      .post("/post/", postData)
       .then(() => {
         handleClose();
         setToastMessage("Post made");
@@ -44,10 +44,18 @@ function CreatePost(props) {
         setShowToast(true);
         setForm({});
         refresh();
+        console.log("form data to BE", formData)
+        console.log("post data imput", postData);
       })
       .catch((err) => {
-        console.log("Error posting:", err);
-        console.log(formData)
+        if (err.response && err.response.data) {
+          console.log("error response data:", err.response.data);
+          console.log("form data to BE", formData)
+          console.log("post data imput", postData);
+      } else {
+          console.log("unexpected error:", err.message);
+      }
+        // console.log(formData)
         setToastMessage("An Error occurred...");
         setToastType("danger");
         setShowToast(true);

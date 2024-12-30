@@ -1,4 +1,7 @@
 from django.db import models
+from django.contrib.auth.models import PermissionsMixin
+
+
 from core.abstract.models import AbstractModel, AbstractManager
 
 # Create your models here.
