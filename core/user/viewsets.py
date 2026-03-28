@@ -1,10 +1,11 @@
 from rest_framework import viewsets
 from rest_framework.permissions import AllowAny
 
+from core.abstraction.viewset import AbstractViewset
 from core.user.models import User
 from core.user.serializers import UserSerializer
 
-class UserViewSet(viewsets.ModelViewSet):
+class UserViewSet(AbstractViewset):
     http_method_names = ('patch', 'get')
     permission_classes = (AllowAny,)
     serializer_class = UserSerializer
